@@ -37,11 +37,14 @@
 
           <ul class="nav navbar-nav navbar-right">
           {% if request.user.is_authenticated %}
-            <li><a href="{% url 'auth_logout' %}"  style="color: #FFFFFF"Logout</a></li>
+            <li><a href="{% url 'auth_logout' %}"  style="color: #FFFFFF">{{ user.get_username }}</a></li>
+            <li><a href="{% url 'auth_logout' %}"  style="color: #FFFFFF">Logout</a></li>
             {% else %}
-            <li><a href="{% url 'registration_register' %}"  style="color: #FFFFFF">Register</a></li>
-            {% endif %}
+            <li><a href="{% url 'registration_register' %}"  style="color: #FFFFFF">Register</a></li> 
+            
           </ul>
+          {% endif %}
+
 
           {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
             <form class='navbar-form navbar-right' method='POST' action='{% url "auth_login" %}'>{% csrf_token %}
@@ -59,3 +62,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+    
+       

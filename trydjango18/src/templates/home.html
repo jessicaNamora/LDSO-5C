@@ -31,7 +31,7 @@
 		<h1>Time 4 Cultural Inovation</h1>
 		<p>The “Time 4 Cultural Innovation” is a product of social intervention that aims to help create and accomplish projects (dreams) with the help of a mentor.</p>
 		<p>
-		<a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
+		<a class="btn btn-lg btn-primary" href="{% url 'registration_register' %}" role="button">Join Us &raquo;</a>
 		</p>
 		</div>
 		<div class='col-sm-6' >
@@ -50,7 +50,7 @@
 {% block content %}
  {% if request.user.is_authenticated %}
 <h1>You are logged in!</h1>
-
+	
 	{% if queryset %}
 	<h2>Welcome Staff</h2>
 	<table class='table'>
@@ -67,19 +67,8 @@
  {% else %}
 <div class="row">
 
-  <div class="col-sm-3 pull-right">
-  	
-			<p class='lead text-align-center'>{{ title }}</p>
 
-			<form method='POST' action=''>{% csrf_token %}
-			{{ form|crispy }}
-
-			<input class='btn btn-primary' type='submit' value='Sign Up' />
-
-			</form>
-	</div>
-
-	<div class='col-sm-3'>
+<div class='col-sm-3'>
 <p class='lead text-align-center'>Create a Dream</p>
 			<img src='{% static "img/marketing1.jpg" %}' class='img-responsive' />
 </div>
