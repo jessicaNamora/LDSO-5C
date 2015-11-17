@@ -1,10 +1,10 @@
 body {
   min-height: 1000px;
+
 }
 
-.navbar-static-top {
-  
-  padding-bottom: 25px;
+.navbar-fixed-top {
+
   background-color: #337ab7 ;
   border-color: #337ab7;
 }

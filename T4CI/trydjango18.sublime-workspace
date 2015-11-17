@@ -520,42 +520,26 @@
 	"buffers":
 	[
 		{
-			"file": "src/templates/project.html",
-			"settings":
-			{
-				"buffer_size": 2260,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/sidebar.html",
-			"settings":
-			{
-				"buffer_size": 413,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "static_in_env/static_root/css/custom.css",
 			"settings":
 			{
-				"buffer_size": 831,
+				"buffer_size": 45,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "static_in_env/static_root/css/navbar-static-top.css",
+			"file": "src/static_in_pro/our_static/css/custom.css",
 			"settings":
 			{
-				"buffer_size": 495,
+				"buffer_size": 1102,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/templates/footer.html",
+			"file": "src/templates/project.html",
 			"settings":
 			{
-				"buffer_size": 236,
+				"buffer_size": 30,
 				"line_ending": "Windows"
 			}
 		},
@@ -563,23 +547,34 @@
 			"file": "src/templates/home.html",
 			"settings":
 			{
-				"buffer_size": 2257,
+				"buffer_size": 3584,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/templates/base.html",
+			"file": "src/static_in_pro/our_static/css/navbar-static-top.css",
 			"settings":
 			{
-				"buffer_size": 1101,
+				"buffer_size": 546,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "src/templates/footer.html",
+			"settings":
+			{
+				"buffer_size": 246,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "   {% load staticfiles %}\n\n   <!-- Static navbar -->\n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n\n          </button>\n          <a class=\"navbar-brand\" href=\"{% url 'home' %}\"><img src=\"{% static 'img/tbmw.png' %}\" /></a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n          <ul class=\"nav navbar-nav\">\n            <li><a href=\"{% url 'home' %}\" style=\"color: #FFFFFF\">Home</a></li>\n            <li><a href=\"{% url 'about' %}\"  style=\"color: #FFFFFF\">About</a></li>\n            <li><a href=\"{% url 'contact' %}\"  style=\"color: #FFFFFF\">Contact</a></li>\n            <!-- <li class=\"dropdown\">\n              <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>\n              <ul class=\"dropdown-menu\" role=\"menu\">\n                <li><a href=\"#\">Action</a></li>\n                <li><a href=\"#\">Another action</a></li>\n                <li><a href=\"#\">Something else here</a></li>\n                <li class=\"divider\"></li>\n                <li class=\"dropdown-header\">Nav header</li>\n                <li><a href=\"#\">Separated link</a></li>\n                <li><a href=\"#\">One more separated link</a></li>\n              </ul>\n            </li> -->\n          </ul>\n\n\n          <ul class=\"nav navbar-nav navbar-right\">\n          {% if request.user.is_authenticated %}\n            <li><a href=\"{% url 'auth_logout' %}\"  style=\"color: #FFFFFF\">{{ user.get_username }}</a></li>\n            <li><a href=\"{% url 'auth_logout' %}\"  style=\"color: #FFFFFF\">Logout</a></li>\n            {% else %}\n            <li><a href=\"{% url 'registration_register' %}\"  style=\"color: #FFFFFF\">Register</a></li> \n            \n          </ul>\n          {% endif %}\n\n\n          {% if not request.user.is_authenticated and not \"/accounts/login\" in request.get_full_path %}\n            <form class='navbar-form navbar-right' method='POST' action='{% url \"auth_login\" %}'>{% csrf_token %}\n              <div class='form-group'>\n                  <input type='text' class='form-control' name='username' placeholder='Username' /> \n              </div>\n              <div class='form-group'>\n                  <input type='password' class='form-control' name='password' placeholder='Password' />\n              </div>\n              <button type='submit' class='btn btn-default'>Login</button>\n          </form>\n          {% endif %}\n\n\n        </div><!--/.nav-collapse -->\n      </div>\n    </nav>\n\n    \n       ",
 			"file": "src/templates/navbar.html",
+			"file_size": 2908,
+			"file_write_time": 130922581522392884,
 			"settings":
 			{
-				"buffer_size": 2909,
+				"buffer_size": 2908,
 				"line_ending": "Unix"
 			}
 		}
@@ -617,15 +612,32 @@
 	},
 	"expanded_folders":
 	[
-		"/C/wamp/www-src/venv/Scripts/trydjango18/src",
-		"/C/wamp/www-src/venv/Scripts/trydjango18/src/app",
-		"/C/wamp/www-src/venv/Scripts/trydjango18/src/templates",
-		"/C/wamp/www-src/venv/Scripts/trydjango18/static_in_env",
-		"/C/wamp/www-src/venv/Scripts/trydjango18/static_in_env/static_root",
-		"/C/wamp/www-src/venv/Scripts/trydjango18/static_in_env/static_root/css"
+		"/C/wamp/www-src/venv/Scripts/T4CI/src",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/newsletter/migrations",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static/css",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static/psd",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root/css",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root/js",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root/psd"
 	],
 	"file_history":
 	[
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/project.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/sidebar.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root/css/custom.css",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/footer.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/db2.sqlite3",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/db.sqlite3",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/manage.py",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/home.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static/css/custom.css",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/base.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/navbar.html",
 		"/C/wamp/www-src/venv/Scripts/trydjango18/src/trydjango18/urls.py",
 		"/C/wamp/www-src/venv/Scripts/trydjango18/static_in_env/static_root/css/navbar-static-top.css",
 		"/C/wamp/www-src/venv/Scripts/trydjango18/static_in_env/static_root/css/custom.css",
@@ -742,22 +754,11 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/analytics/urls.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/admin.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/admin.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/forms.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/edit_modules.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/edit_lecture.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/login.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/models.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/forms.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/db.sqlite3",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/manage_base.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/upload.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/navbar.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/coming_soon.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/create_form.html"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/forms.py"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -773,6 +774,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">\n",
+			"jpeg\n",
+			"png\n",
+			"jpeg\n",
+			";\n",
+			">\n",
+			"import",
 			"%}\n",
 			"contact",
 			"a",
@@ -893,14 +901,7 @@
 			"information",
 			"imformation",
 			"people",
-			"someref",
-			"ip",
-			"complete",
-			"danger",
-			"500",
-			"1 month",
-			"download",
-			"progress-bar"
+			"someref"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -928,33 +929,34 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/project.html",
+					"file": "static_in_env/static_root/css/custom.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2260,
+						"buffer_size": 45,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2260,
-								2260
+								45,
+								45
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 684.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -962,19 +964,75 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/templates/sidebar.html",
+					"file": "src/static_in_pro/our_static/css/custom.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 413,
+						"buffer_size": 1102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								387,
-								387
+								503,
+								503
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/project.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 30,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1025,
+								1025
 							]
 						],
 						"settings":
@@ -989,53 +1047,55 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "static_in_env/static_root/css/custom.css",
+					"buffer": 4,
+					"file": "src/static_in_pro/our_static/css/navbar-static-top.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 831,
+						"buffer_size": 546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								831,
-								831
+								546,
+								546
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 524.0,
+						"translation.x": -0.0,
+						"translation.y": 5.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "static_in_env/static_root/css/navbar-static-top.css",
-					"semi_transient": true,
+					"buffer": 5,
+					"file": "src/templates/footer.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 495,
+						"buffer_size": 246,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								127,
+								127
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1045,108 +1105,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/templates/footer.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 236,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								157,
-								157
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/templates/home.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1028,
-								1028
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 426.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
 					"buffer": 6,
-					"file": "src/templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1101,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								661,
-								661
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 64.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "src/templates/navbar.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2909,
+						"buffer_size": 2908,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2909,
-								2909
+								1036,
+								1905
 							]
 						],
 						"settings":
@@ -1156,10 +1128,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 289.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1242,7 +1214,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 389.0,
+	"side_bar_width": 231.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
