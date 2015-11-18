@@ -519,33 +519,16 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "from django.conf import settings\nfrom django.core.mail import send_mail\nfrom django.shortcuts import render\n\nfrom .forms import ContactForm, SignUpForm\nfrom .models import SignUp\n\n# Create your views here.\ndef home(request):\n	title = 'Sign Up Now'\n	form = SignUpForm(request.POST or None)\n	context = {\n		\"title\": title,\n		\"form\": form\n	}\n	if form.is_valid():\n		#form.save()\n		#print request.POST['email'] #not recommended\n		instance = form.save(commit=False)\n\n		full_name = form.cleaned_data.get(\"full_name\")\n		if not full_name:\n			full_name = \"New full name\"\n		instance.full_name = full_name\n		# if not instance.full_name:\n		# 	instance.full_name = \"Justin\"\n		instance.save()\n		context = {\n			\"title\": \"Thank you\"\n		}\n\n	if request.user.is_authenticated() and request.user.is_staff:\n		#print(SignUp.objects.all())\n		# i = 1\n		# for instance in SignUp.objects.all():\n		# 	print(i)\n		# 	print(instance.full_name)\n		# 	i += 1\n\n		queryset = SignUp.objects.all().order_by('-timestamp') #.filter(full_name__iexact=\"Justin\")\n		#print(SignUp.objects.all().order_by('-timestamp').filter(full_name__iexact=\"Justin\").count())\n		context = {\n			\"queryset\": queryset\n		}\n\n	return render(request, \"home.html\", context)\n\n	\n\ndef contact(request):\n	title = 'Contact Us'\n	title_align_center = True\n	form = ContactForm(request.POST or None)\n	if form.is_valid():\n		# for key, value in form.cleaned_data.iteritems():\n		# 	print key, value\n		# 	#print form.cleaned_data.get(key)\n		form_email = form.cleaned_data.get(\"email\")\n		form_message = form.cleaned_data.get(\"message\")\n		form_full_name = form.cleaned_data.get(\"full_name\")\n		# print email, message, full_name\n		subject = 'Site contact form'\n		from_email = settings.EMAIL_HOST_USER\n		to_email = [from_email, 'youotheremail@email.com']\n		contact_message = \"%s: %s via %s\"%( \n				form_full_name, \n				form_message, \n				form_email)\n		some_html_message = \"\"\"\n		<h1>hello</h1>\n		\"\"\"\n		send_mail(subject, \n				contact_message, \n				from_email, \n				to_email, \n				html_message=some_html_message,\n				fail_silently=True)\n\n	context = {\n		\"form\": form,\n		\"title\": title,\n		\"title_align_center\": title_align_center,\n	}\n	return render(request, \"forms.html\", context)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-			"file": "src/newsletter/views.py",
-			"file_size": 2304,
-			"file_write_time": 130916508263036003,
-			"settings":
-			{
-				"buffer_size": 2205,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "from django.conf import settings\nfrom django.conf.urls import include, url\nfrom django.conf.urls.static import static\nfrom django.contrib import admin\n\n\nurlpatterns = [\n    # Examples:\n    url(r'^$', 'newsletter.views.home', name='home'),\n    url(r'^contact/$', 'newsletter.views.contact', name='contact'),\n    url(r'^about/$', 'newsletter.views.about', name='about'),\n    url(r'^loggedin/$', 'newsletter.views.loggedin', name='loggedin'),\n    # url(r'^blog/', include('blog.urls')),\n\n    url(r'^admin/', include(admin.site.urls)),\n    url(r'^accounts/', include('registration.backends.default.urls')),\n]\n\nif settings.DEBUG:\n	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\n	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
-			"file": "src/T4CI/urls.py",
-			"file_size": 730,
-			"file_write_time": 130922766909522610,
-			"settings":
-			{
-				"buffer_size": 782,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -553,7 +536,11 @@
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -564,8 +551,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+	],
 	"file_history":
 	[
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/T4CI/urls.py",
+		"/C/wamp/www-src/venv/Scripts/T4CI/src/newsletter/views.py",
 		"/C/Users/user/Desktop/LDSO/T4CI/src/templates/500.html",
 		"/C/Users/user/Desktop/LDSO/T4CI/src/newsletter/views.py",
 		"/C/Users/user/Desktop/LDSO/T4CI/src/templates/home.html",
@@ -691,9 +683,7 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/s3upload/__init__.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/js/file_upload.js",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/js/jquery_upload.js",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/form.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/requirements.txt",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/utils.py"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/form.html"
 	],
 	"find":
 	{
@@ -871,62 +861,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/newsletter/views.py",
-					"settings":
-					{
-						"buffer_size": 2205,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								815,
-								887
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 486.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/T4CI/urls.py",
-					"settings":
-					{
-						"buffer_size": 782,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								217,
-								217
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -965,6 +901,8 @@
 	{
 		"height": 136.0
 	},
+	"pinned_build_system": "",
+	"project": "T4CI.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -973,6 +911,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -981,15 +920,32 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
 	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 216.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
