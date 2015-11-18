@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^about/$', 'newsletter.views.about', name='about'),
     url(r'^profile/$', 'newsletter.views.profile', name='profile'),
+    url(r'^mydreams/$', 'T4CI.views.dreams', name='mydreams'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
