@@ -37,7 +37,7 @@
 
           <ul class="nav navbar-nav navbar-right">
           {% if request.user.is_authenticated %}
-            <li><a href="{% url 'auth_logout' %}"  style="color: #FFFFFF">{{ user.get_username }}</a></li>
+            <li><a href="{% url 'profile' %}"  style="color: #FFFFFF">{{ user.get_username }}</a></li>
             <li><a href="{% url 'auth_logout' %}"  style="color: #FFFFFF">Logout</a></li>
             {% else %}
             <li><a href="{% url 'registration_register' %}"  style="color: #FFFFFF">Register</a></li> 

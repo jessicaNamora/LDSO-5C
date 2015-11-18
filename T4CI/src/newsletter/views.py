@@ -45,7 +45,7 @@ def home(request):
 
 	return render(request, "home.html", context)
 
-
+	
 
 def contact(request):
 	title = 'Contact Us'
@@ -85,6 +85,11 @@ def contact(request):
 
 
 
+def profile(request):
+	return render(request, "profile.html", {})
+
+def about(request):
+	return render(request, "about.html", {})
 
 
 

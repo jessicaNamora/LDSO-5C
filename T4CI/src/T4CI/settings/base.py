@@ -71,7 +71,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'trydjango18.urls'
+ROOT_URLCONF = 'T4CI.urls'
 
 TEMPLATES = [
     {
@@ -89,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'trydjango18.wsgi.application'
+WSGI_APPLICATION = 'T4CI.wsgi.application'
 
 
 # Database
