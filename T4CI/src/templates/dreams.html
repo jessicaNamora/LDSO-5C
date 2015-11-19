@@ -12,14 +12,14 @@
 		<tr>
 			<th>Dream</th>
 			<th>Description</th>
-			<th>Position</th>
+			<th>Role</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for dream in dreams %}
 			<tr>
-				<td>{{ dream.dreamid }}</td>
-				<td>{{ dream.name }}</td>
+				<td><a href='/dream/{{ dream.dreamid }}'>{{ dream.name }}</a></td>
+				<td>{{ dream.description }}</td>
 				<td>{{ dream.position }}</td>
 			</tr>
 		{% endfor %}

@@ -31,7 +31,7 @@ class Dream(models.Model):
 
 # Dreams - Team
 class DreamTeamManager(models.Manager):
-	def add_to_dream_team(self, name, personid, dreamid, position):
+	def add_to_dream_team(self, name, email, personid, dreamid, position):
 		person = self.create(name=name, personid=personid, dreamid=dreamid, position=position) 
 		return person
 
@@ -42,9 +42,11 @@ class TeamMember(models.Model):
     	(TEAMLEADER, 'Team Leader'),
     	(TEAMMEMBER, "Team Member"),
     )
-	name = models.CharField(max_length=120, blank=True, null=True)
+	#name = models.CharField(max_length=120, blank=True, null=True)
 	personid = models.PositiveIntegerField(default=0, blank=True, null=True)
+	#person = models.ForeignKey(SignUp, blank=True, null=True)
 	dreamid = models.PositiveIntegerField(default=0, blank=True, null=True)
+	#dream = models.ForeignKey(Dream, blank=True, null=True)
 	position = models.CharField(max_length=2, choices=TEAM, default=TEAMMEMBER)
 
 	objects = DreamTeamManager()
