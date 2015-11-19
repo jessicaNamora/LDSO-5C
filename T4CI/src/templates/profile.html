@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<br><br>
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-1'>
-		<h1>HELLLO</h1>
+		<h2>Name: {{user.get_username }}</h2>
+		<h2>Email: {{user.email }}</h2>
 </div>
 </div>
 {% endblock %}
