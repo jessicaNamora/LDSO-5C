@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 {% load staticfiles %}
 
 <!DOCTYPE html>
@@ -26,26 +27,17 @@
   <body>
   {% include 'navbar.html' %}
 
-  {% if request.user.is_authenticated %}
-    {% include 'sidebar.html' %}
-  {% endif %} 
-
 {% block jumbotron %}
-
-
-          
-            {% endblock %}
+{% endblock %}
     <div class="container">
       <div class=" content-block">
-            
-
-          
-            {% block content %}
-
-            {% endblock %}
-              
-
+                      
+{% block content %}
+{% endblock %}
+    
+{% block footer %}
     {% include "footer.html" %}
+{% endblock %}
       </div>
     </div> <!-- /container -->
 

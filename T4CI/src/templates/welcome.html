@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+
+<style>
+{% block style %}
+.navbar-fixed-top{
+	padding-bottom: 0px;
+}
+
+.jumbotron {
+	background-color:#37c8aa;
+	color: #FFF;
+	margin-top: 50px;
+}
+
+{% endblock %}
+</style>
+
+ 
+{% block jumbotron %}
+	<div class="jumbotron">
+	<div class="container">
+	<div class="row">
+		<div class='col-sm-6'>
+		<h1>Time 4 Cultural Inovation</h1>
+		<p>The “Time 4 Cultural Innovation” is a product of social intervention that aims to help create and accomplish projects (dreams) with the help of a mentor.</p>
+		<p>
+		<a class="btn btn-lg btn-primary" href="{% url 'registration_register' %}" role="button">Join Us &raquo;</a>
+		</p>
+		</div>
+		<div class='col-sm-6' >
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/aB8ifVJ34JU" frameborder="0" allowfullscreen></iframe>
+
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+
+
+	<div class='col-sm-3'>
+	<p class='lead text-align-center'>Create a Dream</p>
+				<img src='{% static "img/marketing1.jpg" %}' class='img-responsive' />
+	</div>
+
+	<div class='col-sm-3'>
+	<p class='lead text-align-center'>Manage your Dream 
+	<br/>
+	<span class='fa-stack fa-lg fa-5x'>
+	<i class='fa fa-comment-o fa-stack-2x'></i>
+	<i style='color:yellow;' class="fa fa-bolt fa-stack-1x"></i>
+
+	</span>
+	</p>
+
+	</div>
+
+	<div class='col-sm-3'>
+	<p class='lead text-align-center'>Make it a Reality<br/><br/>
+
+	<span class="fa-stack fa-lg fa-5x">
+	<i class="fa fa-circle-o-notch fa-stack-2x"></i>
+	  <!-- <i class="fa fa-square-o fa-stack-2x"></i> -->
+	  <i class="fa fa-github fa-stack-1x"></i>
+	</span>
+	</p>
+
+
+	</div>
+	</div>
+{% endblock %}

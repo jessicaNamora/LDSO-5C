@@ -1,3 +1,97 @@
-   {% load staticfiles %}
+{% extends "base.html" %}
+{% block head_title %} Project | {{ block.super }}{% endblock %}
 
-   
+{% block content %}
+	{% include 'sidebar.html' %}
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br>
+
+	<h1>Manage your dreams <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addTask">
+	  Add Task
+	</button></h1>
+
+	<hr class="featurette-divider">
+
+	<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="input-group">
+						<br>
+						Task
+						<br> 
+						<textarea name="task" rows="8" cols="70" >Insert description of the task</textarea>
+					</div>
+					<br>
+
+					<div class="input-group">
+						<br>
+						State of the Task  
+						<br>
+						<select name="nomePais" value={$user.nomePais}>
+							<option value=""> -</option>
+							<option value="toDo">To Do</option>
+							<option value="current">Current</option>
+							<option value="done">Done</option>
+						</select>
+					</div>
+
+					<br>
+
+					<div id="error_messages">
+					</div>
+					<div id="success_messages">
+					</div>
+					<br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Update</button>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+
+
+
+	  <div class="row">
+	    <div class="col-md-4" style="background-color:#ff704d">
+	      <h2>Current</h2>
+	      <div class="col-xs-4">Create Adds
+			<form action="">
+			<input type="checkbox" name="done" value="Bike">Done<br>
+			</form>
+	      </div>
+	      <div class="col-xs-4">Buy products</div>
+	      <div class="col-xs-4">Cook Stuff</div>
+	    </div>
+
+	     <div class="col-md-4" style="background-color:#4d94ff">
+	      <h2>To Do</h2>
+	      <div class="col-xs-4">Raise Funds</div>
+	      <div class="col-xs-4">Raise Team</div>
+	      <div class="col-xs-4">Stuff</div>
+	    </div>
+
+	     <div class="col-md-4" style="background-color:#70db70">
+	      <h2>Done</h2>
+	      <div class="col-xs-4">Create Dream</div>
+	      <div class="col-xs-4">Be Happy</div>
+	      <div class="col-xs-4">Dream</div>
+	    </div>
+
+	  </div>
+
+
+{% endblock %}
