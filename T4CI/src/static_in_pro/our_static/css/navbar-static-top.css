@@ -8,8 +8,9 @@ body {
   background-color: #337ab7 ;
   border-color: #337ab7;
 }
+
 .navbar-default .navbar-brand {
-  padding-top: 10px;
+  color: #FFF;
 }
 
 .navbar-default .navbar-brand:hover {
