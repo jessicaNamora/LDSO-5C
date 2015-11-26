@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"dream",
+				"dreamSpecs"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"col",
+				"col-xs-4"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"paddin",
+				"padding-right"
+			],
+			[
 				"fun",
 				"function"
 			],
@@ -56,24 +88,12 @@
 				"request"
 			],
 			[
-				"get",
-				"get_or_create"
-			],
-			[
 				"r",
 				"request"
 			],
 			[
-				"margin",
-				"margin"
-			],
-			[
 				"border",
 				"border-top"
-			],
-			[
-				"font",
-				"font-size"
 			],
 			[
 				"font-",
@@ -312,10 +332,6 @@
 				"border-radius"
 			],
 			[
-				"margin-",
-				"margin-bottom"
-			],
-			[
 				"text",
 				"text-decoration"
 			],
@@ -472,10 +488,6 @@
 				"UserQuestion	class"
 			],
 			[
-				"class",
-				"classmethod	class"
-			],
-			[
 				"Lecu",
 				"Lecture	class"
 			],
@@ -502,60 +514,64 @@
 			[
 				"url",
 				"urlpatterns	statement"
-			],
-			[
-				"UserType",
-				"UserType	class"
-			],
-			[
-				"htt",
-				"Http404"
-			],
-			[
-				"wist",
-				"wistia_id"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/templates/profile.html",
+			"file": "src/templates/project.html",
 			"settings":
 			{
-				"buffer_size": 291,
+				"buffer_size": 4626,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/templates/about.html",
+			"file": "src/templates/sidebar.html",
 			"settings":
 			{
-				"buffer_size": 670,
+				"buffer_size": 537,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/templates/home.html",
+			"file": "src/templates/dreams.html",
 			"settings":
 			{
-				"buffer_size": 4682,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/navbar.html",
-			"settings":
-			{
-				"buffer_size": 2904,
+				"buffer_size": 1815,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/newsletter/views.py",
+			"file": "src/T4CI/urls.py",
 			"settings":
 			{
-				"buffer_size": 2334,
+				"buffer_size": 842,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/T4CI/views.py",
+			"settings":
+			{
+				"buffer_size": 815,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/newsletter/models.py",
+			"settings":
+			{
+				"buffer_size": 1854,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/static_in_pro/our_static/css/bootstrap.min.css",
+			"settings":
+			{
+				"buffer_size": 117589,
 				"line_ending": "Windows"
 			}
 		},
@@ -568,47 +584,18 @@
 			}
 		},
 		{
-			"file": "src/static_in_pro/our_static/css/custom.css",
+			"file": "src/templates/welcome.html",
 			"settings":
 			{
-				"buffer_size": 1347,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/project.html",
-			"settings":
-			{
-				"buffer_size": 30,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/base.html",
-			"settings":
-			{
-				"buffer_size": 1142,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/sidebar.html",
-			"settings":
-			{
-				"buffer_size": 413,
+				"buffer_size": 1603,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -616,11 +603,7 @@
 	},
 	"console":
 	{
-		"height": 125.0,
-		"history":
-		[
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
-		]
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -631,21 +614,28 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/wamp/www-src/venv/Scripts/T4CI/src",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/newsletter",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/newsletter/migrations",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/static_in_pro/our_static/css",
-		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates",
-		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env",
-		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root"
-	],
 	"file_history":
 	[
-		"/C/wamp/www-src/venv/Scripts/T4CI/static_in_env/static_root/css/custom.css",
+		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
+		"/C/wamp/www-src/T4CI/src/templates/base.html",
+		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
+		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
+		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
+		"/C/wamp/www-src/T4CI/src/templates/project.html",
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LDSO/T4CI/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
+		"/C/wamp/www-src/T4CI/src/templates/head_css.html",
+		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/custom.css",
+		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/navbar-static-top.css",
+		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/bootstrap.min.css",
+		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/navbar-static-top.css",
+		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/bootstrap.min.css",
+		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/custom.css",
+		"/C/wamp/www-src/T4CI/src/templates/home.html",
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Apontamentos Práticas",
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/Exercicio7.pl",
+		"/C/wamp/www-src/T4CI/src/templates/forms.html",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/T4CI/urls.py",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/newsletter/views.py",
 		"/C/Users/user/Desktop/LDSO/T4CI/src/templates/500.html",
@@ -753,37 +743,17 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/edit_lecture.html",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/login.html",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/models.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/forms.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/db.sqlite3",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/manage_base.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/upload.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/navbar.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/coming_soon.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/create_form.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/form_view.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/all.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/manage.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/s3direct/utils.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/Procfile",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/javascript.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/s3upload/urls.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/s3upload/views.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/s3_upload.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/js/jquery.fileupload.js",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/s3upload/__init__.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/js/file_upload.js",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/js/jquery_upload.js"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/forms.py"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
-			"C:\\Users\\user\\Desktop\\LDSO",
 			"C:\\Users\\user\\Desktop\\LDSO\\T4CI\\src",
 			"C:\\Users\\user\\Desktop\\LDSO\\T4CI\\src\\T4CI",
 			"C:\\Users\\user\\Desktop\\LDSO\\T4CI\\src",
@@ -796,14 +766,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"INSTALLED",
-			"dream",
-			"a",
-			"app",
-			"APPS",
-			"INSTALLED",
-			"contact",
-			"%}\n",
+			"feature",
+			"btn-",
+			"\\}",
+			"\\}\\n",
+			"\"}\"\\n",
+			"}\\n",
+			"}",
+			"btn-",
+			"btn-prim",
+			"btn-",
+			"btn",
+			"css",
+			"img",
+			"ima",
+			"overview",
+			"f0f0f0",
+			"border",
+			"000",
+			"fff",
+			"done",
+			"header",
 			"queryset",
 			"user",
 			"url",
@@ -910,27 +893,19 @@
 			"favicon",
 			"fav",
 			"bookmark it",
-			"share",
-			"information",
-			"imformation",
-			"people",
-			"someref",
-			"ip",
-			"complete",
-			"danger",
-			"500",
-			"1 month",
-			"download",
-			"progress-bar",
-			"access",
-			"plus"
+			"share"
 		],
 		"highlight": false,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"\\}\\n\\n",
+			"\\}\\n",
+			"\\}",
+			"\\}\\n",
+			"d0d0d0",
 			"img/apple-touch-icon-152.png",
 			"{})",
 			"render(request,",
@@ -951,138 +926,132 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/profile.html",
-					"semi_transient": false,
+					"file": "src/templates/project.html",
 					"settings":
 					{
-						"buffer_size": 291,
+						"buffer_size": 4626,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								127,
-								119
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/templates/about.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 670,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								128,
-								128
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/templates/home.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4682,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3449,
-								3452
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2213.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/templates/navbar.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2904,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								954,
-								961
+								412,
+								419
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 394.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/newsletter/views.py",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "src/templates/sidebar.html",
 					"settings":
 					{
-						"buffer_size": 2334,
+						"buffer_size": 537,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1229,
-								1229
+								86,
+								86
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/dreams.html",
+					"settings":
+					{
+						"buffer_size": 1815,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1714,
+								1714
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 570.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/T4CI/urls.py",
+					"settings":
+					{
+						"buffer_size": 842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								499,
+								499
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/T4CI/views.py",
+					"settings":
+					{
+						"buffer_size": 815,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								801,
+								801
 							]
 						],
 						"settings":
@@ -1091,16 +1060,67 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 392.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "src/newsletter/models.py",
+					"settings":
+					{
+						"buffer_size": 1854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								636,
+								636
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/static_in_pro/our_static/css/bootstrap.min.css",
+					"settings":
+					{
+						"buffer_size": 117589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								52144,
+								52148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 400634.0,
+						"translation.y": 4949.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "src/templates/footer.html",
-					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 246,
@@ -1110,8 +1130,8 @@
 						"selection":
 						[
 							[
-								121,
-								121
+								246,
+								246
 							]
 						],
 						"settings":
@@ -1122,104 +1142,14 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/static_in_pro/our_static/css/custom.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1347,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								52,
-								52
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/templates/project.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 30,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8,
-								9
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "src/templates/base.html",
-					"semi_transient": false,
+					"file": "src/templates/welcome.html",
 					"settings":
 					{
-						"buffer_size": 1142,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								632,
-								632
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 474.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/templates/sidebar.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 413,
+						"buffer_size": 1603,
 						"regions":
 						{
 						},
@@ -1236,10 +1166,9 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 513.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1247,7 +1176,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1280,17 +1209,14 @@
 	{
 		"height": 136.0
 	},
-	"pinned_build_system": "",
-	"project": "T4CI.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1299,32 +1225,15 @@
 	"select_project":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 273.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"side_bar_width": 188.0,
+	"status_bar_visible": true
 }

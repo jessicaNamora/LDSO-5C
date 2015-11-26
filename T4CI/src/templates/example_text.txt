@@ -6,4 +6,4 @@ Built with Django & Bootstrap
 
 Created for Starters of all kinds. 
 
-Always Open Source 
+Always Open Source

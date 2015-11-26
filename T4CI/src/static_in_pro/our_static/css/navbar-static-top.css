@@ -8,9 +8,8 @@ body {
   background-color: #337ab7 ;
   border-color: #337ab7;
 }
-
 .navbar-default .navbar-brand {
-  color: #FFF;
+  padding-top: 10px;
 }
 
 .navbar-default .navbar-brand:hover {
@@ -34,7 +33,6 @@ body {
 }
 
 a:link {
-    	color: white;
 	font-weight: bold;
 	text-align: center;
 }

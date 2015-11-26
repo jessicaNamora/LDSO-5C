@@ -1,38 +1,98 @@
 
 /* Demonstrate the grids */
 .col-xs-4 {
+  font-family:inherit;
+  font-weight: bold;
+  font-size: 16px;
   width:245px;
-  height:80px;"
+  height:80px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-left: 10px;
   margin-bottom: 5px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
+  background-color: #f0f0f0;
   border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+  position:relative;
 
-} 
-
-.col-md-4 { 
+}
+.taskOption {
+  display:none;
+  padding:0px;
+  font-family: inherit;
+  font-size: 12px;
+}
+.taskOption li {
+  display:inline;
+  float:left;
+  margin-left: 0px;
+  margin-right:5px;
+  background-color: #337AB7;
+  border: 1px solid #000;  
+}
+.taskOption li:last-of-type{
+  margin-right:0px;
+}
+.taskOption li a{
+  display:block;
+  width: 60px;
+  background-color: #337AB7;
+  color:#fff;
+  
+}
+.taskOption li a:hover{
+  color:#fff;  
+}
+.col-xs-4:link{
+  background-color: #ffffff;
+}
+.col-xs-4:hover{
+  background-color: #e0e0e0;
+  cursor:pointer;
+}
+.col-xs-4:hover > .taskOption{
+  display: table;
+  margin: auto;
+  cursor:pointer;
+  margin-top:10px;
+}
+.col-xs-4 a>img{
+  position: absolute;
+  right:15px;
+  }
+.col-xs-4:hover a>img{
+  width:none;
+  display: none;
+}
+.col-md-4 {;
   width:296px;
   margin: 10px;
   padding-bottom: 20px;
 }
 
-.todo {
-  background-color: #4d94ff;
+.col-md-4 h2{
+  margin-top:5px;
+  margin-bottom:15px;
 }
 
-.current {
-  background-color: #ff704d;
-}
-}
-
-.done {
-  background-color: #70db70;
+#todoCol {
+  border-left: 3px solid #4d94ff;
+  border-bottom: 1px solid #d0d0d0;
 }
 
+#currentCol {
+  border-left: 3px solid #ff704d;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+#doneCol {
+  border-left: 3px solid #66cc33;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+#addTaskBtn{
+  float:right;
+  margin-right: 25px;
+}
 /*
  * Sidebar
  */
