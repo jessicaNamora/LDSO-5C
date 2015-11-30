@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block head_title %} Project | {{ block.super }}{% endblock %}
+{% block content %}
+	{% include 'sidebar.html' %}
+	{% load staticfiles %}
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br>
+
+	<h1 id="aqui">Manage {{dream.name}} <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
+	  Add Task
+	</button></h1>
+
+	<hr class="featurette-divider">
+
+	<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+				</div>
+
+				<div class="modal-body">
+					<div class="input-group">
+						<br>
+						Task
+						<br> 
+						<textarea name="task" rows="8" cols="70" >Insert description of the task</textarea>
+					</div>
+					<br>
+
+					<div class="input-group">
+						<br>
+						State of the Task  
+						<br>
+						<select name="nomePais" value={$user.nomePais}>
+							<option value=""> -</option>
+							<option value="toDo">To Do</option>
+							<option value="current">Current</option>
+							<option value="done">Done</option>
+						</select>
+					</div>
+
+					<br>
+
+					<div id="error_messages">
+					</div>
+					<div id="success_messages">
+					</div>
+					<br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Update</button>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+
+
+
+	  <div class="row">
+	    <div class="col-md-4" id="currentCol">
+	      <h2>Current</h2>
+	      <a href"#"><div class="col-xs-4">Create Adds
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Buy products
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Cook Stuff
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	    </div>
+
+	     <div class="col-md-4" id="todoCol">
+	      <h2>To Do</h2>
+	      <a href"#"><div class="col-xs-4">Raise Funds
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Raise Team
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Stuff
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	    </div>
+
+	     <div class="col-md-4" id="doneCol" style="back">
+	      <h2>Done</h2>
+	      <a href"#"><div class="col-xs-4">Create Dream
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Be Happy
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	      <a href"#"><div class="col-xs-4">Dream
+	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<ul class="taskOption">
+	      		<li><a href="#">Edit</a></li>
+	      		<li><a href="#">Start</a></li>
+	      		<li><a href="#">Delete</a></li>
+	      	</ul>
+	      </div></a>
+	    </div>
+
+	  </div>
+	</div>
+
+{% endblock %}

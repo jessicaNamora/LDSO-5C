@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"dra",
+				"drawLine"
+			],
+			[
 				"dream",
 				"dreamSpecs"
 			],
@@ -510,23 +514,11 @@
 			[
 				"sta",
 				"start_date"
-			],
-			[
-				"url",
-				"urlpatterns	statement"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "src/templates/project.html",
-			"settings":
-			{
-				"buffer_size": 4626,
-				"line_ending": "Windows"
-			}
-		},
 		{
 			"file": "src/templates/sidebar.html",
 			"settings":
@@ -536,10 +528,10 @@
 			}
 		},
 		{
-			"file": "src/templates/dreams.html",
+			"file": "src/templates/dream.html",
 			"settings":
 			{
-				"buffer_size": 1815,
+				"buffer_size": 4641,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +539,7 @@
 			"file": "src/T4CI/urls.py",
 			"settings":
 			{
-				"buffer_size": 842,
+				"buffer_size": 918,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +547,7 @@
 			"file": "src/T4CI/views.py",
 			"settings":
 			{
-				"buffer_size": 815,
+				"buffer_size": 1072,
 				"line_ending": "Windows"
 			}
 		},
@@ -563,31 +555,40 @@
 			"file": "src/newsletter/models.py",
 			"settings":
 			{
-				"buffer_size": 1854,
+				"buffer_size": 1849,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/static_in_pro/our_static/css/bootstrap.min.css",
+			"file": "src/templates/dreams.html",
 			"settings":
 			{
-				"buffer_size": 117589,
+				"buffer_size": 1839,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/templates/footer.html",
+			"file": "/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/PLS5.pl",
 			"settings":
 			{
-				"buffer_size": 246,
+				"buffer_size": 2263,
+				"line_ending": "Windows",
+				"name": "fila:-"
+			}
+		},
+		{
+			"contents": ",\n	 [1,[5,1]],\n	 [1,[7,1],[7,2]],\n	 [0,[8,1],[8,2]],\n	 [0,[9,1]],\n	 [0,[0,2]],\n	 [0,[1,2]],\n	 [0,[2,2],[2,3]],\n	 [1,[4,2],[5,2]],\n	 [1,[9,2],[9,3],[8,3]],\n	 [0,[0,3],[1,3]],\n	 [0,[3,3],[3,4],[2,4],[2,5]],\n	 [1,[4,3],[4,4],[5,4]],\n	 [0,[5,3]],\n	 [1,[6,3],[7,3],[6,4],[7,4]],\n	 [0,[0,4]],\n	 [0,[1,4]],\n	 [0,[8,4],[9,4]],\n	 [0,[0,5],[1,5]],\n	 [1,[3,5]],\n	 [0,[4,5],[5,5],[5,6]],\n	 [1,[6,5]],\n	 [0,[7,5]],\n	 [1,[8,5],[9,5]],\n	 [1,[0,6],[0,7]],\n	 [1,[1,6],[2,6]],\n	 [0,[3,6]],\n	 [1,[4,6]],\n	 [1,[6,6],[7,6],[8,6],[6,7]],\n	 [0,[9,6],[9,7],[9,8]],\n	 [0,[1,7],[2,7]],\n	 [0,[3,7]],\n	 [0,[4,7]],\n	 [0,[5,7]],\n	 [0,[7,7],[8,7],[8,8]],\n	 [0,[0,8],[0,9]],\n	 [1,[1,8]],\n	 [1,[2,8],[3,8],[3,9]],\n	 [0,[4,8],[5,8]],\n	 [1,[6,8],[7,8],[7,9]],\n	 [0,[1,9],[2,9]],\n	 [0,[4,9],[5,9]],\n	 [0,[6,9]],\n	 [1,[8,9],[9,9]]\n\n\n	 \n\n:-use_module(library(clpfd)).\nreindeer(L):-\n	append([[0,[[0,0],[1,0],[1,0],[1,1]]],\n	 [1,[[2,0],[2,1]]],\n	 [0,[[3,0],[4,0]]],\n	 [1,[[5,0]]],\n	 [0,[[6,0],[7,0],[6,1],[6,2]]],\n	 [1,[[8,0]]],\n	 [0,[[9,0]]],\n	 [1,[[3,1],[3,2]]],\n	 [0,[[4,1]]],\n	 [1,[[5,1]]],\n	 [1,[[7,1],[7,2]]],\n	 [0,[[8,1],[8,2]]],\n	 [0,[[9,1]]],\n	 [0,[[0,2]]],\n	 [0,[[1,2]]],\n	 [0,[[2,2],[2,3]]],\n	 [1,[[4,2],[5,2]]],\n	 [1,[[9,2],[9,3],[8,3]]],\n	 [0,[[0,3],[1,3]]],\n	 [0,[[3,3],[3,4],[2,4],[2,5]]],\n	 [1,[[4,3],[4,4],[5,4]]],\n	 [0,[[5,3]]],\n	 [1,[[6,3],[7,3],[6,4],[7,4]]],\n	 [0,[[0,4]]],\n	 [0,[[1,4]]],\n	 [0,[[8,4],[9,4]]],\n	 [0,[[0,5],[1,5]]],\n	 [1,[[3,5]]],\n	 [0,[[4,5],[5,5],[5,6]]],\n	 [1,[[6,5]]],\n	 [0,[[7,5]]],\n	 [1,[[8,5],[9,5]]],\n	 [1,[[0,6],[0,7]]],\n	 [1,[[1,6],[2,6]]],\n	 [0,[[3,6]]],\n	 [1,[[4,6]]],\n	 [1,[[6,6],[7,6],[8,6],[6,7]]],\n	 [0,[[9,6],[9,7],[9,8]]],\n	 [0,[[1,7],[2,7]]],\n	 [0,[[3,7]]],\n	 [0,[[4,7]]],\n	 [0,[[5,7]]],\n	 [0,[[7,7],[8,7],[8,8]]],\n	 [0,[[0,8],[0,9]]],\n	 [1,[[1,8]]],\n	 [1,[[2,8],[3,8],[3,9]]],\n	 [0,[[4,8],[5,8]]],\n	 [1,[[6,8],[7,8],[7,9]]],\n	 [0,[[1,9],[2,9]]],\n	 [0,[[4,9],[5,9]]],\n	 [0,[[6,9]]],\n	 [1,[[8,9],[9,9]]]\n	],[],L).\n\ncontador1([],0).\ncontador1([[H|T]|T2],C):-\n	contador1(T2,C1),\n	H#=1 #<=> C2,\n	C#=C1+C2.\n\ntest:-\n	reindeer(L),\n	contador1(L,C),\n	write(C).\n\n",
+			"settings":
+			{
+				"buffer_size": 2068,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/templates/welcome.html",
+			"file": "/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/pieces.pl",
 			"settings":
 			{
-				"buffer_size": 1603,
+				"buffer_size": 1851,
 				"line_ending": "Windows"
 			}
 		}
@@ -616,24 +617,30 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Apontamentos Práticas",
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/peças.pl",
+		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/src/templates/footer.html",
 		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
 		"/C/wamp/www-src/T4CI/src/templates/base.html",
+		"/C/wamp/www-src/T4CI/src/newsletter/views.py",
+		"/C/wamp/www-src/T4CI/src/templates/project.html",
+		"/C/wamp/www-src/T4CI/src/newsletter/forms.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/models.py",
+		"/C/wamp/www-src/T4CI/src/templates/registration/activate.html",
+		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/bootstrap.min.css",
+		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/bootstrap.min.css",
 		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
 		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
 		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
-		"/C/wamp/www-src/T4CI/src/templates/project.html",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LDSO/T4CI/T4CI/src/templates/dreams.html",
 		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
 		"/C/wamp/www-src/T4CI/src/templates/head_css.html",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/navbar-static-top.css",
-		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
-		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/bootstrap.min.css",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/navbar-static-top.css",
-		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/bootstrap.min.css",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/templates/home.html",
-		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Apontamentos Práticas",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/Exercicio7.pl",
 		"/C/wamp/www-src/T4CI/src/templates/forms.html",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/T4CI/urls.py",
@@ -737,13 +744,7 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/analytics/utils.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/analytics/urls.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/admin.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/admin.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/forms.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/edit_modules.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/edit_lecture.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/login.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/models.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/forms.py"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/questions/admin.py"
 	],
 	"find":
 	{
@@ -766,6 +767,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"4,",
+			",4",
+			"global",
+			"count",
+			").",
+			"project",
+			"home",
 			"feature",
 			"btn-",
 			"\\}",
@@ -886,14 +894,7 @@
 			"wistia",
 			"id",
 			"video",
-			"url",
-			"projects",
-			"filename",
-			"password",
-			"favicon",
-			"fav",
-			"bookmark it",
-			"share"
+			"url"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -926,38 +927,11 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/project.html",
-					"settings":
-					{
-						"buffer_size": 4626,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								412,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "src/templates/sidebar.html",
 					"settings":
 					{
@@ -984,19 +958,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/templates/dreams.html",
+					"buffer": 1,
+					"file": "src/templates/dream.html",
 					"settings":
 					{
-						"buffer_size": 1815,
+						"buffer_size": 4641,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1714,
-								1714
+								406,
+								406
 							]
 						],
 						"settings":
@@ -1005,25 +979,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 570.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "src/T4CI/urls.py",
 					"settings":
 					{
-						"buffer_size": 842,
+						"buffer_size": 918,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								499,
-								499
+								561,
+								561
 							]
 						],
 						"settings":
@@ -1039,19 +1013,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "src/T4CI/views.py",
 					"settings":
 					{
-						"buffer_size": 815,
+						"buffer_size": 1072,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								801,
-								801
+								374,
+								374
 							]
 						],
 						"settings":
@@ -1061,77 +1035,51 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/newsletter/models.py",
+					"settings":
+					{
+						"buffer_size": 1849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								934,
+								934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 146.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "src/newsletter/models.py",
+					"file": "src/templates/dreams.html",
 					"settings":
 					{
-						"buffer_size": 1854,
+						"buffer_size": 1839,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								636,
-								636
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/static_in_pro/our_static/css/bootstrap.min.css",
-					"settings":
-					{
-						"buffer_size": 117589,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								52144,
-								52148
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 400634.0,
-						"translation.y": 4949.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/templates/footer.html",
-					"settings":
-					{
-						"buffer_size": 246,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								246,
-								246
+								465,
+								101
 							]
 						],
 						"settings":
@@ -1145,28 +1093,82 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/templates/welcome.html",
+					"buffer": 6,
+					"file": "/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/PLS5.pl",
 					"settings":
 					{
-						"buffer_size": 1603,
+						"buffer_size": 2263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1526,
+								1532
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"auto_name": "fila:-",
+							"syntax": "Packages/Perl/Perl.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 513.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"settings":
+					{
+						"buffer_size": 2068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								558,
+								793
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Perl/Perl.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/pieces.pl",
+					"settings":
+					{
+						"buffer_size": 1851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1665,
+								1665
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Perl/Perl.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1414.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

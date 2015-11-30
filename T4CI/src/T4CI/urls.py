@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^profile/$', 'newsletter.views.profile', name='profile'),
     url(r'^mydreams/$', 'T4CI.views.dreams', name='mydreams'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^dream/(?P<dream_id>[0-9]+)/$', 'T4CI.views.dream', name='dream'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
 ]

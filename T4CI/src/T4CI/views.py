@@ -6,7 +6,13 @@ from newsletter.models import SignUp
 
 def about(request):
 	return render(request, "about.html", {})
-
+def dream(request, dream_id):
+	project = Dream.objects.filter(id=dream_id)
+	#project = Dream.objects.raw("SELECT * FROM newsletter_dream WHERE newsletter_dream.id = '2'")
+	context = {
+		'dream' : project[0],
+	}
+	return render(request, "dream.html", context)
 def dreams(request):
 	#dream1 = Dream.objects.create_dream("Dream3", "Category1", "Theme1", "Description1")
 	#dreams1 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 1, "TL")
