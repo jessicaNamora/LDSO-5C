@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	{% include 'sidebar.html' %}
+	{% load staticfiles %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br>
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-2'>
+<h1>Team</h1>
+<hr class="featurette-divider">
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Role</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for member in team %}
+			<tr>
+				<td>{{ member.username }}</td>
+				<td>{{ member.position }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

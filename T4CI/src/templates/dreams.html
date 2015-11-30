@@ -54,7 +54,11 @@ window.onload = loadingFunctions;
 	<tbody>
 		{% for dream in dreams %}
 			<tr>
+<<<<<<< HEAD
 				<td><a href='../dream/{{ dream.dreamid }}'>{{ dream.name }}</a></td>
+=======
+				<td><a href='../dream/{{ dream.id }}'>{{ dream.name }}</a></td>
+>>>>>>> ad41266768baf83e3e9b090259c786dec38d1787
 				<td>{{ dream.description }}</td>
 				<td class={{ dream.position }}></td>
 				<td><a href='../#'>View Team</a></td>
