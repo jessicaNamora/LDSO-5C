@@ -19,7 +19,7 @@
 	      <h2>Current</h2>
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'current' %}
-	      <a href"#"><div class="col-xs-4">{{task.taskname}}
+	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>

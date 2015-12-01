@@ -6,7 +6,7 @@
   font-weight: bold;
   font-size: 16px;
   width:245px;
-  height:80px;
+  min-height:80px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-left: 10px;
@@ -16,6 +16,19 @@
   position:relative;
 
 }
+
+.taskName {
+  white-space:nowrap;
+  width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-xs-4:hover .taskName{
+  white-space: pre-wrap;
+  overflow: visible;
+}
+
 .taskOption {
   display:none;
   padding:0px;
