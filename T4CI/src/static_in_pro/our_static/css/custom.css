@@ -1,4 +1,3 @@
-
 /* Demonstrate the grids */
 .col-xs-4 {
   display:table-row;
@@ -6,7 +5,7 @@
   font-weight: bold;
   font-size: 16px;
   width:245px;
-  min-height:80px;
+  min-height:85px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-left: 10px;
@@ -19,9 +18,10 @@
 
 .taskName {
   white-space:nowrap;
-  width: 190px;
+  width: 185px;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .col-xs-4:hover .taskName{
@@ -72,7 +72,8 @@
 }
 .col-xs-4 a>img{
   position: absolute;
-  right:15px;
+  right: 15px;
+  display: inline-block;
   }
 .col-xs-4:hover a>img{
   width:none;
@@ -88,6 +89,7 @@
 .col-md-4 h2{
   margin-top:5px;
   margin-bottom:15px;
+  height: 100%;
 }
 
 #todoCol {
@@ -103,6 +105,7 @@
 #doneCol {
   border-left: 3px solid #66cc33;
   border-bottom: 1px solid #d0d0d0;
+  height: 100%;
 }
 
 #addTaskBtn{

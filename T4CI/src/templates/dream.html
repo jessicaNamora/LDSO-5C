@@ -29,28 +29,14 @@
 	      </div></a>
 	      {% endif %}
 		{% endfor %}
-	      <a href"#"><div class="col-xs-4">Buy products
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a href="#">Done</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
-	      <a href"#"><div class="col-xs-4">Cook Stuff
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a href="#">Done</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
 	    </div>
 
 	    <!-- LIST To Do Tasks of the Dream -->
 	     <div class="col-md-4" id="todoCol">
 	      <h2>To Do</h2>
-	      <a href"#"><div class="col-xs-4">Raise Funds
+	      {% for task in tasks %}
+	      {% if task.taskstatus == 'todo' %}
+	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
@@ -58,50 +44,25 @@
 	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
 	      	</ul>
 	      </div></a>
-	      <a href"#"><div class="col-xs-4">Raise Team
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a href="#">Start</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
-	      <a href"#"><div class="col-xs-4">Stuff
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a href="#">Start</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
+	      {% endif %}
+		{% endfor %}
 	    </div>
 
 	   	<!-- LIST Done Tasks of the Dream -->
-	     <div class="col-md-4" id="doneCol" style="back">
+	     <div class="col-md-4" id="doneCol">
 	      <h2>Done</h2>
-	      <a href"#"><div class="col-xs-4">Create Dream
+	      {% for task in tasks %}
+	      {% if task.taskstatus == 'done' %}
+	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
 	      	</ul>
 	      </div></a>
-	      <a href"#"><div class="col-xs-4">Be Happy
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
-	      <a href"#"><div class="col-xs-4">Dream
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
-	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
-	      	</ul>
-	      </div></a>
+	      {% endif %}
+		{% endfor %}
 	    </div>
-
 	  </div>
 
 	<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

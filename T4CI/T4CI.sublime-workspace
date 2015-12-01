@@ -520,10 +520,26 @@
 	"buffers":
 	[
 		{
-			"file": "src/templates/sidebar.html",
+			"file": "src/T4CI/views.py",
 			"settings":
 			{
-				"buffer_size": 537,
+				"buffer_size": 1419,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "T4CI.sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 20991,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/newsletter/models.py",
+			"settings":
+			{
+				"buffer_size": 2056,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +547,7 @@
 			"file": "src/templates/dream.html",
 			"settings":
 			{
-				"buffer_size": 4646,
+				"buffer_size": 4790,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,31 +563,7 @@
 			"file": "src/static_in_pro/our_static/css/custom.css",
 			"settings":
 			{
-				"buffer_size": 2385,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/T4CI/urls.py",
-			"settings":
-			{
-				"buffer_size": 991,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/T4CI/views.py",
-			"settings":
-			{
-				"buffer_size": 1072,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/newsletter/models.py",
-			"settings":
-			{
-				"buffer_size": 1854,
+				"buffer_size": 2564,
 				"line_ending": "Windows"
 			}
 		}
@@ -600,34 +592,44 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Work Area/Documents/Rainmeter/Skins/Enigma/@Resources/Measures/Reader.lua",
+		"/C/windows/system32/http:/www.symantec.com/avcenter/cgi-bin/virauto.cgi?vid=4294919973&product=Norton%20Internet%20Security&version=21.6.0.32&plang=sym:PO&layouttype=ESD&buildname=Retail&heartbeatID=52466C1E-A009-4530-B3EE-EC8894A4C281&env=prod&vendorid=32140&plid=2&plgid=2&skup=21193299&skum=21294353&skuf=21171533&cipherid=0&endpointid=%7B52466C1E-A009-4530-B3EE-EC8894A4C281%7D&partnerid=32140&lic_type=16&lic_attr=21156882&psn=XDXR6GR9R9RW&osvers=6.1&oslocale=iso",
+		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0004_auto_20151130_2310.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0003_teammember.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0002_dream.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0001_initial.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/views.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/tests.py",
+		"/C/wamp/www-src/T4CI/src/T4CI/urls.py",
+		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
+		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/models.py",
+		"/C/wamp/www-src/T4CI/src/newsletter/forms.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/admin.py",
+		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
+		"/C/wamp/www-src/T4CI/src/manage.py",
+		"/C/wamp/www-src/T4CI/src/app/views.py",
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LDSO/T4CI/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
+		"/C/wamp/www-src/T4CI/src/templates/dream.html",
+		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/__init__.py",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/PLS5.pl",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/pieces.pl",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Apontamentos Práticas",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/peças.pl",
-		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
 		"/C/wamp/www-src/T4CI/src/templates/footer.html",
 		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
 		"/C/wamp/www-src/T4CI/src/templates/base.html",
 		"/C/wamp/www-src/T4CI/src/templates/project.html",
-		"/C/wamp/www-src/T4CI/src/newsletter/forms.py",
-		"/C/wamp/www-src/T4CI/src/newsletter/models.py",
 		"/C/wamp/www-src/T4CI/src/templates/registration/activate.html",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/bootstrap.min.css",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/bootstrap.min.css",
-		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
-		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
-		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
-		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LDSO/T4CI/T4CI/src/templates/dreams.html",
-		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
 		"/C/wamp/www-src/T4CI/src/templates/head_css.html",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/navbar-static-top.css",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/navbar-static-top.css",
-		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/templates/home.html",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/Exercicio7.pl",
 		"/C/wamp/www-src/T4CI/src/templates/forms.html",
@@ -717,17 +719,7 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/models.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/analytics/ajax.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/kpj/views.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/urls.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/kpj/urls.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/core_css.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/navbar.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/kpj/settings/local.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/kpj/settings/base.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/test_js.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/kpj/settings/production.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/login/urls.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/videos/single.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/analytics/models.py"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/urls.py"
 	],
 	"find":
 	{
@@ -750,6 +742,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"definety",
+			"def team",
 			"current",
 			"project",
 			"4,",
@@ -875,9 +869,7 @@
 			"wistia",
 			"wisita",
 			"url",
-			"filename",
-			"wistia",
-			"id"
+			"filename"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -910,55 +902,55 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/sidebar.html",
+					"file": "src/T4CI/views.py",
 					"settings":
 					{
-						"buffer_size": 537,
+						"buffer_size": 1419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								86
+								839,
+								839
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 57.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/templates/dream.html",
+					"file": "T4CI.sublime-workspace",
 					"settings":
 					{
-						"buffer_size": 4646,
+						"buffer_size": 20991,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1477,
-								1477
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -969,6 +961,60 @@
 				},
 				{
 					"buffer": 2,
+					"file": "src/newsletter/models.py",
+					"settings":
+					{
+						"buffer_size": 2056,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2056,
+								2056
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/dream.html",
+					"settings":
+					{
+						"buffer_size": 4790,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1927,
+								1935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1140.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "src/templates/dreams.html",
 					"settings":
 					{
@@ -979,8 +1025,8 @@
 						"selection":
 						[
 							[
-								465,
-								101
+								575,
+								575
 							]
 						],
 						"settings":
@@ -988,25 +1034,25 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "src/static_in_pro/our_static/css/custom.css",
 					"settings":
 					{
-						"buffer_size": 2385,
+						"buffer_size": 2564,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1164,
-								1164
+								418,
+								418
 							]
 						],
 						"settings":
@@ -1016,89 +1062,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 969.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/T4CI/urls.py",
-					"settings":
-					{
-						"buffer_size": 991,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								448,
-								448
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/T4CI/views.py",
-					"settings":
-					{
-						"buffer_size": 1072,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								420,
-								420
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/newsletter/models.py",
-					"settings":
-					{
-						"buffer_size": 1854,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								975,
-								975
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 146.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
