@@ -3,7 +3,18 @@
 {% block content %}
 	{% include 'sidebar.html' %}
 	{% load staticfiles %}
-
+	<script type="text/javascript">
+	 function changeActiveSideBar(){
+		var children=document.getElementById("sidebarList").children;
+		for(var i=0; i<children.length;i++){
+			if(children[i].className=="active")
+				children[i].className=children[i].className.replace( /(?:^|\s)active(?!\S)/g , '' );
+			if(children[i].id=='mydreams')
+				children[i].className="active";
+		}
+	}
+	window.onload=changeActiveSideBar;
+	</script>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 

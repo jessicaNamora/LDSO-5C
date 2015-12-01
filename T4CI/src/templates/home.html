@@ -2,7 +2,8 @@
 	{% if not request.user.is_authenticated %}
 		{% include 'welcome.html' %}
 	{% else %}
-		{% include 'project.html' %}
+		{% include 'base.html' %}
+		{% include 'sidebar.html' %}
 	{% endif %}
 {% endblock %}
 
