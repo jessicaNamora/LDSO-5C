@@ -52,9 +52,7 @@ window.onload = loadingFunctions;
 		</tr>
 	</thead>
 	<tbody>
-		{% if dreams|length <= 0 %}
-  			 <td> You dont have any dreams associate </td>
-		{% else %}
+		
 		{% for dream in dreams %}
 			<tr>
 				<td><a href='../dream/{{ dream.dreamid }}'>{{ dream.name }}</a></td>
@@ -63,7 +61,7 @@ window.onload = loadingFunctions;
 				<td><a href='../#'>View Team</a></td>
 			</tr>
 		{% endfor %}
-		{% endif %}
+
 	</tbody>
 </table>
 </div>
