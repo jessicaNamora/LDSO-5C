@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from newsletter.models import Dream
+from newsletter.models import Task
 from newsletter.models import TeamMember
 from newsletter.models import SignUp
 
@@ -9,9 +10,10 @@ def about(request):
 
 def dream(request, dream_id):
 	project = Dream.objects.filter(id=dream_id)
-	#project = Dream.objects.raw("SELECT * FROM newsletter_dream WHERE newsletter_dream.id = '2'")
+	tasks = Task.objects.raw("SELECT * FROM newsletter_task WHERE dreamid = %s", [dream_id])
 	context = {
 		'dream' : project[0],
+		'tasks' : tasks
 	}
 	return render(request, "dream.html", context)
 

@@ -55,3 +55,8 @@ class TeamMember(models.Model):
 		return self.name
 
 # Tasks
+class Task(models.Model):
+	taskname = models.CharField(max_length=120, blank=True, null=True)
+	taskstatus = models.CharField(max_length=120, blank=True, null=True)
+	def __unicode__(self):
+		return self

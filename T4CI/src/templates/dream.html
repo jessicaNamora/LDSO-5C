@@ -69,7 +69,9 @@
 	  <div class="row">
 	    <div class="col-md-4" id="currentCol">
 	      <h2>Current</h2>
-	      <a href"#"><div class="col-xs-4">Create Adds
+	      {% for task in tasks %}
+	      {% if task.taskstatus == 'current' %}
+	      <a href"#"><div class="col-xs-4">{{task.taskname}}
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
 	      		<li><a href="#">Edit</a></li>
@@ -77,6 +79,8 @@
 	      		<li><a href="#">Delete</a></li>
 	      	</ul>
 	      </div></a>
+	      {% endif %}
+		{% endfor %}
 	      <a href"#"><div class="col-xs-4">Buy products
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
