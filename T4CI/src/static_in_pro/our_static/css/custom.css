@@ -24,6 +24,7 @@
 }
 .taskOption li {
   display:inline;
+  text-align: center;
   float:left;
   margin-left: 0px;
   margin-right:5px;
