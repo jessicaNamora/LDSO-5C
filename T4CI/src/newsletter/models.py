@@ -55,8 +55,17 @@ class TeamMember(models.Model):
 		return self.name
 
 # Tasks
+class TaskManager(models.Manager):
+	def addtask(self, taskname, taskstatus, dreamid):
+		task = self.create(taskname=taskname,taskstatus=taskstatus,dreamid=dreamid)
+		return task
+
 class Task(models.Model):
 	taskname = models.CharField(max_length=120, blank=True, null=True)
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)
+	dreamid = models.PositiveIntegerField(default=0, null=True, blank=True)
+
+	objects = TaskManager()
+
 	def __unicode__(self):
 		return self

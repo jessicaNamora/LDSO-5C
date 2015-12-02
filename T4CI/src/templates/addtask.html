@@ -1,0 +1,12 @@
+{% block jumbotron %}
+	{% if not request.user.is_authenticated %}
+		{% include 'welcome.html' %}
+	{% else %}
+		{% include 'base.html' %}
+		{% include 'sidebar.html' %}
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+	<h1>{{test}}</h1>
+{% endblock %}

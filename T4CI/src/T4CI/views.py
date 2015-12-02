@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 from newsletter.models import Dream
 from newsletter.models import Task
@@ -16,6 +18,19 @@ def dream(request, dream_id):
 		'tasks' : tasks
 	}
 	return render(request, "dream.html", context)
+	
+def addtask(request, dream_id):
+	taskname = request.POST['taskName']
+	taskstatus = request.POST['taskStatus']
+	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id)
+
+	project = Dream.objects.filter(id=dream_id)
+	tasks = Task.objects.raw("SELECT * FROM newsletter_task WHERE dreamid = %s", [dream_id])
+	context = {
+		'dream' : project[0],
+		'tasks' : tasks
+	}
+	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def team(request, dream_id):
 	members = TeamMember.objects.raw("SELECT * FROM newsletter_teammember, auth_user WHERE newsletter_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
