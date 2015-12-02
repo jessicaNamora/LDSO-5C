@@ -94,18 +94,14 @@
 
 #todoCol {
   border-left: 3px solid #4d94ff;
-  border-bottom: 1px solid #d0d0d0;
 }
 
 #currentCol {
   border-left: 3px solid #ff704d;
-  border-bottom: 1px solid #d0d0d0;
 }
 
 #doneCol {
   border-left: 3px solid #66cc33;
-  border-bottom: 1px solid #d0d0d0;
-  height: 100%;
 }
 
 #addTaskBtn{
@@ -163,3 +159,8 @@ div .content-block{
   margin-top: 40px;
 }
 
+.col-sm-6{
+  margin-left: 0px;
+  width:100%;
+  float:none;
+}

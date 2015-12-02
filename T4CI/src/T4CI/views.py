@@ -24,12 +24,6 @@ def addtask(request, dream_id):
 	taskstatus = request.POST['taskStatus']
 	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id)
 
-	project = Dream.objects.filter(id=dream_id)
-	tasks = Task.objects.raw("SELECT * FROM newsletter_task WHERE dreamid = %s", [dream_id])
-	context = {
-		'dream' : project[0],
-		'tasks' : tasks
-	}
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def team(request, dream_id):
