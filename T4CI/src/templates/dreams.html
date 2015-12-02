@@ -14,19 +14,19 @@
 	}
 }
 function addRoleImage(){
-	var x = document.createElement("IMG");
-    x.setAttribute("src", '{% static "img/leader.png" %}');
-    x.setAttribute("alt", "Team Leader");
-    var y = document.createElement("IMG");
-    y.setAttribute("src", '{% static "img/member.png" %}');
-    y.setAttribute("alt", "Team Member");
-    
-    var leaders = document.getElementsByClassName('TL');
+	var x,y;
+	var leaders = document.getElementsByClassName('TL');
     var members = document.getElementsByClassName('TM');
     for(var i=0;i<leaders.length;i++){
+    	x = document.createElement("IMG");
+    	x.setAttribute("src", '{% static "img/leader.png" %}');
+   		x.setAttribute("alt", "Team Leader");
     	leaders[i].appendChild(x);
     }
     for(var i=0;i<members.length;i++){
+    	y = document.createElement("IMG");
+   		y.setAttribute("src", '{% static "img/member.png" %}');
+    	y.setAttribute("alt", "Team Member");
     	members[i].appendChild(y);
     }
 }
@@ -43,7 +43,7 @@ window.onload = loadingFunctions;
 <h1>{{ request.user.get_username }}'s Dreams</h1>
 <hr class="featurette-divider">
 <table class="table">
-	<thead>
+	<thead style="font-size:18px">
 		<tr>
 			<th>Dream</th>
 			<th>Description</th>
@@ -51,13 +51,13 @@ window.onload = loadingFunctions;
 			<th>Team</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody style="font-size:16px">
 		{% for dream in dreams %}
 			<tr>
 				<td><a href='../dream/{{ dream.dreamid }}'>{{ dream.name }}</a></td>
 				<td>{{ dream.description }}</td>
 				<td class={{ dream.position }}></td>
-				<td><a href='../team/{{ dream.dreamid }}'>View Team</a></td>
+				<td><a href='../team/{{ dream.dreamid}}'>View Team</a></td>
 			</tr>
 		{% endfor %}
 	</tbody>
