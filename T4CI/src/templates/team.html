@@ -2,6 +2,41 @@
 {% block content %}
 	{% include 'sidebar.html' %}
 	{% load staticfiles %}
+
+<script type="text/javascript">
+ function changeActiveSideBar(){
+	var children=document.getElementById("sidebarList").children;
+	for(var i=0; i<children.length;i++){
+		if(children[i].className=="active")
+			children[i].className=children[i].className.replace( /(?:^|\s)active(?!\S)/g , '' );
+		if(children[i].id=='mydreams')
+			children[i].className="active";
+	}
+}
+function addRoleImage(){
+    
+    var leaders = document.getElementsByClassName('TL');
+    var members = document.getElementsByClassName('TM');
+    console.log(leaders.length);
+    for(var i=0;i<leaders.length;i++){
+    	var x = document.createElement("IMG");
+	    x.setAttribute("src", '{% static "img/leader.png" %}');
+	    x.setAttribute("alt", "Team Leader");
+    	leaders[i].appendChild(x);
+    }
+    for(var i=0;i<members.length;i++){
+    	var y = document.createElement("IMG");
+    	y.setAttribute("src", '{% static "img/member.png" %}');
+    	y.setAttribute("alt", "Team Member");
+    	members[i].appendChild(y);
+    }
+}
+function loadingFunctions(){
+	changeActiveSideBar();
+	addRoleImage();
+}
+window.onload = loadingFunctions;
+</script>	
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 <div class='row'>
@@ -19,8 +54,8 @@
 	<tbody>
 		{% for member in team %}
 			<tr>
-				<td>{{ member.username }}</td>
-				<td>{{ member.position }}</td>
+				<td >{{ member.username }}</td>
+				<td class={{ member.position }}></td>
 			</tr>
 		{% endfor %}
 	</tbody>
