@@ -34,9 +34,13 @@
 	}
 	window.onload=changeActiveSideBar;
 	</script>
+
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 
+	{% if not tasks %}
+		This dream has no tasks to be displayed.
+	{% elif tasks %}
 	<h1 id="aqui">Manage {{dream.name}} <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Task
 	</button></h1>
@@ -232,6 +236,7 @@
 	</div>
 	</div>
 
+	{% endif %}
 	</div>
 
 {% endblock %}
