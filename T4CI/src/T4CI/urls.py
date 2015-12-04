@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^mydreams/$','T4CI.views.dreams', name='mydreams'),
     url(r'mydreams/$', RedirectView.as_view(url='/mydreams', permanent=False), name='mydreams'),
     url(r'^addtask/(?P<dream_id>[0-9]+)/$','T4CI.views.addtask', name='addtask'),
+    url(r'^deletetask/(?P<dream_id>[0-9]+)/$','T4CI.views.deletetask', name='deletetask'),
+    url(r'^edittask/(?P<dream_id>[0-9]+)/$','T4CI.views.edittask', name='edittask'),
     url(r'^team/(?P<dream_id>[0-9]+)$', 'T4CI.views.team', name='team'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^dream/(?P<dream_id>[0-9]+)/$', 'T4CI.views.dream', name='dream'),

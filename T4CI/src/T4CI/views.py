@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
 
 from newsletter.models import Dream
 from newsletter.models import Task
@@ -37,11 +36,25 @@ def dream(request, dream_id):
 	else:
 		return redirect('/')
 	
-	
 def addtask(request, dream_id):
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
 	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id)
+
+	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+
+def edittask(request, dream_id):
+	taskname = request.POST['taskName']
+	taskstatus = request.POST['taskStatus']
+	task_id = request.POST['edittaskid']
+	Task.objects.edittask(taskname=taskname,taskstatus=taskstatus,task_id=task_id)
+
+	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+
+
+def deletetask(request, dream_id):
+	task_id = request.POST['deletetaskid']
+	Task.objects.deletetask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 

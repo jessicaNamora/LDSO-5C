@@ -60,6 +60,20 @@ class TaskManager(models.Manager):
 		task = self.create(taskname=taskname,taskstatus=taskstatus,dreamid=dreamid)
 		return task
 
+	def edittask(self,taskname,taskstatus,task_id):
+			task = Task.objects.get(id=task_id)
+			task.taskname = taskname
+			task.taskstatus = taskstatus
+			task.save()
+			#task = Task.objects.get(id=task_id)
+			#task.self.update(taskname=taskname,taskstatus=taskstatus)
+			return task
+
+	def deletetask(self, task_id):
+			task = Task.objects.get(id=task_id)
+			task.delete()
+			return
+
 class Task(models.Model):
 	taskname = models.CharField(max_length=120, blank=True, null=True)
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)

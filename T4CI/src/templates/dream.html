@@ -30,11 +30,19 @@
     function deleteTaskFunc(id) {
      var taskid = id;
      var headerchild =document.getElementById('deletetaskid');
+     $(".modal-body #deletetaskid").val( taskid )
      headerchild.innerHTML=taskid;
 	}
+
+	function editTaskFunc(id) {
+     var taskid = id;
+     var headerchild =document.getElementById('edittaskid');
+     $(".modal-body #edittaskid").val(taskid)
+     headerchild.innerHTML=taskid;
+	}
+
 	window.onload=changeActiveSideBar;
 	</script>
-
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 
@@ -57,7 +65,7 @@
 	      	<div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
 	      		<li><a href="#">Done</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
@@ -74,9 +82,9 @@
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
 	      		<li><a href="#">Start</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
+	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
 	      </div></a>
 	      {% endif %}
@@ -91,8 +99,8 @@
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
 	      	<a><img src="{% static 'img/edit.png' %}"/></a>
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask">Edit</a></li>
-	      		<li><a data-toggle="modal" data-target="#deleteTask">Delete</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
 	      </div></a>
 	      {% endif %}
@@ -162,13 +170,14 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Edit Task</h4>
 				</div>
- 
+ 				<form action="{% url 'edittask' dream.id %}" method="post">
+				{% csrf_token %}
 				<div class="modal-body">
 					<div class="input-group">
 						<br>
 						Task
 						<br> 
-						<textarea name="task" rows="8" cols="70" >{{task.taskname}}</textarea>
+						<textarea name="taskName" rows="8" cols="70" ></textarea>
 					</div>
 					<br>
 
@@ -176,16 +185,17 @@
 						<br>
 						State of the Task  
 						<br>
-						<select name="nomePais" value="current">
+						<select name="taskStatus" value="current">
 							<option value=""> -</option>
 							<option value="toDo">To Do</option>
 							<option value="current">Current</option>
 							<option value="done">Done</option>
 						</select>
-					</div>
+					</div> 
 
 					<br>
-
+					<input type="hidden" name="edittaskid" id="edittaskid" value=""/>
+ 
 					<div id="error_messages">
 					</div>
 					<div id="success_messages">
@@ -197,7 +207,7 @@
 					<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
 					<button class="btn btn-primary btn-lg" data-toggle="modal">Edit</button> 
 				</div>
-
+				</form>
 			</div>
 		</div>
 		
@@ -210,32 +220,34 @@
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Edit Task</h4>
+					<h4 class="modal-title" id="myModalLabel">Delete Task</h4>
 				</div>
- 
+ 				<form action="{% url 'deletetask' dream.id %}" method="post">
+				{% csrf_token %}
 				<div class="modal-body">
+					
 					<div class="input-group">
-						<h1 id="deletetaskid"></h1>
 						<br>
 						Are you sure that you want to delete this Task?
 						<br>
-
+						<input type="hidden" name="deletetaskid" id="deletetaskid" value=""/>
 					<div id="error_messages">
-					</div>
+					</div> 
 					<div id="success_messages">
 					</div>
-					<br>
+					<br> 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
 					<button class="btn btn-primary btn-lg" data-toggle="modal">Delete</button> 
 				</div>
+				</form>
 			</div>
 		</div>
 		
 	</div>
 	</div>
-
+	
 	{% endif %}
 	</div>
 
