@@ -46,13 +46,13 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 
-	{% if not tasks %}
-		This dream has no tasks to be displayed.
-	{% elif tasks %}
+	
 	<h1 id="aqui">Manage {{dream.name}} <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Task
 	</button></h1>
-
+	{% if not tasks %}
+		This dream has no tasks to be displayed.
+	{% elif tasks %}
 	<hr class="featurette-divider">
 	
 	  <!-- LIST Current Tasks of the Dream -->
@@ -108,57 +108,7 @@
 	    </div>
 	  </div>
 
-	<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-		 aria-hidden="true">
 
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
-				</div>
- 
-				<div class="modal-body">
-				<form action="{% url 'addtask' dream.id %}" method="post">
-				{% csrf_token %}
-					<div class="input-group">
-						<br>
-						Task
-						<br> 
-						<textarea name="taskName" rows="8" cols="70" >Insert description of the task</textarea>
-					</div>
-					<br>
-
-					<div class="input-group">
-						<br>
-						State of the Task  
-						<br>
-						<select name="taskStatus">
-							<option value=""> -</option>
-							<option value="todo">To Do</option>
-							<option value="current">Current</option>
-							<option value="done">Done</option>
-						</select>
-					</div>
-
-					<br>
-
-					<div id="error_messages">
-					</div>
-					<div id="success_messages">
-					</div>
-					<br>
-
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-default" data-dismiss="modal">Exit</button>
-					<button class="btn btn-primary btn-lg" data-toggle="modal">Add</button> 
-				</div>
-				</form>
-			</div>
-		</div>
-		
-	</div>
 
 	<div id="editTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		 aria-hidden="true">
@@ -249,6 +199,58 @@
 	</div>
 	
 	{% endif %}
+
+		<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+				</div>
+ 
+				<div class="modal-body">
+				<form action="{% url 'addtask' dream.id %}" method="post">
+				{% csrf_token %}
+					<div class="input-group">
+						<br>
+						Task
+						<br> 
+						<textarea name="taskName" rows="8" cols="70" >Insert description of the task</textarea>
+					</div>
+					<br>
+
+					<div class="input-group">
+						<br>
+						State of the Task  
+						<br>
+						<select name="taskStatus">
+							<option value=""> -</option>
+							<option value="todo">To Do</option>
+							<option value="current">Current</option>
+							<option value="done">Done</option>
+						</select>
+					</div>
+
+					<br>
+
+					<div id="error_messages">
+					</div>
+					<div id="success_messages">
+					</div>
+					<br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default" data-dismiss="modal">Exit</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Add</button> 
+				</div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
 	</div>
 
 {% endblock %}

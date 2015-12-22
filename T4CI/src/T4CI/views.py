@@ -59,19 +59,27 @@ def deletetask(request, dream_id):
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def team(request, dream_id):
+	projects = Dream.objects.filter(id=dream_id)
 	members = TeamMember.objects.raw("SELECT * FROM newsletter_teammember, auth_user WHERE newsletter_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
 	context = {
-		'dream' : dream_id,
+		'dream' : projects,
 		'team' : members
 	}
 	return render(request, "team.html", context)
+
+def deleteteammember(request, dream_id):
+	member_id = request.POST['removeTeamMemberId']
+	#Team.objects.deleteteammember(member_id=member_id)
+	member = TeamMember.objects.get(id=member_id)
+	member.delete()
+	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
 def dreams(request):
 	#dream1 = Dream.objects.create_dream("Dream3", "Category1", "Theme1", "Description1")
 	#dreams1 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 1, "TL")
 	#dreams2 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 2, "TM")
 	if request.user.is_authenticated():
-		dreams = TeamMember.objects.filter(personid=request.user.id)
+		dreams = TeamMember.objects.filter(id=request.user.id)
 		projects = TeamMember.objects.raw("SELECT * FROM newsletter_teammember JOIN newsletter_dream ON newsletter_teammember.dreamid = newsletter_dream.id AND personid = %s", [request.user.id])
 		context = {
 			'dreams' : projects,

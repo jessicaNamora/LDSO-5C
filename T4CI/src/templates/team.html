@@ -31,6 +31,13 @@ function addRoleImage(){
     	members[i].appendChild(y);
     }
 }
+function removeMemberFunc(id) {
+     var userid = id;
+     console.log("Id Value: " + id);
+     var headerchild =document.getElementById('removeTeamMemberId');
+     $(".modal-body #removeTeamMemberId").val( userid )
+     headerchild.innerHTML=userid;
+}
 function loadingFunctions(){
 	changeActiveSideBar();
 	addRoleImage();
@@ -40,7 +47,8 @@ window.onload = loadingFunctions;
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 <div class='row'>
-<div class='col-sm-6 col-sm-offset-2'>
+
+<div class='col-sm-6 col-sm-offset-2' id="dreamTable">
 <h1>Team</h1>
 <hr class="featurette-divider">
 
@@ -49,6 +57,8 @@ window.onload = loadingFunctions;
 		<tr>
 			<th>Username</th>
 			<th>Role</th>
+			<th>Change Role Status</th>
+			<th>Delete Member</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -56,13 +66,54 @@ window.onload = loadingFunctions;
 			<tr>
 				<td >{{ member.username }}</td>
 				<td class={{ member.position }}></td>
+				<td> <select id="status" name="role" >                   
+					<option selected disabled >--Change Role--</option>
+					<option value="1">Team Leader</option>
+					<option value="2">Team Member</option>
+					<option value="3">Team Communicator</option>
+					</select></td>
+				<td><a data-toggle="modal" data-target="#removeTeamMember" onclick="removeMemberFunc({{member.id}})"><img src="{% static 'img/remove.png' %}"/></a></td>
 			</tr>
+
+			<div id="removeTeamMember" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Delete Task</h4>
+			</div>
+			<form action="{% url 'deleteteammember' member.dreamid %}" method="post">
+			{% csrf_token %}
+			<div class="modal-body">
+				
+				<div class="input-group">
+					<br>
+					Are you sure that you want to delete this Member from the Dream?
+					<input type="hidden" name="removeTeamMemberId" id="removeTeamMemberId" value=""/>
+				<div id="success_messages">
+				</div>
+				<br> 
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+				<button class="btn btn-primary btn-lg" data-toggle="modal">Delete</button> 
+			</div>
+			</form> 
+			</div>
+		</div>
+	</div>
+</div>
 		{% endfor %}
 	</tbody>
 </table>
 </div>
-
 </div>
+
+
+
+
 </div>
 
 {% endblock %}
