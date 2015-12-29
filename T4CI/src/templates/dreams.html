@@ -34,6 +34,13 @@ function loadingFunctions(){
 	changeActiveSideBar();
 	addRoleImage();
 }
+function removeDream(id) {
+     var dreamid = id;
+     console.log("Id Value: " + id);
+     var headerchild =document.getElementById('removeDreamId');
+     $(".modal-body #removeDreamId").val( dreamid )
+     headerchild.innerHTML=dreamid;
+}
 window.onload = loadingFunctions;
 </script>	
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -49,6 +56,7 @@ window.onload = loadingFunctions;
 			<th>Description</th>
 			<th>Role</th>
 			<th>Team</th>
+			<th>Give up</th>
 		</tr>
 	</thead>
 	<tbody style="font-size:16px">
@@ -58,7 +66,39 @@ window.onload = loadingFunctions;
 				<td>{{ dream.description }}</td>
 				<td class={{ dream.position }}></td>
 				<td><a href='../team/{{ dream.dreamid}}'>View Team</a></td>
+				<td><a data-toggle="modal" data-target="#removeDream" onclick="removeDream({{dream.dreamid}})"><img src="{% static 'img/remove.png' %}"/></a> </td>
 			</tr>
+
+	<div id="removeDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Delete Dream</h4>
+			</div>
+			<form action="{% url 'deletedream' dream.dreamid %}" method="post">
+			{% csrf_token %}
+			<div class="modal-body">
+				
+				<div class="input-group">
+					<br>
+					Are you sure that you want to delete this Dream?
+					<input type="hidden" name="removeDreamId" id="removeDreamId" value=""/>
+				<div id="success_messages">
+				</div>
+				<br> 
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+				<button class="btn btn-primary btn-lg" data-toggle="modal">Delete</button> 
+			</div>
+			</form> 
+			</div>
+		</div>
+	</div>
+</div>
 		{% endfor %}
 	</tbody>
 </table>

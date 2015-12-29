@@ -7,6 +7,7 @@ from newsletter.models import Task
 from newsletter.models import TeamMember
 from newsletter.models import SignUp
 
+
 def about(request):
 	return render(request, "about.html", {})
 
@@ -73,6 +74,14 @@ def deleteteammember(request, dream_id):
 	member = TeamMember.objects.get(id=member_id)
 	member.delete()
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
+
+def deletedream(request, dream_id):
+	dream_id = request.POST['removeDreamId']
+	raw_id = TeamMember.objects.filter(personid=request.user.id, dreamid=dream_id).values('id')
+	#raw_id = TeamMember.objects.raw("SELECT id FROM newsletter_teammember WHERE newsletter_teammember.personid = %s AND newsletter_teammember.dreamid = %s", [request.user.id, dream_id])[0]
+	raw = TeamMember.objects.get(id=raw_id)
+	raw.delete()
+	return HttpResponseRedirect(reverse('mydreams'))
 
 def dreams(request):
 	#dream1 = Dream.objects.create_dream("Dream3", "Category1", "Theme1", "Description1")
