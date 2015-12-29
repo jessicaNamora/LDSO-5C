@@ -57,8 +57,10 @@ window.onload = loadingFunctions;
 		<tr>
 			<th>Username</th>
 			<th>Role</th>
+			{% if auth.position == "TL" %}
 			<th>Change Role Status</th>
 			<th>Delete Member</th>
+			{% endif %}
 		</tr>
 	</thead>
 	<tbody>
@@ -66,6 +68,7 @@ window.onload = loadingFunctions;
 			<tr>
 				<td >{{ member.username }}</td>
 				<td class={{ member.position }}></td>
+				{% if auth.position == "TL" %}
 				<td> <select id="status" name="role" >                   
 					<option selected disabled >--Change Role--</option>
 					<option value="1">Team Leader</option>
@@ -73,6 +76,7 @@ window.onload = loadingFunctions;
 					<option value="3">Team Communicator</option>
 					</select></td>
 				<td><a data-toggle="modal" data-target="#removeTeamMember" onclick="removeMemberFunc({{member.id}})"><img src="{% static 'img/remove.png' %}"/></a></td>
+				{% endif %}
 			</tr>
 
 			<div id="removeTeamMember" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

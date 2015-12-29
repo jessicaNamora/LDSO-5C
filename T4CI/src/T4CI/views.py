@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
@@ -60,11 +61,18 @@ def deletetask(request, dream_id):
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def team(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
 	projects = Dream.objects.filter(id=dream_id)
 	members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+
 	context = {
 		'dream' : projects,
-		'team' : members
+		'team' : members,
+		'auth' : auth[0]
 	}
 	return render(request, "team.html", context)
 
