@@ -98,6 +98,10 @@ def dreams(request):
 	if request.user.is_authenticated():
 		dreams = TeamMember.objects.filter(id=request.user.id)
 		projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
+
+		if(len(list(projects)) < 1):
+			projects = None
+			
 		context = {
 			'dreams' : projects,
 		}
