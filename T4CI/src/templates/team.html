@@ -75,7 +75,11 @@ window.onload = loadingFunctions;
 					<option value="2">Team Member</option>
 					<option value="3">Team Communicator</option>
 					</select></td>
-				<td><a data-toggle="modal" data-target="#removeTeamMember" onclick="removeMemberFunc({{member.id}})"><img src="{% static 'img/remove.png' %}"/></a></td>
+				<td>
+					{% if member.personid != request.user.id %}
+						<a data-toggle="modal" data-target="#removeTeamMember" onclick="removeMemberFunc({{member.id}})"><img src="{% static 'img/remove.png' %}"/></a>
+					{% endif %}
+				</td>
 				{% endif %}
 			</tr>
 
