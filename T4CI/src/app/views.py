@@ -81,6 +81,7 @@ def contact(request):
 		"title": title,
 		"title_align_center": title_align_center,
 	}
+	render(request, "sidebar.html", context)
 	return render(request, "forms.html", context)
 
 
