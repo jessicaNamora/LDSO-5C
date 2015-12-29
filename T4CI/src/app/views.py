@@ -92,9 +92,8 @@ def profile(request):
 def about(request):
 	return render(request, "about.html", {})
 
-
-
-
+def overview(request):
+	return render(request, "overview.html", {})
 
 
 
