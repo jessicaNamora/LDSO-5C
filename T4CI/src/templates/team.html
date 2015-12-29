@@ -49,7 +49,9 @@ window.onload = loadingFunctions;
 <div class='row'>
 
 <div class='col-sm-6 col-sm-offset-2' id="dreamTable">
-<h1>Team</h1>
+<h1>Team <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
+	  Add Member
+	</button></h1>
 <hr class="featurette-divider">
 
 <table class="table">
@@ -82,7 +84,6 @@ window.onload = loadingFunctions;
 				</td>
 				{% endif %}
 			</tr>
-
 			<div id="removeTeamMember" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	 aria-hidden="true">
 	<div class="modal-dialog">
@@ -118,8 +119,51 @@ window.onload = loadingFunctions;
 </table>
 </div>
 </div>
+<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Add Team Member</h4>
+				</div>
+ 
+				<div class="modal-body">
+				<form action="{% url 'addteammember' auth.dreamid %}" method="post">
+				{% csrf_token %}
+					<div class="input-group">
+						<h5>New Member Email <input type="email" name="memberEmail"></h5>
+					</div>
+					<br>
 
+					<div class="input-group">
+						<br>
+						Member role 
+						<select name="memberRole">
+							<option value=""> -</option>
+							<option value="TL">Team Leader</option>
+							<option value="TM">Team Member</option>
+							<option value="TC">Communicator Expert</option>
+						</select>
+					</div>
 
+					<br>
+
+					<div id="error_messages">
+					</div>
+					<div id="success_messages">
+					</div>
+					<br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default" data-dismiss="modal">Exit</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Add</button> 
+				</div>
+				</form>
+			</div>
+		</div>
+</div>
 
 
 </div>

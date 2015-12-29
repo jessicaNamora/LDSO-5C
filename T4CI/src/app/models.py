@@ -34,6 +34,9 @@ class DreamTeamManager(models.Manager):
 	def add_to_dream_team(self, name, email, personid, dreamid, position):
 		person = self.create(name=name, personid=personid, dreamid=dreamid, position=position) 
 		return person
+	def addteammember(self, personid, dreamid, position):
+		member = self.create(personid=personid,dreamid=dreamid,position=position)
+		return member
 
 class TeamMember(models.Model):
 	TEAMLEADER = 'TL'

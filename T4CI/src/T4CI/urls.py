@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^deletetask/(?P<dream_id>[0-9]+)/$','T4CI.views.deletetask', name='deletetask'),
     url(r'^edittask/(?P<dream_id>[0-9]+)/$','T4CI.views.edittask', name='edittask'),
     url(r'^team/(?P<dream_id>[0-9]+)$', 'T4CI.views.team', name='team'),
+    url(r'^addteammember/(?P<dream_id>[0-9]+)/$','T4CI.views.addteammember', name='addteammember'),
     url(r'^deleteteammember/(?P<dream_id>[0-9]+)$', 'T4CI.views.deleteteammember', name='deleteteammember'),
     url(r'^deletedream/(?P<dream_id>[0-9]+)$', 'T4CI.views.deletedream', name='deletedream'),
     # url(r'^blog/', include('blog.urls')),

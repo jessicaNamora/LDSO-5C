@@ -76,6 +76,16 @@ def team(request, dream_id):
 	}
 	return render(request, "team.html", context)
 
+def addteammember(request, dream_id):
+	memberEmail = request.POST['memberEmail']
+	memberRole = request.POST['memberRole']
+
+	person = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND auth_user.email = %s AND app_teammember.dreamid!=%s", [memberEmail,dream_id])
+	if(len(list(person)) > 0):
+		TeamMember.objects.addteammember(personid=person[0].personid,dreamid=dream_id,position=memberRole)
+
+	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
+
 def deleteteammember(request, dream_id):
 	member_id = request.POST['removeTeamMemberId']
 	#Team.objects.deleteteammember(member_id=member_id)

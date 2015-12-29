@@ -520,18 +520,18 @@
 	"buffers":
 	[
 		{
-			"file": "src/newsletter/models.py",
+			"file": "src/T4CI/urls.py",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 1634,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/T4CI/views.py",
+			"file": "src/templates/team.html",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 3789,
 				"line_ending": "Windows"
 			}
 		},
@@ -539,55 +539,23 @@
 			"file": "src/templates/dream.html",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 7808,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/wamp/www-src/venv/Scripts/T4CI2/src/templates/dream.html",
+			"file": "src/app/views.py",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2441,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/newsletter/views.py",
+			"file": "src/T4CI/views.py",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/T4CI/settings.py",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/deletetask.html",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/T4CI/urls.py",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/addtask.html",
-			"settings":
-			{
-				"buffer_size": 0,
+				"buffer_size": 3883,
 				"line_ending": "Windows"
 			}
 		}
@@ -616,6 +584,25 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www-src/T4CI/src/templates/overview.html",
+		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
+		"/C/wamp/www-src/T4CI/src/app/views.py",
+		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
+		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
+		"/C/wamp/www-src/T4CI/src/templates/home.html",
+		"/C/wamp/www-src/T4CI/src/templates/base.html",
+		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
+		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
+		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
+		"/C/wamp/www-src/T4CI/src/templates/profile.html",
+		"/C/wamp/www-src/T4CI/src/templates/deletetask.html",
+		"/C/wamp/www-src/T4CI/src/templates/about.html",
+		"/C/wamp/www-src/T4CI/src/newsletter/models.py",
+		"/C/wamp/www-src/T4CI/src/templates/dream.html",
+		"/C/wamp/www-src/venv/Scripts/T4CI2/src/templates/dream.html",
+		"/C/wamp/www-src/T4CI/src/newsletter/views.py",
+		"/C/wamp/www-src/T4CI/src/T4CI/urls.py",
+		"/C/wamp/www-src/T4CI/src/templates/addtask.html",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/edittask.html",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/templates/edittask.hmtl",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/T4CI/views.py",
@@ -630,21 +617,11 @@
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0003_teammember.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0002_dream.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/0001_initial.py",
-		"/C/wamp/www-src/T4CI/src/newsletter/views.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/tests.py",
-		"/C/wamp/www-src/T4CI/src/T4CI/urls.py",
-		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
-		"/C/wamp/www-src/T4CI/src/templates/dreams.html",
-		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
-		"/C/wamp/www-src/T4CI/src/newsletter/models.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/forms.py",
 		"/C/wamp/www-src/T4CI/src/newsletter/admin.py",
-		"/C/wamp/www-src/T4CI/src/templates/navbar.html",
 		"/C/wamp/www-src/T4CI/src/manage.py",
-		"/C/wamp/www-src/T4CI/src/app/views.py",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LDSO/T4CI/T4CI/src/templates/dreams.html",
-		"/C/wamp/www-src/T4CI/src/templates/sidebar.html",
-		"/C/wamp/www-src/T4CI/src/templates/dream.html",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/newsletter/migrations/__init__.py",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/PLS5.pl",
@@ -652,8 +629,6 @@
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Apontamentos Práticas",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/2 Projeto/Código/peças.pl",
 		"/C/wamp/www-src/T4CI/src/templates/footer.html",
-		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
-		"/C/wamp/www-src/T4CI/src/templates/base.html",
 		"/C/wamp/www-src/T4CI/src/templates/project.html",
 		"/C/wamp/www-src/T4CI/src/templates/registration/activate.html",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/bootstrap.min.css",
@@ -662,7 +637,6 @@
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/custom.css",
 		"/C/wamp/www-src/T4CI/src/static_in_pro/our_static/css/navbar-static-top.css",
 		"/C/wamp/www-src/T4CI/static_in_env/static_root/css/navbar-static-top.css",
-		"/C/wamp/www-src/T4CI/src/templates/home.html",
 		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/PLOG/Exercícios/Exercicio7.pl",
 		"/C/wamp/www-src/T4CI/src/templates/forms.html",
 		"/C/wamp/www-src/venv/Scripts/T4CI/src/T4CI/urls.py",
@@ -737,13 +711,7 @@
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/test_css.html",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/login/views.py",
 		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/views.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/footer.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/accounts/models.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/base.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/home.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/static/static_dir/css/signin.css",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/accounts/register.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/login/forms.py"
+		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/footer.html"
 	],
 	"find":
 	{
@@ -766,6 +734,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addTask",
+			"aqui",
 			"=\"\"/>\n",
 			"ediTask",
 			">\n",
@@ -891,9 +861,7 @@
 			"top",
 			"view",
 			"transcript",
-			"<i",
-			"fa",
-			"transcriptText"
+			"<i"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -926,29 +894,30 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/newsletter/models.py",
+					"file": "src/T4CI/urls.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1634,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								881,
+								881
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -958,27 +927,27 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/T4CI/views.py",
+					"file": "src/templates/team.html",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1740,
+								1740
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 792.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -988,15 +957,15 @@
 					"file": "src/templates/dream.html",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 7808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4342,
+								4342
 							]
 						],
 						"settings":
@@ -1005,52 +974,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2666.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/C/wamp/www-src/venv/Scripts/T4CI2/src/templates/dream.html",
+					"file": "src/app/views.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 2441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								319,
+								319
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 792.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/newsletter/views.py",
+					"file": "src/T4CI/views.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								380,
+								380
 							]
 						],
 						"settings":
@@ -1059,115 +1028,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/T4CI/settings.py",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/templates/deletetask.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/T4CI/urls.py",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/templates/addtask.html",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 726.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
