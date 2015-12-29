@@ -7,10 +7,10 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     # Examples:
-    url(r'^$', 'newsletter.views.home', name='home'),
-    url(r'^contact/$', 'newsletter.views.contact', name='contact'),
-    url(r'^about/$', 'newsletter.views.about', name='about'),
-    url(r'^profile/$', 'newsletter.views.profile', name='profile'),
+    url(r'^$', 'app.views.home', name='home'),
+    url(r'^contact/$', 'app.views.contact', name='contact'),
+    url(r'^about/$', 'app.views.about', name='about'),
+    url(r'^profile/$', 'app.views.profile', name='profile'),
     url(r'^mydreams/$','T4CI.views.dreams', name='mydreams'),
     url(r'mydreams/$', RedirectView.as_view(url='/mydreams', permanent=False), name='mydreams'),
     url(r'^addtask/(?P<dream_id>[0-9]+)/$','T4CI.views.addtask', name='addtask'),

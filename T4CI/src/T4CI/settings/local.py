@@ -57,7 +57,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'registration',
     #my apps
-    'newsletter',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (

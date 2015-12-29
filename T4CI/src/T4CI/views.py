@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-from newsletter.models import Dream
-from newsletter.models import Task
-from newsletter.models import TeamMember
-from newsletter.models import SignUp
+from app.models import Dream
+from app.models import Task
+from app.models import TeamMember
+from app.models import SignUp
 
 
 def about(request):
@@ -13,13 +13,13 @@ def about(request):
 
 def dream(request, dream_id):
 	if request.user.is_authenticated():
-		auth = Task.objects.raw("SELECT * FROM newsletter_teammember WHERE newsletter_teammember.dreamid = %s AND newsletter_teammember.personid = %s", [dream_id, request.user.id])
+		auth = Task.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
 
 		if(len(list(auth)) < 1):
 			return redirect('/mydreams')
 
 		projects = Dream.objects.filter(id=dream_id)
-		tasks = Task.objects.raw("SELECT * FROM newsletter_task, newsletter_teammember WHERE newsletter_task.dreamid = newsletter_teammember.dreamid AND newsletter_task.dreamid = %s AND newsletter_teammember.personid = %s", [dream_id, request.user.id])
+		tasks = Task.objects.raw("SELECT * FROM app_task, app_teammember WHERE app_task.dreamid = app_teammember.dreamid AND app_task.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
 	
 		if(len(list(tasks)) < 1):
 			tasks = None
@@ -61,7 +61,7 @@ def deletetask(request, dream_id):
 
 def team(request, dream_id):
 	projects = Dream.objects.filter(id=dream_id)
-	members = TeamMember.objects.raw("SELECT * FROM newsletter_teammember, auth_user WHERE newsletter_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+	members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
 	context = {
 		'dream' : projects,
 		'team' : members
@@ -89,7 +89,7 @@ def dreams(request):
 	#dreams2 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 2, "TM")
 	if request.user.is_authenticated():
 		dreams = TeamMember.objects.filter(id=request.user.id)
-		projects = TeamMember.objects.raw("SELECT * FROM newsletter_teammember JOIN newsletter_dream ON newsletter_teammember.dreamid = newsletter_dream.id AND personid = %s", [request.user.id])
+		projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
 		context = {
 			'dreams' : projects,
 		}
