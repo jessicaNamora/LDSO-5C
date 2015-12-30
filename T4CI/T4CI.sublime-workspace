@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"person",
+				"personid"
+			],
+			[
+				"Team",
+				"TeamMember"
+			],
+			[
+				"app",
+				"app_teammember"
+			],
+			[
+				"aut",
+				"auth_user"
+			],
+			[
 				"myd",
 				"myModalLabel"
 			],
@@ -498,22 +514,6 @@
 			[
 				"Lecu",
 				"Lecture	class"
-			],
-			[
-				"ex",
-				"exception	param"
-			],
-			[
-				"http",
-				"HttpResponseRedirect	class"
-			],
-			[
-				"SOCIAL_AUTH_STR",
-				"SOCIAL_AUTH_STRIPE_KEY"
-			],
-			[
-				"pa",
-				"patterns	function"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/T4CI/urls.py",
 			"settings":
 			{
-				"buffer_size": 1634,
+				"buffer_size": 1734,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +531,15 @@
 			"file": "src/templates/team.html",
 			"settings":
 			{
-				"buffer_size": 3789,
+				"buffer_size": 5096,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/T4CI/views.py",
+			"settings":
+			{
+				"buffer_size": 4402,
 				"line_ending": "Windows"
 			}
 		},
@@ -544,18 +552,10 @@
 			}
 		},
 		{
-			"file": "src/app/views.py",
+			"file": "src/app/models.py",
 			"settings":
 			{
-				"buffer_size": 2441,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/T4CI/views.py",
-			"settings":
-			{
-				"buffer_size": 3883,
+				"buffer_size": 2935,
 				"line_ending": "Windows"
 			}
 		}
@@ -584,9 +584,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Work Area/Documents/FEUP/4Ano/1S/LAIG/Final/reader/Bubbles422.pl",
+		"/C/wamp/www-src/T4CI/src/app/migrations/0001_initial.py",
+		"/C/wamp/www-src/T4CI/src/app/models.py",
+		"/C/wamp/www-src/T4CI/src/app/admin.py",
+		"/C/wamp/www-src/T4CI/src/app/forms.py",
+		"/C/wamp/www-src/T4CI/src/app/views.py",
 		"/C/wamp/www-src/T4CI/src/templates/overview.html",
 		"/C/wamp/www-src/T4CI/src/T4CI/views.py",
-		"/C/wamp/www-src/T4CI/src/app/views.py",
 		"/C/wamp/www-src/T4CI/src/templates/welcome.html",
 		"/C/wamp/www-src/T4CI/src/T4CI/settings.py",
 		"/C/wamp/www-src/T4CI/src/templates/home.html",
@@ -706,12 +711,7 @@
 		"/Volumes/My Passport/Dropbox/projects/kpj/kpj/kpj/views.py",
 		"/Volumes/My Passport/Dropbox/projects/kpj/kpj/templates/accounts/join.html",
 		"/Volumes/My Passport/Dropbox/projects/kpj/kpj/templates/videos/all.html",
-		"/Volumes/My Passport/Dropbox/projects/kpj/kpj/templates/accounts/team.html",
-		"/Users/jmitch/Dropbox/cfe/src/projects/cloudfront.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/test_css.html",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/login/views.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/videos/views.py",
-		"/Users/jmitch/Dropbox/projects/kpj/kpj/templates/footer.html"
+		"/Volumes/My Passport/Dropbox/projects/kpj/kpj/templates/accounts/team.html"
 	],
 	"find":
 	{
@@ -734,6 +734,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"%",
+			"auth",
+			"dream",
+			"auth",
+			"dream_id",
 			"addTask",
 			"aqui",
 			"=\"\"/>\n",
@@ -856,12 +861,7 @@
 			"remove",
 			"url",
 			"hash",
-			"verbose_name",
-			"height",
-			"top",
-			"view",
-			"transcript",
-			"<i"
+			"verbose_name"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -902,15 +902,15 @@
 					"file": "src/T4CI/urls.py",
 					"settings":
 					{
-						"buffer_size": 1634,
+						"buffer_size": 1734,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								881,
-								881
+								1064,
+								1087
 							]
 						],
 						"settings":
@@ -930,15 +930,15 @@
 					"file": "src/templates/team.html",
 					"settings":
 					{
-						"buffer_size": 3789,
+						"buffer_size": 5096,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1740,
-								1740
+								4459,
+								4459
 							]
 						],
 						"settings":
@@ -947,13 +947,40 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 792.0,
+						"translation.y": 1980.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "src/T4CI/views.py",
+					"settings":
+					{
+						"buffer_size": 4402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2867,
+								2867
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 796.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "src/templates/dream.html",
 					"settings":
 					{
@@ -964,8 +991,8 @@
 						"selection":
 						[
 							[
-								4342,
-								4342
+								6455,
+								6455
 							]
 						],
 						"settings":
@@ -974,52 +1001,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2666.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/app/views.py",
-					"settings":
-					{
-						"buffer_size": 2441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								319,
-								319
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 792.0,
+						"translation.y": 4316.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/T4CI/views.py",
+					"file": "src/app/models.py",
 					"settings":
 					{
-						"buffer_size": 3883,
+						"buffer_size": 2935,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								380,
-								380
+								830,
+								830
 							]
 						],
 						"settings":
@@ -1028,7 +1028,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 726.0,
+						"translation.y": 396.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
