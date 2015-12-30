@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -26,6 +27,7 @@ class Dream(models.Model):
 	category = models.CharField(max_length=120, blank=True, null=True)
 	theme = models.CharField(max_length=120, blank=True, null=True)
 	description = models.CharField(max_length=300, blank=True, null=True)
+	dateCreated = models.DateTimeField(default=datetime.date.today, blank=True)
 
 	objects = DreamManager()
 

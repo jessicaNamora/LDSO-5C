@@ -39,6 +39,11 @@ def dream(request, dream_id):
 		return redirect('/')
 	
 def addtask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
 	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id)
@@ -46,6 +51,11 @@ def addtask(request, dream_id):
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def edittask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
 	task_id = request.POST['edittaskid']
@@ -55,28 +65,41 @@ def edittask(request, dream_id):
 
 
 def deletetask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
 	task_id = request.POST['deletetaskid']
 	Task.objects.deletetask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 def team(request, dream_id):
-	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+	if request.user.is_authenticated():
+		auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
 
-	if(len(list(auth)) < 1):
-		return redirect('/mydreams')
+		if(len(list(auth)) < 1):
+			return redirect('/mydreams')
 
-	projects = Dream.objects.filter(id=dream_id)
-	members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+		projects = Dream.objects.filter(id=dream_id)
+		members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
 
-	context = {
-		'dream' : projects,
-		'team' : members,
-		'auth' : auth[0]
-	}
-	return render(request, "team.html", context)
+		context = {
+			'dream' : projects,
+			'team' : members,
+			'auth' : auth[0]
+		}
+		return render(request, "team.html", context)
+	else:
+		return redirect('/')
 
 def addteammember(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1 or auth[0].position == 'TM'):
+		return redirect('/mydreams')
+
 	memberEmail = request.POST['memberEmail']
 	memberRole = request.POST['memberRole']
 
@@ -87,6 +110,11 @@ def addteammember(request, dream_id):
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
 def deleteteammember(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1 or auth[0].position != 'TL'):
+		return redirect('/mydreams')
+		
 	member_id = request.POST['removeTeamMemberId']
 	#Team.objects.deleteteammember(member_id=member_id)
 	member = TeamMember.objects.get(id=member_id)
