@@ -1,0 +1,55 @@
+* [33m335c247[m[33m ([1;36mHEAD[m[33m, [1;32mtemp[m[33m)[m Delete and Edit buttons functional in the management page.
+* [33me237b80[m[33m ([1;31morigin/master[m[33m)[m Fixed some authorization issues.
+* [33m06bbe7d[m Delete task - a funcionar nas tarefas em current! Adicionou-se no botão de delete task o onclick que chama a funcao deleteTaskFunc(taskid) que muda um h1 criado no div #deleteTask para ver se passa o valor corretamente! Agora é só adaptar.
+*   [33m5274ea7[m MMerge branch 'master' of https://github.com/jessicaNamora/LDSO-5C
+[32m|[m[33m\[m  
+[32m|[m *   [33me80c18e[m Merge branch 'master' of https://github.com/jessicaNamora/LDSO-5C
+[32m|[m [34m|[m[35m\[m  
+[32m|[m * [35m|[m [33mbf980bf[m Icons in the team view.
+* [35m|[m [35m|[m [33m7a087fe[m Correção pequena no css para corrigir erro na welcome page!
+[35m|[m [35m|[m[35m/[m  
+[35m|[m[35m/[m[35m|[m   
+* [35m|[m [33mfb6c059[m Base de Dados populada para demonstrar ao Product Owner. Mudanças menores na página de mydreams e na página de tasks para melhor visualização.
+[35m|[m[35m/[m  
+* [33mb924c84[m Corrected team link.
+* [33me3d05c5[m[33m ([1;32mmaster[m[33m)[m Minor fix - tag de tarefas a fazer "todo" estava com erro
+* [33me661527[m Add task a funcionar. Adicionado ao model um TaskManager, adicionada a página addtask.html, e a view addtask.
+* [33m2e7bd76[m Minor fixes, comecei a trabalhar na página de overview (agora está vazia)
+* [33m5c08665[m Página de Tasks só mostra tasks da DB. Adicionadas entradas na DB para testar.
+* [33m05c1e49[m Visualização das tasks preparada para nomes compridos.
+* [33m331e4be[m Without a little if that wasn't ready to see the light of day
+* [33m9f0798a[m Some changes in the management page, including edit and delete form.
+* [33mc7213f7[m Pagina de tasks de dreams obtém corretamente tasks associados ao projeto! Por agora só tasks em status current aparecem. As restantes serao acrescentadas em breve.
+* [33mfa758bf[m Corrigido o redirect da pagina mydreams
+* [33mffea530[m Corrigido erro de merge no template dreams.html
+* [33m3af5158[m Corrigido erro de merge
+*   [33m48d2939[m Merge branch 'master' of https://github.com/jessicaNamora/LDSO-5C
+[36m|[m[1;31m\[m  
+[36m|[m * [33mad41266[m Starting work on team view
+* [1;31m|[m [33mac27644[m Página de 'mydreams' agora com link para a pagina das tasks do dream selecionado. Nome do dream surge no topo da página. Corrigido display da pagina das tasks para poder diminuir a pagina sem desordenar os elementos da página.
+[1;31m|[m[1;31m/[m  
+* [33m4fd8eba[m Footer corrected. Added role icons and view team to MyDreams' page!
+* [33mf9a666a[m Corrected previous commit.
+* [33m84f6efe[m Revert of previous commit
+* [33m6ab914a[m Improved layout of task management page.
+* [33m705cea3[m Limpeza do Código!!
+* [33mef10c7c[m Improved select to get user projects.
+* [33m10fa15e[m Updates in the management page.
+* [33m9903106[m Updated the intake forms according to new requests from the product owner. Created the quarterly form and added the respective page on TBMW's site.
+* [33mf8cf5cc[m Bases for viewing user's dreams.
+* [33m0b1d6f6[m "Form para criação dos tasks"
+* [33m46ce353[m Erase unused sublime files...
+* [33mc0d827d[m Changed css so everything looks a little better and a little lower
+* [33m8838859[m Erased the trydjango18 folder and all dependencies. Changed the auth_logout when you click on user name. But don't click on that. Profile still a work in progress.
+* [33mf96957e[m Update na navbar e sidebar. Inicalização da página de management  dos projetos/dreams.
+* [33m2a7304f[m Inicialização da pagina Logged In (sidebar, nome de user e footer).
+*   [33m3b5c727[m Merge branch 'master' of https://github.com/jessicaNamora/LDSO-5C
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m4903f9b[m Removed e-mail verification.
+[1;32m|[m * [33me65445e[m FIxed naming error.
+[1;32m|[m * [33md4a3fdb[m Fixed naming error.
+[1;32m|[m * [33m85f9f8b[m Added the wordpress forms.
+* [1;33m|[m [33mbb38bf6[m Revert "Inicialização da pagina de logged In (leftbar e footer)."
+* [1;33m|[m [33m9b93bde[m Inicialização da pagina de logged In (leftbar e footer).
+[1;33m|[m[1;33m/[m  
+* [33m9aca35e[m Register and Login Authentication. Home Page prototype.

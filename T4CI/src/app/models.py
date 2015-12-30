@@ -17,6 +17,9 @@ class DreamManager(models.Manager):
 	def create_dream(self, name, category, theme, description):
 		dream = self.create(name=name, category=category, theme=theme, description=description) 
 		return dream
+	def createDream(self,name,description):
+		dream = self.create(name=name, description=description)
+		return dream
 
 class Dream(models.Model):
 	name = models.CharField(max_length=120, blank=True, null=True)

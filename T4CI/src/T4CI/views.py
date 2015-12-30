@@ -92,6 +92,15 @@ def deleteteammember(request, dream_id):
 	member = TeamMember.objects.get(id=member_id)
 	member.delete()
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
+	
+def createdream(request, user_id):
+    dreamname = request.POST['dreamName']
+    dreamdescription = request.POST['dreamDescription']
+    dream = Dream.objects.createDream(name=dreamname,description=dreamdescription)
+
+    memberRole= 'TL'
+    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole)
+    return HttpResponseRedirect(reverse('overview'))
 
 def deletedream(request, dream_id):
 	dream_id = request.POST['removeDreamId']
@@ -117,4 +126,13 @@ def dreams(request):
 		}
 		return render(request, "dreams.html", context)
 	else:
-		return redirect('/');
+		return redirect('/')
+
+def overview(request):
+    if request.user.is_authenticated():
+        context = {
+            'user' : request.user
+        }
+        return render(request, "overview.html", context)
+    else:
+        return redirect('/')

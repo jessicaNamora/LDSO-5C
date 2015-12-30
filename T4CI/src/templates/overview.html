@@ -13,4 +13,91 @@
 			}
 		}
 	</script>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<br><br>
+
+	
+	<h1>Overview <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#createDream">
+	  Create Dream
+	</button></h1>
+	</div>
+
+	<div id="createDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Create Dream</h4>
+
+				<form action="{% url 'createdream' user.id %}" method="post">
+				{% csrf_token %}
+				<div class="modal-body">
+					<div class="input-group">
+						<br>
+						Propose a new Dream Idea:
+						<br> 
+						<textarea name="dreamName" rows="1" cols="70" placeholder="Write your dream name here ..."></textarea>
+					</div>
+					<br>
+					Please select the category of your Dream:
+					<br>
+					
+					<div>
+						<div style="width=60%; float:left">
+						<input type="radio" name="themes" value="ArtsAndCulture"> Arts and Culture <br>
+						<input type="radio" name="themes" value="ChildrenAndYouth"> Children and Youth <br>
+						<input type="radio" name="themes" value="Community"> Community <br>
+						<input type="radio" name="themes" value="Economics"> Economics<br>
+						<input type="radio" name="themes" value="Education"> Education <br>
+						<input type="radio" name="themes" value="Environment"> Environment <br><br>
+						</div>
+						<div style="width=50%">
+						<input type="radio" name="themes" value="Food"> Food <br>
+						<input type="radio" name="themes" value="Health"> Health <br>
+						<input type="radio" name="themes" value="HumanRights"> Human Rights <br>
+						<input type="radio" name="themes" value="Media"> Media <br>
+						<input type="radio" name="themes" value="Politics"> Politics <br>
+						<input type="radio" name="themes" value="Politics"> Other <br>
+						</div>
+					
+					</div>
+					<div class="input-group">
+						<br>
+						Describe your new Dream Idea:
+						<br> 
+						<textarea name="dreamDescription" rows="8" cols="70" placeholder="Write your dream idea here ..."></textarea>
+					</div>
+					<div class="input-group">
+						<br>
+						What is the future you are creating?  
+						<br> 
+						<textarea name="dreamFuture" rows="8" cols="70" placeholder="What problem do you see in the world that you plan to fix? What change do you want to create in the world? Why is it important that people support you in addressing this issue?"></textarea>
+					</div>
+					<br>
+					
+					<div align="center">
+						<a href="https://www.hourworld.org/bank/Join.php?hw=1042">(Also, register a Time Bank account)</a>
+					</div>
+
+ 
+					<div id="error_messages">
+					</div>
+					<div id="success_messages">
+					</div>
+					<br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Create</button> 
+				</div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+	</div>
 {% endblock %}
