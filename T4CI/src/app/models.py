@@ -39,6 +39,12 @@ class DreamTeamManager(models.Manager):
 	def addteammember(self, personid, dreamid, position):
 		member = self.create(personid=personid,dreamid=dreamid,position=position)
 		return member
+		
+	def changeRole(self, id, role_id):
+		raw = TeamMember.objects.get(id=id)
+		raw.position = role_id
+		raw.save()
+		return raw
 
 class TeamMember(models.Model):
 	INACTIVE = 0

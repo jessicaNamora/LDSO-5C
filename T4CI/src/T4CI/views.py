@@ -74,6 +74,13 @@ def deletetask(request, dream_id):
 	Task.objects.deletetask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+	
+def changeRole(request, id, dream_id):
+	role_id = request.POST['campo']
+
+	TeamMember.objects.changeRole(id=id, role_id=role_id)
+
+	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
 def team(request, dream_id):
 	if request.user.is_authenticated():
