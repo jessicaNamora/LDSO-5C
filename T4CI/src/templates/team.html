@@ -49,9 +49,14 @@ window.onload = loadingFunctions;
 <div class='row'>
 
 <div class='col-sm-6 col-sm-offset-2' id="dreamTable">
-<h1>Team <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
+<h1>
+	Team 
+	{% if auth.position == "TL" or auth.position == "TC" %}
+	<button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Member
-	</button></h1>
+	</button>
+	{% endif %}
+</h1>
 <hr class="featurette-divider">
 
 <table class="table">
@@ -84,6 +89,7 @@ window.onload = loadingFunctions;
 				</td>
 				{% endif %}
 			</tr>
+			{% if auth.position == "TL" %}
 			<div id="removeTeamMember" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	 aria-hidden="true">
 	<div class="modal-dialog">
@@ -104,7 +110,7 @@ window.onload = loadingFunctions;
 				<div id="success_messages">
 				</div>
 				<br> 
-			</div>
+				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
 				<button class="btn btn-primary btn-lg" data-toggle="modal">Delete</button> 
@@ -113,12 +119,13 @@ window.onload = loadingFunctions;
 			</div>
 		</div>
 	</div>
-</div>
+</div>{% endif %}
 		{% endfor %}
 	</tbody>
 </table>
 </div>
 </div>
+{% if auth.position == "TL" or auth.position == "TC" %}
 <div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		 aria-hidden="true">
 	<div class="modal-dialog">
@@ -164,7 +171,7 @@ window.onload = loadingFunctions;
 			</div>
 		</div>
 </div>
-
+{% endif %}
 
 </div>
 

@@ -41,9 +41,11 @@ class DreamTeamManager(models.Manager):
 class TeamMember(models.Model):
 	TEAMLEADER = 'TL'
 	TEAMMEMBER = 'TM'
+	TEAMCOMMUNICATOR = 'TC'
 	TEAM=(
     	(TEAMLEADER, 'Team Leader'),
     	(TEAMMEMBER, "Team Member"),
+    	(TEAMCOMMUNICATOR, "Team Communicator"),
     )
 	#name = models.CharField(max_length=120, blank=True, null=True)
 	personid = models.PositiveIntegerField(default=0, blank=True, null=True)
