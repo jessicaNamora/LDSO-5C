@@ -1,5 +1,10 @@
 from django.db import models
 import datetime
+from django.conf import settings
+
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+from registration.signals import user_registered
 
 # Create your models here.
 
@@ -99,4 +104,33 @@ class Task(models.Model):
 
 	def __unicode__(self):
 		return self
+
+class UserProfile(models.Model):
+#   user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
+    address = models.CharField(max_length=150, null=True)
+    locality = models.CharField(max_length=30, null=True)
+    phone_number = models.PositiveIntegerField(null=True)
+    description = models.CharField(max_length=150, null=True)
+    avatar = models.ImageField(upload_to="static_in_env", null=True, blank=True) #still not being used
+
+
+
+def assure_user_profile_exists(pk):
+        """
+        This might not be working. To be judged later
+        """
+        user = User.objects.get(pk=pk)
+        try:
+            # fails if it doesn't exist
+            userprofile = user.userprofile
+        except UserProfile.DoesNotExist, e:
+            userprofile = UserProfile(user=user)
+            userprofile.save()
+        return
+
+def create_user_profile(**kwargs):
+        UserProfile.objects.get_or_create(user=kwargs['user'])
+
+user_registered.connect(create_user_profile)
 

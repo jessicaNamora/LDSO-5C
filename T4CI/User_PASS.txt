@@ -1,0 +1,7 @@
+johnSmith aa
+jessiquita jessica
+luke luke
+jessicaRocha luke
+marta luke
+
+as ultimas passes são iguais porque criei diretamente na base de dados

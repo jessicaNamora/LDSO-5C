@@ -5,6 +5,12 @@ from django.shortcuts import render
 from .forms import ContactForm, SignUpForm
 from .models import SignUp
 
+from django.views.generic import DetailView
+from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.models import User
+from .models import UserProfile, assure_user_profile_exists
+
+
 # Create your views here.
 def home(request):
 	title = 'Sign Up Now'
@@ -96,7 +102,18 @@ def overview(request):
 	return render(request, "overview.html", {})
 
 
+class UserProfileDetail(DetailView):
+    model = UserProfile
 
+
+class UserProfileUpdate(UpdateView):
+    model = UserProfile
+    fields = ('address','locality','phone_number','description','avatar')
+    #success_url = "/cmmods/complete-registration"
+
+    def get(self, request, *args, **kwargs):
+        #assure_user_profile_exists(kwargs['pk'=self.request.user.id])
+        return (super(UserProfileUpdate, self).get(self, request, *args, **kwargs))
 
 
 

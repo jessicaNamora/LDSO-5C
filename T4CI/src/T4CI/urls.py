@@ -3,6 +3,8 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import RedirectView
+from app import views
+from django.core.urlresolvers import reverse_lazy
 
 
 urlpatterns = [
@@ -27,6 +29,12 @@ urlpatterns = [
     url(r'^dream/(?P<dream_id>[0-9]+)/$', 'T4CI.views.dream', name='dream'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^(?P<pk>[0-9]+)/$',
+        views.UserProfileDetail.as_view(),
+        name='userprofile_detail'),#this will be erased, after decision
+    url(r'^(?P<pk>[0-9]+)/update/$',
+        views.UserProfileUpdate.as_view(success_url=reverse_lazy('profile')),
+        name='user_profile_edit'),    
 ]
 
 if settings.DEBUG:

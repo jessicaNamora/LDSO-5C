@@ -8,8 +8,11 @@
 <br><br>
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-1'>
-		<h2>Name: {{user.get_username }}</h2>
-		<h2>Email: {{user.email }}</h2>
-</div>
-</div>
+		<h1>Basic Profile</h1>
+		<h3>Name: {{user.get_username }}</h3>
+		<h3>Email: {{user.email }}</h3>
+		<h3>Description: {{user.userprofile.description }}</h3>
+		<h3>Avatar: {{user.userprofile.avatar }}</h3>
+		<img src='{% static user.userprofile.avatar %}' class='img-responsive' />
+		<a href='../{{ user.pk}}'>Show More</a>
 {% endblock %}
