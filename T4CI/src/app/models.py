@@ -108,11 +108,11 @@ class Task(models.Model):
 class UserProfile(models.Model):
 #   user = models.ForeignKey(User, unique=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
-    address = models.CharField(max_length=150, null=True)
-    locality = models.CharField(max_length=30, null=True)
-    phone_number = models.PositiveIntegerField(null=True)
-    description = models.CharField(max_length=150, null=True)
-    avatar = models.ImageField(upload_to="static_in_env", null=True, blank=True) #still not being used
+    address = models.CharField(max_length=150, null=True, blank=True)
+    locality = models.CharField(max_length=30, null=True, blank=True)
+    phone_number = models.PositiveIntegerField(null=True, blank=True)
+    description = models.CharField(max_length=150, null=True, blank=True)
+    avatar = models.ImageField(upload_to="profile_pic", null=True, blank=True) 
 
 
 

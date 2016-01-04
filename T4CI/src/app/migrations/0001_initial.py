@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 ('locality', models.CharField(max_length=30, null=True)),
                 ('phone_number', models.PositiveIntegerField(null=True)),
                 ('description', models.CharField(max_length=150, null=True)),
-                ('avatar', models.ImageField(null=True, upload_to=b'static_in_env', blank=True)),
+                ('avatar', models.ImageField(default=b'default.png', upload_to=b'profile_pic')),
             ],
         ),
     ]

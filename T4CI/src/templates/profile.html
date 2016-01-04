@@ -8,11 +8,15 @@
 <br><br>
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-1'>
-		<h1>Basic Profile</h1>
-		<h3>Name: {{user.get_username }}</h3>
-		<h3>Email: {{user.email }}</h3>
-		<h3>Description: {{user.userprofile.description }}</h3>
-		<h3>Avatar: {{user.userprofile.avatar }}</h3>
-		<img src='{% static user.userprofile.avatar %}' class='img-responsive' />
-		<a href='../{{ user.pk}}'>Show More</a>
+
+{% if user.userprofile.avatar %}
+<img src="{{ MEDIA_URL }}{{user.userprofile.avatar}}" class='img-responsive' />
+{% else %}
+<img src='{% static "img/default_profile.png" %}'  />{% endif %} 
+
+
+<h3>About Me: {{user.userprofile.description }}</h3>
+<a href='../{{ user.pk}}'>Show More</a>
+
+	
 {% endblock %}
