@@ -112,7 +112,7 @@ class UserProfile(models.Model):
     locality = models.CharField(max_length=30, null=True, blank=True)
     phone_number = models.PositiveIntegerField(null=True, blank=True)
     description = models.CharField(max_length=150, null=True, blank=True)
-    avatar = models.ImageField(upload_to="profile_pic", null=True, blank=True) 
+    avatar = models.FileField(upload_to="profile_pic", null=True, blank=True) 
 
 
 
