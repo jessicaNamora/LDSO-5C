@@ -10,10 +10,11 @@
 <div class='row'>
 <div class='col-sm-6 col-sm-offset-3'>
 
-
+<br>
 {% if title %}
 <h1 class='{% if title_align_center %}text-align-center{% endif %}'>{{ title }}</h1>
 {% endif %}
+<hr class="featurette-divider">
 
 <form method='POST' action=''>{% csrf_token %}
 {{ form|crispy }}
