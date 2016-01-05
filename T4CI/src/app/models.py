@@ -77,14 +77,15 @@ class TeamMember(models.Model):
 
 # Tasks
 class TaskManager(models.Manager):
-	def addtask(self, taskname, taskstatus, dreamid):
-		task = self.create(taskname=taskname,taskstatus=taskstatus,dreamid=dreamid)
+	def addtask(self, taskname, taskstatus, dreamid, responsibleid):
+		task = self.create(taskname=taskname,taskstatus=taskstatus,dreamid=dreamid, responsibleid=responsibleid)
 		return task
 
-	def edittask(self,taskname,taskstatus,task_id):
+	def edittask(self,taskname,taskstatus,task_id,responsibleid):
 			task = Task.objects.get(id=task_id)
 			task.taskname = taskname
 			task.taskstatus = taskstatus
+			task.responsibleid = responsibleid
 			task.save()
 			#task = Task.objects.get(id=task_id)
 			#task.self.update(taskname=taskname,taskstatus=taskstatus)
@@ -99,6 +100,7 @@ class Task(models.Model):
 	taskname = models.CharField(max_length=120, blank=True, null=True)
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)
 	dreamid = models.PositiveIntegerField(default=0, null=True, blank=True)
+	responsibleid = models.PositiveIntegerField(default=0, null=True, blank=True)
 
 	objects = TaskManager()
 

@@ -62,8 +62,12 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'current' %}
 	      <a href"#"><div class="col-xs-4" draggable="true" ondragstart="drag(event)">
-	      	<div class="taskName">{{task.taskname}}</div>
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      	<div class="taskName">{{task.taskname}}</div> 
+	      	{% for member in team %}
+	      	{% if task.responsibleid == member.personid %}
+	      	<img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
+	      	{% endfor %}
+	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
 	      		<li><a href="#">Done</a></li>
@@ -80,7 +84,11 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'todo' %}
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      {% for member in team %}
+	      {% if task.responsibleid == member.personid %}
+	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
+	      {% endfor %}
+	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
 	      		<li><a href="#">Start</a></li>
@@ -96,8 +104,12 @@
 	      <h2>Done</h2>
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'done' %}
-	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
-	      	<a><img src="{% static 'img/edit.png' %}"/></a>
+	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>	      
+	      {% for member in team %}
+	      {% if task.responsibleid == member.personid %}
+	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
+	      {% endfor %}
+	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
@@ -133,15 +145,32 @@
 
 					<div class="input-group">
 						<br>
-						State of the Task  
+						State of the Task
 						<br>
 						<select name="taskStatus" value="current">
 							<option value=""> -</option>
-							<option value="toDo">To Do</option>
+							<option value="todo">To Do</option>
 							<option value="current">Current</option>
 							<option value="done">Done</option>
 						</select>
 					</div> 
+					
+					<div class="input-group">
+						<br>
+						Responsible for the Task - {{task.responsibleid}}
+						<br>
+						<select name="responsibleId" value="0">
+							<!--{#{% if auth.position == "TL" or auth.position == "TC" %}#}-->
+							<option value="0">--</option>
+							{% for member in team %}
+							<option value="{{member.personid }}">{{ member.username }}</option>
+							{% endfor %}
+							<!--{#{% else %}#}
+							<option value="{{task.responsibleid}}">No Changes</option>
+							{#{% endif %}#}-->
+						</select>
+					</div> 
+					
 
 					<br>
 					<input type="hidden" name="edittaskid" id="edittaskid" value=""/>
@@ -231,7 +260,21 @@
 							<option value="current">Current</option>
 							<option value="done">Done</option>
 						</select>
-					</div>
+					</div><div class="input-group">
+						<br>
+						Responsible for the Task - {{task.responsibleid}}
+						<br>
+						<select name="responsibleId" value="0">
+							<!--{#{% if auth.position == "TL" or auth.position == "TC" %}#}-->
+							<option value="0">--</option>
+							{% for member in team %}
+							<option value="{{member.personid }}">{{ member.username }}</option>
+							{% endfor %}
+							<!--{#{% else %}#}
+							<option value="{{task.responsibleid}}">No Changes</option>
+							{#{% endif %}#}-->
+						</select>
+					</div> 
 
 					<br>
 

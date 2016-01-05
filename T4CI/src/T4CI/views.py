@@ -21,7 +21,8 @@ def dream(request, dream_id):
 
 		projects = Dream.objects.filter(id=dream_id)
 		tasks = Task.objects.raw("SELECT * FROM app_task, app_teammember WHERE app_task.dreamid = app_teammember.dreamid AND app_task.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
-	
+		members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+
 		if(len(list(tasks)) < 1):
 			tasks = None
 
@@ -31,8 +32,10 @@ def dream(request, dream_id):
 			project = None
 
 		context = {
+			'auth' : auth[0],
 			'dream' : project,
-			'tasks' : tasks
+			'tasks' : tasks,
+			'team' : members
 		}
 		return render(request, "dream.html", context)
 	else:
@@ -46,7 +49,8 @@ def addtask(request, dream_id):
 
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
-	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id)
+	responsibleid = request.POST.get('responsibleId',0)
+	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id,responsibleid=responsibleid)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
@@ -59,7 +63,8 @@ def edittask(request, dream_id):
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
 	task_id = request.POST['edittaskid']
-	Task.objects.edittask(taskname=taskname,taskstatus=taskstatus,task_id=task_id)
+	responsibleid = request.POST.get('responsibleId', 0)
+	Task.objects.edittask(taskname=taskname,taskstatus=taskstatus,task_id=task_id, responsibleid=responsibleid)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
