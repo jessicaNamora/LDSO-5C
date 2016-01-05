@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+{% include 'sidebar.html' %}
+<script type="text/javascript">
+function rejectInvite(id) {
+     var dreamid = id;
+     var headerchild =document.getElementById('rejectdreamid');
+     $(".modal-body #rejectdreamid").val( dreamid )
+     headerchild.innerHTML=dreamid;
+}
+function acceptInvite(id) {
+     var dreamid = id;
+     var headerchild =document.getElementById('acceptdreamid');
+     $(".modal-body #acceptdreamid").val( dreamid )
+     headerchild.innerHTML=dreamid;
+}
+</script>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"><br><br>
+	<div class='row'>
+		<h1>{{ user.get_username }}'s Messages</h1>
+		<br>
+		{% if not invites and not answers and not changedRoles %}
+			You currently have no messages.
+		{% elif invites or answers or changedRoles %}
+			<div id="messageTable">
+			{% for invite in invites %}
+				<div class="message">
+					<div class="messageType">Invitation</div> 
+					<div class="messageText"> You have been invited to join the team working on the dream <ins>{{invite.name}}</ins></div>		
+					<div class="buttons">
+						<button class="btn btn-primary btn-info" id="joinDreamBtn" data-toggle="modal" data-target="#joinDream" onclick="acceptInvite({{invite.dreamid}})">Join</button>
+						<button class="btn btn-primary btn-info" id="rejectDreamBtn" data-toggle="modal" data-target="#rejectDream" onclick="rejectInvite({{invite.dreamid}})">Decline</button>
+					</div>
+				</div>
+			{% endfor %}
+			{% for answer in answers %}
+				<div class="message">
+					{% if answer.type == 1 %}
+						<div class="messageType rejectedMessage">Declined Invitation</div> 
+						<div class="messageText"> <ins>{{answer.invited}}</ins> declined your invitation to join your team at <ins>{{answer.dreamName}}</ins>.</div>		
+					{% elif answer.type == 2 %}	
+						<div class="messageType acceptedMessage">Accepted Invitation</div> 
+						<div class="messageText"> <ins>{{answer.invited}}</ins> accepted your invitation to join your team at <ins>{{answer.dreamName}}</ins>.</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+			{% for changed in changedRoles %}
+				<div class="message">
+					<div class="messageType changedRole">Changed Role</div> 
+					<div class="messageText"> Your role at <ins>{{changed.name}}</ins> as been changed to <ins>{{changed.extra}}</ins></div>
+				</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+</div>
+<div id="joinDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Accept Invitation</h4>
+			</div>
+ 			<form action="{% url 'acceptinvite'%}" method="post">
+			{% csrf_token %}
+				<div class="modal-body">	
+					<div class="input-group">
+						<br>
+						Congratulations and welcome to the team! Hit the confirm button and check your dreams page to see how the dream is going along.
+						<br>
+						<input type="hidden" name="acceptdreamid" id="acceptdreamid" value=""/>
+						<div id="error_messages">
+						</div> 
+						<div id="success_messages">
+						</div>
+						<br> 
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Confirm</button> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div id="rejectDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Reject Invitation</h4>
+			</div>
+ 			<form action="{% url 'rejectinvite'%}" method="post">
+			{% csrf_token %}
+				<div class="modal-body">	
+					<div class="input-group">
+						<br>
+						Are you sure that you want to reject this invitation?
+						<br>
+						<input type="hidden" name="rejectdreamid" id="rejectdreamid" value=""/>
+						<div id="error_messages">
+						</div> 
+						<div id="success_messages">
+						</div>
+						<br> 
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Delete</button> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

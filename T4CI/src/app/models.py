@@ -75,6 +75,38 @@ class TeamMember(models.Model):
 	def __unicode__(self):
 		return self.name
 
+# Messages
+class MessagesManager(models.Manager):
+	def addInvite(self, messageType,dreamid):
+		message = self.create(messageType=messageType,dreamid=dreamid)
+		return message
+	def addAnswer(self, messageType,dreamid, extra):
+		message = self.create(messageType=messageType,dreamid=dreamid, extra=extra)
+		return message
+	def addmessage(self, messageType, receiver, dreamid,extra):
+		message = self.create(messageType=messageType,receiver=receiver,dreamid=dreamid,extra=extra)
+		return message
+
+class Messages(models.Model):
+	INVITATION = 0
+	DECLINEDINVITE = 1
+	ACCEPTEDINVITE = 2
+	ROLE = 3
+	GENERAL = 4
+	
+	OPTIONS=((INVITATION,'Invitation'),(DECLINEDINVITE, 'Declined'),(ACCEPTEDINVITE,'Accepted'), (ROLE,'Role Change'))
+
+	messageType = models.PositiveIntegerField(default=4, choices=OPTIONS)
+	receiver = models.PositiveIntegerField(blank=True, null=True)
+	dreamid = models.PositiveIntegerField(default=0, blank=True, null=True)
+	extra = models.CharField(max_length=150, blank=True, null=True)
+	
+	objects = MessagesManager()
+
+	def __unicode__(self):
+		return self
+		
+		
 # Tasks
 class TaskManager(models.Manager):
 	def addtask(self, taskname, taskstatus, dreamid, responsibleid):

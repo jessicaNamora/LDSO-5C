@@ -159,8 +159,81 @@ div .content-block{
   margin-top: 40px;
 }
 
-#dreamTable {
+#dreamTable{
   margin-left: 0px;
   width:100%;
   float:none;
+}
+#messageTable {
+  font-size: 110%;
+  margin-left: 0px;
+  width:90%;
+  float:none;
+  overflow: auto;
+}
+
+#messageTable .messageType{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+
+  padding: 10px;
+  margin-right: 5px;
+}
+
+#messageTable .changedRole{
+
+  background-color: #428bca;
+}
+#messageTable .acceptedMessage{
+
+  background-color: #66cc33;
+}
+
+#messageTable .rejectedMessage{
+
+  background-color: #ff704d;
+}
+
+#messageTable .message{
+  border: 1px solid #428bca;
+  border-radius: 5px;
+  margin: 0px 0px 20px 0px;
+  padding: 5px;
+  overflow: hidden;
+  width: 850px;
+}
+
+#messageTable .message div{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#messageTable .messageText{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.messageText:hover{
+  white-space: pre-wrap;
+  overflow: visible;
+  color: #428bca;
+
+}
+#messageTable .message button {
+  display: inline-block;
+  width: 75px;
+  min-width: 40px;
+}
+#messageTable .buttons{
+  float: right;
+  margin: 4px 4px 0px 0px;
+  position: relative;
+}
+#messageTable .message b{
+  color: white;
+  background-color: #428bca;
+  margin-left:0px;
+  padding: 20px 10px 20px 10px;
 }
