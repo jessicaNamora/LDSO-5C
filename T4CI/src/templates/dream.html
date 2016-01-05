@@ -34,11 +34,30 @@
      headerchild.innerHTML=taskid;
 	}
 
-	function editTaskFunc(id) {
+	function editTaskFunc(id, dream_id) {
      var taskid = id;
      var headerchild =document.getElementById('edittaskid');
      $(".modal-body #edittaskid").val(taskid)
      headerchild.innerHTML=taskid;
+
+	    $.ajax({
+	        type: "POST",
+	        url: "/gettask/" + dream_id + "/",
+	        dataType:'json',
+	        data: {
+	        	csrfmiddlewaretoken : "{{csrf_token}}",
+	            edittaskid: id,
+	        },
+	        success: function(data) {
+	            if(data != "Error") {
+	            	$("textarea[name='taskNameNew']").val(data.taskname);
+	            	$("select[name='taskStatusNew'] option[value="+ data.taskstatus +"]").attr("selected",true);
+	            	$("select[name='responsibleIdNew'] option[value="+ data.responsibleid + "]").attr("selected",true);
+	            }
+	        },
+	        error: function(xhr, textStatus, errorThrown) {
+	        }
+	    });
 	}
 
 	window.onload=changeActiveSideBar;
@@ -76,7 +95,7 @@
 	      	{% endfor %}
 	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a href="#">Done</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
@@ -97,7 +116,7 @@
 	      {% endfor %}
 	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a href="#">Start</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
@@ -118,7 +137,7 @@
 	      {% endfor %}
 	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
-	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}})">Edit</a></li>
+	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
 	      </div></a>
@@ -146,7 +165,7 @@
 						<br>
 						Task
 						<br> 
-						<textarea name="taskName" rows="8" cols="70" ></textarea>
+						<textarea name="taskNameNew" rows="8" cols="70" ></textarea>
 					</div>
 					<br>
 
@@ -154,7 +173,7 @@
 						<br>
 						State of the Task
 						<br>
-						<select name="taskStatus" value="current">
+						<select name="taskStatusNew" value="current">
 							<option value=""> -</option>
 							<option value="todo">To Do</option>
 							<option value="current">Current</option>
@@ -166,7 +185,7 @@
 						<br>
 						Responsible for the Task - {{task.responsibleid}}
 						<br>
-						<select name="responsibleId" value="0">
+						<select name="responsibleIdNew" value="0">
 							<!--{#{% if auth.position == "TL" or auth.position == "TC" %}#}-->
 							<option value="0">--</option>
 							{% for member in team %}

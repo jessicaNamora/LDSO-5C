@@ -96,6 +96,10 @@ class TaskManager(models.Manager):
 			task.delete()
 			return
 
+	def gettask(self, task_id):
+		task = Task.objects.get(id=task_id)
+		return task
+
 class Task(models.Model):
 	taskname = models.CharField(max_length=120, blank=True, null=True)
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)

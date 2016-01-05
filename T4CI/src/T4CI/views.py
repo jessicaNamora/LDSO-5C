@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+import json
+import sys
 
 from app.models import Dream
 from app.models import Task
@@ -49,6 +52,32 @@ def is_int(var):
     except ValueError:
         return False
 
+def gettask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return HttpResponse('Error0')
+
+	task_id = request.POST.get('edittaskid', 0)
+	success = True
+
+	if task_id == None or task_id == '' or task_id == 0 or not is_int(task_id):
+		return HttpResponse('Error1')
+	else:
+		task = Task.objects.gettask(task_id=task_id)
+		if task == None:
+			return HttpResponse('Error2')
+
+	if success:
+		data = json.dumps({
+        	'taskname': task.taskname,
+        	'taskstatus': task.taskstatus,
+        	'responsibleid': task.responsibleid,
+    	})
+		return HttpResponse(data, content_type='application/json')
+	else:
+		return HttpResponse('Error')
+
 def addtask(request, dream_id):
 	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
 
@@ -88,10 +117,10 @@ def edittask(request, dream_id):
 	if(len(list(auth)) < 1):
 		return redirect('/mydreams')
 
-	taskname = request.POST['taskName']
-	taskstatus = request.POST['taskStatus']
+	taskname = request.POST['taskNameNew']
+	taskstatus = request.POST['taskStatusNew']
 	task_id = request.POST['edittaskid']
-	responsibleid = request.POST.get('responsibleId', 0)
+	responsibleid = request.POST.get('responsibleIdNew', 0)
 
 	success = True
 
