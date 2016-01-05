@@ -60,6 +60,21 @@
 	    });
 	}
 
+    function finishTaskFunc(id) {
+     var taskid = id;
+     console.log(taskid);
+     var headerchild =document.getElementById('finishtaskid');
+     $(".modal-body #finishtaskid").val( taskid )
+     headerchild.innerHTML=taskid;
+	}
+
+	function startTaskFunc(id) {
+     var taskid = id;
+     var headerchild =document.getElementById('starttaskid');
+     $(".modal-body #starttaskid").val( taskid )
+     headerchild.innerHTML=taskid;
+	}
+
 	window.onload=changeActiveSideBar;
 	</script>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -96,7 +111,7 @@
 	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
-	      		<li><a href="#">Done</a></li>
+	      		<li><a data-toggle="modal" data-target="#finishTask" class="finishTaskbtn" onclick="finishTaskFunc({{task.id}})">Done</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
 	      </div></a>
@@ -117,7 +132,7 @@
 	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
-	      		<li><a href="#">Start</a></li>
+	      		<li><a data-toggle="modal" data-target="#startTask" class="startTaskbtn" onclick="startTaskFunc({{task.id}})">Start</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
 	      </div></a>
@@ -250,6 +265,76 @@
 		
 	</div>
 	</div>
+
+		<div id="finishTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Finish Task</h4>
+					</div>
+	 				<form action="{% url 'finishtask' dream.id %}" method="post">
+					{% csrf_token %}
+					<div class="modal-body">
+						
+						<div class="input-group">
+							<br>
+							Are you sure that you want to finish this Task?
+							<br>
+							<input type="hidden" name="finishtaskid" id="finishtaskid" value=""/>
+						<div id="error_messages">
+						</div> 
+						<div id="success_messages">
+						</div>
+						<br> 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+						<button class="btn btn-primary btn-lg" data-toggle="modal">Finish</button> 
+					</div>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+		</div>
+
+		<div id="startTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Start Task</h4>
+					</div>
+	 				<form action="{% url 'starttask' dream.id %}" method="post">
+					{% csrf_token %}
+					<div class="modal-body">
+						
+						<div class="input-group">
+							<br>
+							Are you sure that you want to start this Task?
+							<br>
+							<input type="hidden" name="starttaskid" id="starttaskid" value=""/>
+						<div id="error_messages">
+						</div> 
+						<div id="success_messages">
+						</div>
+						<br> 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+						<button class="btn btn-primary btn-lg" data-toggle="modal">Start</button> 
+					</div>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+		</div>
 	
 	{% endif %}
 

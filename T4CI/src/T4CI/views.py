@@ -161,6 +161,32 @@ def deletetask(request, dream_id):
 	Task.objects.deletetask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+
+def finishtask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
+	task_id = request.POST['finishtaskid']
+
+	print >>sys.stderr, 'Goodbye, cruel world!'
+	print >>sys.stderr, task_id
+	Task.objects.finishtask(task_id=task_id)
+
+	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+
+def starttask(request, dream_id):
+	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+	if(len(list(auth)) < 1):
+		return redirect('/mydreams')
+
+	task_id = request.POST['starttaskid']
+	Task.objects.starttask(task_id=task_id)
+
+	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
+
 	
 def changeRole(request, id, dream_id):
 	role_id = request.POST['campo']

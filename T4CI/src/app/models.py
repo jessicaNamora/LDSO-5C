@@ -82,19 +82,33 @@ class TaskManager(models.Manager):
 		return task
 
 	def edittask(self,taskname,taskstatus,task_id,responsibleid):
-			task = Task.objects.get(id=task_id)
-			task.taskname = taskname
-			task.taskstatus = taskstatus
-			task.responsibleid = responsibleid
-			task.save()
-			#task = Task.objects.get(id=task_id)
-			#task.self.update(taskname=taskname,taskstatus=taskstatus)
-			return task
+		task = Task.objects.get(id=task_id)
+		task.taskname = taskname
+		task.taskstatus = taskstatus
+		task.responsibleid = responsibleid
+		task.save()
+		#task = Task.objects.get(id=task_id)
+		#task.self.update(taskname=taskname,taskstatus=taskstatus)
+		return task
 
 	def deletetask(self, task_id):
-			task = Task.objects.get(id=task_id)
-			task.delete()
-			return
+		task = Task.objects.get(id=task_id)
+		task.delete()
+		return
+
+	def finishtask(self, task_id):
+		task = Task.objects.get(id=task_id)
+		if task.taskstatus == 'current':
+			task.taskstatus = 'done'
+			task.save()
+		return task
+
+	def starttask(self, task_id):
+		task = Task.objects.get(id=task_id)
+		if task.taskstatus == 'todo':
+			task.taskstatus = 'current'
+			task.save()
+		return task
 
 	def gettask(self, task_id):
 		task = Task.objects.get(id=task_id)
