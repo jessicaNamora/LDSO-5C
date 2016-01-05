@@ -183,17 +183,15 @@
 					
 					<div class="input-group">
 						<br>
-						Responsible for the Task - {{task.responsibleid}}
+						Responsible for the Task
 						<br>
 						<select name="responsibleIdNew" value="0">
-							<!--{#{% if auth.position == "TL" or auth.position == "TC" %}#}-->
+							
 							<option value="0">--</option>
 							{% for member in team %}
 							<option value="{{member.personid }}">{{ member.username }}</option>
 							{% endfor %}
-							<!--{#{% else %}#}
-							<option value="{{task.responsibleid}}">No Changes</option>
-							{#{% endif %}#}-->
+
 						</select>
 					</div> 
 					
@@ -288,17 +286,15 @@
 						</select>
 					</div><div class="input-group">
 						<br>
-						Responsible for the Task - {{task.responsibleid}}
+						Responsible for the Task
 						<br>
 						<select name="responsibleId" value="0">
-							<!--{#{% if auth.position == "TL" or auth.position == "TC" %}#}-->
+							
 							<option value="0">--</option>
 							{% for member in team %}
 							<option value="{{member.personid }}">{{ member.username }}</option>
 							{% endfor %}
-							<!--{#{% else %}#}
-							<option value="{{task.responsibleid}}">No Changes</option>
-							{#{% endif %}#}-->
+							
 						</select>
 					</div> 
 
