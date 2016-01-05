@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 from app.models import Dream
 from app.models import Task
@@ -40,7 +41,14 @@ def dream(request, dream_id):
 		return render(request, "dream.html", context)
 	else:
 		return redirect('/')
-	
+
+def is_int(var):
+    try:
+        int(var)
+        return True
+    except ValueError:
+        return False
+
 def addtask(request, dream_id):
 	auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
 
@@ -50,7 +58,27 @@ def addtask(request, dream_id):
 	taskname = request.POST['taskName']
 	taskstatus = request.POST['taskStatus']
 	responsibleid = request.POST.get('responsibleId',0)
-	task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id,responsibleid=responsibleid)
+	success = True
+
+	if taskname == None or taskname == '':
+		success = False
+		messages.error(request, 'Dream description was left blank.')
+
+	if taskstatus == None or taskstatus == '' or not taskstatus in ['done', 'current', 'todo']:
+		success = False
+		messages.error(request, 'Task status has an invalid value.')
+
+	if responsibleid == None or responsibleid == '' or responsibleid == 0 or not is_int(responsibleid):
+		success = False
+		messages.error(request, 'The member assigned does not exist.')
+	else:
+		responsible = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s AND app_teammember.personid = %s", [dream_id, responsibleid])
+		if(len(list(responsible)) < 1):
+			success = False
+			messages.error(request, 'The member assigned does not exist.')
+
+	if success:
+		task = Task.objects.addtask(taskname=taskname,taskstatus=taskstatus,dreamid=dream_id,responsibleid=responsibleid)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
@@ -64,7 +92,32 @@ def edittask(request, dream_id):
 	taskstatus = request.POST['taskStatus']
 	task_id = request.POST['edittaskid']
 	responsibleid = request.POST.get('responsibleId', 0)
-	Task.objects.edittask(taskname=taskname,taskstatus=taskstatus,task_id=task_id, responsibleid=responsibleid)
+
+	success = True
+
+	if taskname == None or taskname == '':
+		success = False
+		messages.error(request, 'Task name was left blank.')
+
+	if taskstatus == None or taskstatus == '' or not taskstatus in ['done', 'current', 'todo']:
+		success = False
+		messages.error(request, 'Task status has an invalid value.')
+
+	if task_id == None or task_id == '' or task_id == 0 or not is_int(task_id):
+		success = False
+		messages.error(request, 'The task does not exist.')
+
+	if responsibleid == None or responsibleid == '' or responsibleid == 0 or not is_int(responsibleid):
+		success = False
+		messages.error(request, 'The member assigned does not exist.')
+	else:
+		responsible = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s AND app_teammember.personid = %s", [dream_id, responsibleid])
+		if(len(list(responsible)) < 1):
+			success = False
+			messages.error(request, 'The member assigned does not exist.')
+
+	if success:
+		Task.objects.edittask(taskname=taskname,taskstatus=taskstatus,task_id=task_id, responsibleid=responsibleid)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
