@@ -121,6 +121,20 @@ class Messages(models.Model):
 	def __unicode__(self):
 		return self
 		
+# Gifts
+class GiftManager(models.Manager):
+	def addgift(self, userid, giftname):
+		gift = self.create(user=userid,gift=giftname)
+		return gift
+
+class Gift(models.Model):
+	user = models.PositiveIntegerField(default=0, null=True, blank=True)
+	gift = models.CharField(max_length=30, null=True, blank=True)
+
+	objects = GiftManager()
+
+	def __unicode__(self):
+		return self
 		
 # Tasks
 class TaskManager(models.Manager):

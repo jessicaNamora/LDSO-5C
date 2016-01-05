@@ -91,11 +91,11 @@
 	<h1>Manage {{dream.name}} <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Task
 	</button></h1>
+	<hr class="featurette-divider">
 	{% if not tasks %}
 		This dream has no tasks to be displayed.
 	{% elif tasks %}
-	<hr class="featurette-divider">
-	
+
 	  <!-- LIST Current Tasks of the Dream -->
 	  <div class="row">
 	    <div class="col-md-4" id="currentCol">

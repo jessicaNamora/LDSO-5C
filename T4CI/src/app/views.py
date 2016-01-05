@@ -1,7 +1,8 @@
 from django.conf import settings
+from django.shortcuts import redirect
 from django.core.mail import send_mail
 from django.shortcuts import render
-
+import sys
 from .forms import ContactForm, SignUpForm
 from .models import SignUp
 
@@ -93,7 +94,10 @@ def contact(request):
 
 
 def profile(request):
-	return render(request, "profile.html", {})
+	if request.user.is_authenticated():
+		return render(request, "profile.html", {})
+	else:
+		return redirect('/')
 
 def about(request):
 	return render(request, "about.html", {})
@@ -113,10 +117,7 @@ class UserProfileUpdate(UpdateView):
 
     def get(self, request, *args, **kwargs):
         #assure_user_profile_exists(kwargs['pk'=self.request.user.id])
-        return (super(UserProfileUpdate, self).get(self, request, *args, **kwargs))
-
-
-
-
-
-
+		if int(kwargs['pk']) != request.user.id:
+			return redirect('/')
+		else:
+			return (super(UserProfileUpdate, self).get(self, request, *args, **kwargs))
