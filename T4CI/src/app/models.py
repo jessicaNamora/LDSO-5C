@@ -44,7 +44,13 @@ class DreamTeamManager(models.Manager):
 	def addteammember(self, personid, dreamid, position):
 		member = self.create(personid=personid,dreamid=dreamid,position=position)
 		return member
-		
+	
+	def becomeActive(self, personid, dreamid):
+		raw = TeamMember.objects.get(personid=personid, dreamid=dreamid)
+		raw.active = 1
+		raw.save()
+		return raw
+
 	def changeRole(self, id, role_id):
 		raw = TeamMember.objects.get(id=id)
 		raw.position = role_id
@@ -77,6 +83,12 @@ class TeamMember(models.Model):
 
 # Messages
 class MessagesManager(models.Manager):
+	def seenMessage(self, id):
+		raw = Messages.objects.get(id=id)
+		raw.seen = 1
+		raw.save()
+		return raw
+
 	def addInvite(self, messageType,dreamid):
 		message = self.create(messageType=messageType,dreamid=dreamid)
 		return message
@@ -93,6 +105,8 @@ class Messages(models.Model):
 	ACCEPTEDINVITE = 2
 	ROLE = 3
 	GENERAL = 4
+
+	NOTSEEN=0
 	
 	OPTIONS=((INVITATION,'Invitation'),(DECLINEDINVITE, 'Declined'),(ACCEPTEDINVITE,'Accepted'), (ROLE,'Role Change'))
 
@@ -100,6 +114,7 @@ class Messages(models.Model):
 	receiver = models.PositiveIntegerField(blank=True, null=True)
 	dreamid = models.PositiveIntegerField(default=0, blank=True, null=True)
 	extra = models.CharField(max_length=150, blank=True, null=True)
+	seen =  models.BooleanField(default=NOTSEEN)
 	
 	objects = MessagesManager()
 

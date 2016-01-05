@@ -2,6 +2,12 @@
 {% block content %}
 {% include 'sidebar.html' %}
 <script type="text/javascript">
+function seenMessage(id) {
+     var dreamid = id;
+     var headerchild =document.getElementById('seenmessageid');
+     $(".modal-body #seenmessageid").val( dreamid )
+     headerchild.innerHTML=dreamid;
+}
 function rejectInvite(id) {
      var dreamid = id;
      var headerchild =document.getElementById('rejectdreamid');
@@ -26,7 +32,7 @@ function acceptInvite(id) {
 			<div id="messageTable">
 			{% for invite in invites %}
 				<div class="message">
-					<div class="messageType">Invitation</div> 
+					<div class="messageType invitation">Invitation</div> 
 					<div class="messageText"> You have been invited to join the team working on the dream <ins>{{invite.name}}</ins></div>		
 					<div class="buttons">
 						<button class="btn btn-primary btn-info" id="joinDreamBtn" data-toggle="modal" data-target="#joinDream" onclick="acceptInvite({{invite.dreamid}})">Join</button>
@@ -38,17 +44,26 @@ function acceptInvite(id) {
 				<div class="message">
 					{% if answer.type == 1 %}
 						<div class="messageType rejectedMessage">Declined Invitation</div> 
-						<div class="messageText"> <ins>{{answer.invited}}</ins> declined your invitation to join your team at <ins>{{answer.dreamName}}</ins>.</div>		
+						<div class="messageText"> <ins>{{answer.invited}}</ins> declined your invitation to join your team at <ins>{{answer.dreamName}}</ins>.</div>
+						<div class="buttons">
+						<button class="btn btn-primary btn-info" id="markSeenBtn" data-toggle="modal" data-target="#seenMessage" onclick="seenMessage({{invite.id}})">Hide</button>
+					</div>		
 					{% elif answer.type == 2 %}	
 						<div class="messageType acceptedMessage">Accepted Invitation</div> 
 						<div class="messageText"> <ins>{{answer.invited}}</ins> accepted your invitation to join your team at <ins>{{answer.dreamName}}</ins>.</div>
+						<div class="buttons">
+						<button class="btn btn-primary btn-info" id="markSeenBtn" data-toggle="modal" data-target="#seenMessage" onclick="seenMessage({{answer.id}})">Hide</button>
+					</div>
 					{% endif %}
 				</div>
 			{% endfor %}
 			{% for changed in changedRoles %}
 				<div class="message">
 					<div class="messageType changedRole">Changed Role</div> 
-					<div class="messageText"> Your role at <ins>{{changed.name}}</ins> as been changed to <ins>{{changed.extra}}</ins></div>
+					<div class="messageText"> Your role at <ins>{{changed.name}}</ins> as been changed to <ins>{{changed.role}}</ins></div>
+					<div class="buttons">
+						<button class="btn btn-primary btn-info" id="markSeenBtn" data-toggle="modal" data-target="#seenMessage" onclick="seenMessage({{changed.id}})">Hide</button>
+					</div>
 				</div>
 			{% endfor %}
 			</div>
@@ -87,6 +102,40 @@ function acceptInvite(id) {
 		</div>
 	</div>
 </div>
+
+<div id="seenMessage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		 aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Mark Message as Seen</h4>
+			</div>
+ 			<form action="{% url 'seenmessage'%}" method="post">
+			{% csrf_token %}
+				<div class="modal-body">	
+					<div class="input-group">
+						<br>
+						This message won't be shown again!
+						<br>
+						<input type="hidden" name="seenmessageid" id="seenmessageid" value=""/>
+						<div id="error_messages">
+						</div> 
+						<div id="success_messages">
+						</div>
+						<br> 
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-primary btn-lg" data-toggle="modal">Confirm</button> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 
 
 <div id="rejectDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

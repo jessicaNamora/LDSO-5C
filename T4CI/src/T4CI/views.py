@@ -194,7 +194,7 @@ def changeRole(request, id, dream_id):
 
 	person = TeamMember.objects.changeRole(id=id, role_id=role_id)
 
-	message = Messages.objects.addmessage(messageType=3,receiver=person.personid,dreamid=dream_id,extra=role_id)
+	message = Messages.objects.addmessage(messageType=3,receiver=person.personid,dreamid=dream_id,extra=person.get_position_display())
 
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
@@ -291,9 +291,9 @@ def overview(request):
 def requestmessages(request):
 	invites = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND app_teammember.active= %s AND app_teammember.personid = %s", ["0",request.user.id])
 
-	changedRoles = Messages.objects.raw("SELECT * FROM app_messages, app_dream WHERE app_messages.dreamid=app_dream.id AND app_messages.messageType=%s AND app_messages.receiver=%s", ["3", request.user.id])
+	changedRoles = Messages.objects.raw("SELECT app_messages.id as id, app_dream.name as name, app_messages.extra as role FROM app_messages, app_dream WHERE app_messages.dreamid=app_dream.id AND app_messages.messageType=%s AND app_messages.receiver=%s AND app_messages.seen=%s", ["3", request.user.id,"0"])
 
-	answers = Messages.objects.raw("SELECT app_messages.id as id, app_messages.messageType as type, app_messages.extra as invited, app_dream.name as dreamName FROM app_messages, app_teammember, app_dream WHERE app_messages.dreamid = app_teammember.dreamid AND app_dream.id=app_messages.dreamid AND (app_messages.messageType= %s OR  app_messages.messageType= %s) AND app_teammember.personid = %s AND app_messages.extra<>%s ", ["1", "2",request.user.id, request.user.username])
+	answers = Messages.objects.raw("SELECT app_messages.id as id, app_messages.messageType as type, app_messages.extra as invited, app_dream.name as dreamName FROM app_messages, app_teammember, app_dream WHERE app_messages.dreamid = app_teammember.dreamid AND app_dream.id=app_messages.dreamid AND (app_messages.messageType= %s OR  app_messages.messageType= %s) AND app_teammember.personid = %s AND app_messages.extra<>%s AND app_messages.seen=%s", ["1", "2",request.user.id, request.user.username,"0"])
 	if(len(list(invites)) < 1):
 			invites = None
 	if(len(list(answers)) < 1):
@@ -316,7 +316,7 @@ def acceptinvite(request):
 
 	message = Messages.objects.addAnswer(messageType=2,dreamid=dreamid,extra=request.user.username)
 	changed = TeamMember.objects.becomeActive(personid=request.user.id, dreamid=dreamid)
-	return HttpResponseRedirect(reverse('messages'))
+	return HttpResponseRedirect(reverse('requestmessages'))
 
 def rejectinvite(request):
 	dreamid= request.POST['rejectdreamid']
@@ -327,4 +327,15 @@ def rejectinvite(request):
 
 	message = Messages.objects.addAnswer(messageType=1,dreamid=dreamid,extra=request.user.username)
 	invite.delete()
-	return HttpResponseRedirect(reverse('messages'))
+	return HttpResponseRedirect(reverse('requestmessages'))
+
+def seenmessage(request):
+	id= request.POST['seenmessageid']
+	message = Messages.objects.filter(id=id)
+
+	if(len(list(message)) < 1):
+		return redirect('/messages')
+
+	message = Messages.objects.seenMessage(id=id)
+
+	return HttpResponseRedirect(reverse('requestmessages'))

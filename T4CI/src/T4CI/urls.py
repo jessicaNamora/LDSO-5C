@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^messages/$','T4CI.views.requestmessages', name='requestmessages'),
     url(r'^acceptinvite/$','T4CI.views.acceptinvite', name='acceptinvite'),
     url(r'^rejectinvite/$','T4CI.views.rejectinvite', name='rejectinvite'),
+    url(r'^seenmessage/$','T4CI.views.seenmessage', name='seenmessage'),
     url(r'^addtask/(?P<dream_id>[0-9]+)/$','T4CI.views.addtask', name='addtask'),
     url(r'^deletetask/(?P<dream_id>[0-9]+)/$','T4CI.views.deletetask', name='deletetask'),
     url(r'^edittask/(?P<dream_id>[0-9]+)/$','T4CI.views.edittask', name='edittask'),

@@ -185,6 +185,11 @@ div .content-block{
 
   background-color: #428bca;
 }
+#messageTable .invitation{
+
+  background-color: #428bca;
+}
+
 #messageTable .acceptedMessage{
 
   background-color: #66cc33;
@@ -210,14 +215,11 @@ div .content-block{
 }
 
 #messageTable .messageText{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  width: 65%;
+  display: inline-block;
 }
 
 .messageText:hover{
-  white-space: pre-wrap;
-  overflow: visible;
   color: #428bca;
 
 }
