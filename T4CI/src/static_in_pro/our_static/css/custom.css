@@ -108,6 +108,23 @@
   float:right;
   margin-right: 25px;
 }
+
+#addDreamBtn{
+  float:right;
+  margin-right: 25px;
+}
+.modal-header {
+  background-color: #428bca;
+  color: white;
+}
+
+.formElement {
+  font-size: 130%;
+}
+
+textarea {
+    resize: none;
+}
 /*
  * Sidebar
  */

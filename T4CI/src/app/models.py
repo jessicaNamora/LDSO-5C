@@ -41,8 +41,8 @@ class Dream(models.Model):
 
 # Dreams - Team
 class DreamTeamManager(models.Manager):
-	def addteammember(self, personid, dreamid, position):
-		member = self.create(personid=personid,dreamid=dreamid,position=position)
+	def addteammember(self, personid, dreamid, position,active):
+		member = self.create(personid=personid,dreamid=dreamid,position=position,active=active)
 		return member
 	
 	def becomeActive(self, personid, dreamid):

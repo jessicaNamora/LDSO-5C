@@ -228,7 +228,7 @@ def addteammember(request, dream_id):
 
 	person = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND auth_user.email = %s AND app_teammember.dreamid!=%s", [memberEmail,dream_id])
 	if(len(list(person)) > 0):
-		TeamMember.objects.addteammember(personid=person[0].personid,dreamid=dream_id,position=memberRole)
+		TeamMember.objects.addteammember(personid=person[0].personid,dreamid=dream_id,position=memberRole, active=0)
 
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
@@ -250,7 +250,7 @@ def createdream(request, user_id):
     dream = Dream.objects.createDream(name=dreamname,description=dreamdescription)
 
     memberRole= 'TL'
-    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole)
+    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole,active=1)
     return HttpResponseRedirect(reverse('overview'))
 
 def deletedream(request, dream_id):

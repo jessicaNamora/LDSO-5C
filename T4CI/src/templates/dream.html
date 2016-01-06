@@ -94,7 +94,7 @@
 	{% endif %}
 	<hr class="featurette-divider">
 	{% if not tasks %}
-		This dream has no tasks to be displayed.
+		<h4>This dream has no tasks to be displayed.</h4>
 	{% elif tasks %}
 
 	  <!-- LIST Current Tasks of the Dream -->
@@ -167,7 +167,7 @@
 
 
 
-	<div id="editTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	<div id="editTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5"
 		 aria-hidden="true">
 
 		<div class="modal-dialog">
@@ -175,23 +175,21 @@
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Edit Task</h4>
+					<h4 class="modal-title" id="myModalLabel5">Edit Task</h4>
 				</div>
  				<form action="{% url 'edittask' dream.id %}" method="post">
 				{% csrf_token %}
 				<div class="modal-body">
 					<div class="input-group">
 						<br>
-						Task
-						<br> 
+						<div class="formElement">Task</div>
 						<textarea name="taskNameNew" rows="8" cols="70" ></textarea>
 					</div>
 					<br>
 
 					<div class="input-group">
 						<br>
-						State of the Task
-						<br>
+						<div class="formElement">State of the Task</div>
 						<select name="taskStatusNew" value="current">
 							<option value=""> -</option>
 							<option value="todo">To Do</option>
@@ -202,8 +200,7 @@
 					
 					<div class="input-group">
 						<br>
-						Responsible for the Task
-						<br>
+						<div class="formElement">Responsible for the Task</div>
 						<select name="responsibleIdNew" value="0">
 							
 							<option value="0">--</option>
@@ -235,14 +232,14 @@
 		
 	</div>
 
-	<div id="deleteTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	<div id="deleteTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
 		 aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Delete Task</h4>
+					<h4 class="modal-title" id="myModalLabel1" style="background-color: #428bca;">Delete Task</h4>
 				</div>
  				<form action="{% url 'deletetask' dream.id %}" method="post">
 				{% csrf_token %}
@@ -270,14 +267,14 @@
 	</div>
 	</div>
 
-		<div id="finishTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		<div id="finishTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
 		 aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Finish Task</h4>
+						<h4 class="modal-title" id="myModalLabel2" style="background-color: #428bca;">Finish Task</h4>
 					</div>
 	 				<form action="{% url 'finishtask' dream.id %}" method="post">
 					{% csrf_token %}
@@ -305,14 +302,14 @@
 		</div>
 		</div>
 
-		<div id="startTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		<div id="startTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel~3"
 		 aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Start Task</h4>
+						<h4 class="modal-title" id="myModalLabel3" >Start Task</h4>
 					</div>
 	 				<form action="{% url 'starttask' dream.id %}" method="post">
 					{% csrf_token %}
@@ -342,14 +339,14 @@
 	
 	{% endif %}
 
-		<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		<div id="addTask" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4"
 		 aria-hidden="true">
 
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+					<h4 class="modal-title" id="myModalLabel4">Add Task</h4>
 				</div>
  
 				<div class="modal-body">
@@ -357,16 +354,14 @@
 				{% csrf_token %}
 					<div class="input-group">
 						<br>
-						Task
-						<br> 
+						<div class="formElement">Task</div>
 						<textarea name="taskName" rows="8" cols="70" placeholder="Insert description of the task."></textarea>
 					</div>
 					<br>
 
 					<div class="input-group">
 						<br>
-						State of the Task  
-						<br>
+						<div class="formElement">State of the Task</div>
 						<select name="taskStatus">
 							<option value=""> -</option>
 							<option value="todo">To Do</option>
@@ -375,8 +370,7 @@
 						</select>
 					</div><div class="input-group">
 						<br>
-						Responsible for the Task
-						<br>
+						<div class="formElement">Responsible for the Task</div>
 						<select name="responsibleId" value="0">
 							
 							<option value="0">--</option>
