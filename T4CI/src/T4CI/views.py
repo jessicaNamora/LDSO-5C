@@ -12,6 +12,8 @@ from app.models import Task
 from app.models import TeamMember
 from app.models import SignUp
 from app.models import Messages
+from app.models import Gift
+
 
 
 def about(request):
@@ -171,6 +173,8 @@ def finishtask(request, dream_id):
 
 	task_id = request.POST['finishtaskid']
 
+	print >>sys.stderr, 'Goodbye, cruel world!'
+	print >>sys.stderr, task_id
 	Task.objects.finishtask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
@@ -192,7 +196,7 @@ def changeRole(request, id, dream_id):
 
 	person = TeamMember.objects.changeRole(id=id, role_id=role_id)
 
-	message = Messages.objects.addmessage(messageType=3,receiver=person.personid,dreamid=dream_id,extra=person.get_position_display())
+	message = Messages.objects.addmessage(messageType=3,receiver=person.personid,dreamid=dream_id,extra=role_id)
 
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
@@ -226,7 +230,7 @@ def addteammember(request, dream_id):
 
 	person = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND auth_user.email = %s AND app_teammember.dreamid!=%s", [memberEmail,dream_id])
 	if(len(list(person)) > 0):
-		TeamMember.objects.addteammember(personid=person[0].personid,dreamid=dream_id,position=memberRole, active=0)
+		TeamMember.objects.addteammember(personid=person[0].personid,dreamid=dream_id,position=memberRole)
 
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
 
@@ -237,6 +241,7 @@ def deleteteammember(request, dream_id):
 		return redirect('/mydreams')
 		
 	member_id = request.POST['removeTeamMemberId']
+	#Team.objects.deleteteammember(member_id=member_id)
 	member = TeamMember.objects.get(id=member_id)
 	member.delete()
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
@@ -247,17 +252,21 @@ def createdream(request, user_id):
     dream = Dream.objects.createDream(name=dreamname,description=dreamdescription)
 
     memberRole= 'TL'
-    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole,active=1)
+    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole)
     return HttpResponseRedirect(reverse('overview'))
 
 def deletedream(request, dream_id):
 	dream_id = request.POST['removeDreamId']
 	raw_id = TeamMember.objects.filter(personid=request.user.id, dreamid=dream_id).values('id')
+	#raw_id = TeamMember.objects.raw("SELECT id FROM newsletter_teammember WHERE newsletter_teammember.personid = %s AND newsletter_teammember.dreamid = %s", [request.user.id, dream_id])[0]
 	raw = TeamMember.objects.get(id=raw_id)
 	raw.delete()
 	return HttpResponseRedirect(reverse('mydreams'))
 
 def dreams(request):
+	#dream1 = Dream.objects.create_dream("Dream3", "Category1", "Theme1", "Description1")
+	#dreams1 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 1, "TL")
+	#dreams2 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 2, "TM")
 	if request.user.is_authenticated():
 		dreams = TeamMember.objects.filter(id=request.user.id)
 		projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
@@ -274,37 +283,19 @@ def dreams(request):
 
 def overview(request):
     if request.user.is_authenticated():
-		tasksCurrent = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"current"])
-
-		tasksTodo = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"todo"])
-
-		tasksDone = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid, app_task.dateFinished DESC", [request.user.id,"done"])
-
-		if(len(list(tasksCurrent)) < 1):
-			tasksCurrent = None
-
-		if(len(list(tasksTodo)) < 1):
-			tasksTodo = None
-
-		if(len(list(tasksDone)) < 1):
-			tasksDone = None
-		
-		context = {
-            'user' : request.user,
-            'tasksCurrent' : tasksCurrent,
-            'tasksTodo' : tasksTodo,
-            'tasksDone' : tasksDone
+        context = {
+            'user' : request.user
         }
-		return render(request, "overview.html", context)
+        return render(request, "overview.html", context)
     else:
-    	return redirect('/')
+        return redirect('/')
 		
 def requestmessages(request):
 	invites = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND app_teammember.active= %s AND app_teammember.personid = %s", ["0",request.user.id])
 
-	changedRoles = Messages.objects.raw("SELECT app_messages.id as id, app_dream.name as name, app_messages.extra as role FROM app_messages, app_dream WHERE app_messages.dreamid=app_dream.id AND app_messages.messageType=%s AND app_messages.receiver=%s AND app_messages.seen=%s", ["3", request.user.id,"0"])
+	changedRoles = Messages.objects.raw("SELECT * FROM app_messages, app_dream WHERE app_messages.dreamid=app_dream.id AND app_messages.messageType=%s AND app_messages.receiver=%s", ["3", request.user.id])
 
-	answers = Messages.objects.raw("SELECT app_messages.id as id, app_messages.messageType as type, app_messages.extra as invited, app_dream.name as dreamName FROM app_messages, app_teammember, app_dream WHERE app_messages.dreamid = app_teammember.dreamid AND app_dream.id=app_messages.dreamid AND (app_messages.messageType= %s OR  app_messages.messageType= %s) AND app_teammember.personid = %s AND app_messages.extra<>%s AND app_messages.seen=%s", ["1", "2",request.user.id, request.user.username,"0"])
+	answers = Messages.objects.raw("SELECT app_messages.id as id, app_messages.messageType as type, app_messages.extra as invited, app_dream.name as dreamName FROM app_messages, app_teammember, app_dream WHERE app_messages.dreamid = app_teammember.dreamid AND app_dream.id=app_messages.dreamid AND (app_messages.messageType= %s OR  app_messages.messageType= %s) AND app_teammember.personid = %s AND app_messages.extra<>%s ", ["1", "2",request.user.id, request.user.username])
 	if(len(list(invites)) < 1):
 			invites = None
 	if(len(list(answers)) < 1):
@@ -327,7 +318,7 @@ def acceptinvite(request):
 
 	message = Messages.objects.addAnswer(messageType=2,dreamid=dreamid,extra=request.user.username)
 	changed = TeamMember.objects.becomeActive(personid=request.user.id, dreamid=dreamid)
-	return HttpResponseRedirect(reverse('requestmessages'))
+	return HttpResponseRedirect(reverse('messages'))
 
 def rejectinvite(request):
 	dreamid= request.POST['rejectdreamid']
@@ -338,15 +329,24 @@ def rejectinvite(request):
 
 	message = Messages.objects.addAnswer(messageType=1,dreamid=dreamid,extra=request.user.username)
 	invite.delete()
-	return HttpResponseRedirect(reverse('requestmessages'))
+	return HttpResponseRedirect(reverse('messages'))
 
-def seenmessage(request):
-	id= request.POST['seenmessageid']
-	message = Messages.objects.filter(id=id)
+def addgift(request):
+	gift = request.POST['gift']
+	Gift.objects.addgift(request.user.id,gift)
+	return HttpResponseRedirect(reverse('profile'))
 
-	if(len(list(message)) < 1):
-		return redirect('/messages')
 
-	message = Messages.objects.seenMessage(id=id)
+def removegift(request, gift_id):
+	gift = Gift.objects.get(id=gift_id)
+	gift.delete()
+	return HttpResponseRedirect(reverse('profile'))
 
-	return HttpResponseRedirect(reverse('requestmessages'))
+def createdream(request, user_id):
+    dreamname = request.POST['dreamName']
+    dreamdescription = request.POST['dreamDescription']
+    dream = Dream.objects.createDream(name=dreamname,description=dreamdescription)
+
+    memberRole= 'TL'
+    TeamMember.objects.addteammember(personid=user_id,dreamid=dream.id,position=memberRole)
+    return HttpResponseRedirect(reverse('overview'))

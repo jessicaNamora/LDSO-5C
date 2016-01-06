@@ -13,4 +13,11 @@
 	<h3>Phone Number: {{ object.phone_number }}</h3>
 	<h3>Address: {{ object.address }}</h3>
 	<a href='../{{ user.pk}}/update/'>Edit</a>
+
+	<h2>Gifts: </h2>
+	{% for gift in gifts %}
+	   <img src="{% static 'img/{{ gift.gift }}.png' %}"/>{{ gift.gift }}
+	   <br>  	
+	{% endfor %}
+
 {% endblock %}

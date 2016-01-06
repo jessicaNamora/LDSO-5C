@@ -8,8 +8,10 @@ from django.core.urlresolvers import reverse_lazy
 
 
 urlpatterns = [
+    # Examples:
     url(r'^$', 'app.views.home', name='home'),
-    url(r'^overview/$', 'T4CI.views.overview', name='overview'),
+    url(r'^overview/$', 'app.views.overview', name='overview'),
+    url(r'^contact/$', 'app.views.contact', name='contact'),
     url(r'^about/$', 'app.views.about', name='about'),
     url(r'^profile/$', 'app.views.profile', name='profile'),
     url(r'^mydreams/$','T4CI.views.dreams', name='mydreams'),
@@ -17,7 +19,8 @@ urlpatterns = [
     url(r'^messages/$','T4CI.views.requestmessages', name='requestmessages'),
     url(r'^acceptinvite/$','T4CI.views.acceptinvite', name='acceptinvite'),
     url(r'^rejectinvite/$','T4CI.views.rejectinvite', name='rejectinvite'),
-    url(r'^seenmessage/$','T4CI.views.seenmessage', name='seenmessage'),
+    url(r'^addgift/$','T4CI.views.addgift', name='addgift'),
+    url(r'^removegift/(?P<gift_id>[0-9]+)/$','T4CI.views.removegift', name='removegift'),
     url(r'^addtask/(?P<dream_id>[0-9]+)/$','T4CI.views.addtask', name='addtask'),
     url(r'^deletetask/(?P<dream_id>[0-9]+)/$','T4CI.views.deletetask', name='deletetask'),
     url(r'^edittask/(?P<dream_id>[0-9]+)/$','T4CI.views.edittask', name='edittask'),

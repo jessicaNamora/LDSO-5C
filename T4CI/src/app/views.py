@@ -11,6 +11,12 @@ from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
 from .models import UserProfile, assure_user_profile_exists
 
+from app.models import Dream
+from app.models import Task
+from app.models import TeamMember
+from app.models import SignUp
+from app.models import Messages
+from app.models import Gift
 
 # Create your views here.
 def home(request):
@@ -95,7 +101,14 @@ def contact(request):
 
 def profile(request):
 	if request.user.is_authenticated():
-		return render(request, "profile.html", {})
+		gifts = Gift.objects.raw("SELECT * FROM app_gift WHERE app_gift.user = %s", [request.user.id])
+		
+
+		context = {
+			'gifts' : gifts,
+			}
+		return render(request, "profile.html", context)
+
 	else:
 		return redirect('/')
 
@@ -113,6 +126,7 @@ class UserProfileDetail(DetailView):
 class UserProfileUpdate(UpdateView):
     model = UserProfile
     fields = ('address','locality','phone_number','description','avatar')
+
     #success_url = "/cmmods/complete-registration"
 
     def get(self, request, *args, **kwargs):
