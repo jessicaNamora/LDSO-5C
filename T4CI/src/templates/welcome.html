@@ -28,7 +28,11 @@
 		<h1>Time 4 Cultural Inovation</h1>
 		<p>The “Time 4 Cultural Innovation” is a product of social intervention that aims to help create and accomplish projects (dreams) with the help of a mentor.</p>
 		<p>
+		{% if not request.user.is_authenticated %}
 		<a class="btn btn-lg btn-primary" href="{% url 'registration_register' %}" role="button">Join Us &raquo;</a>
+		{% else %}
+		<a class="btn btn-lg btn-primary" href="{% url 'mydreams' %}" role="button">Go To My Dreams &raquo;</a>
+		{% endif %}
 		</p>
 		</div>
 		<div class='col-sm-6' >

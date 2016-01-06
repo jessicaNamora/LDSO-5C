@@ -88,9 +88,10 @@
     		</div>
     	{% endfor %}
 	{% endif %}
-	<h1>Manage {{dream.name}} <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
+	<h1>Manage {{dream.name}} {% if auth.active == 1 %}<button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Task
 	</button></h1>
+	{% endif %}
 	<hr class="featurette-divider">
 	{% if not tasks %}
 		This dream has no tasks to be displayed.
@@ -108,12 +109,13 @@
 	      	{% if task.responsibleid == member.personid %}
 	      	<img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      	{% endfor %}
-	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
+	     	{% if auth.active == 1 %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#finishTask" class="finishTaskbtn" onclick="finishTaskFunc({{task.id}})">Done</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      {% endif %}	
 	      </div></a>
 	      {% endif %}
 		{% endfor %}
@@ -129,12 +131,13 @@
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
-	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
+	    	{% if auth.active == 1 %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#startTask" class="startTaskbtn" onclick="startTaskFunc({{task.id}})">Start</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      	{% endif %}
 	      </div></a>
 	      {% endif %}
 		{% endfor %}
@@ -150,11 +153,12 @@
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
-	     <!-- 	<a><img src="{% static 'img/edit.png' %}"/></a>-->
+	     	{% if auth.active == 1 %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      	{% endif %}
 	      </div></a>
 	      {% endif %}
 		{% endfor %}
