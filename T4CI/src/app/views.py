@@ -11,6 +11,7 @@ from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
 from .models import UserProfile, assure_user_profile_exists
 
+from app.models import Gift
 
 # Create your views here.
 def home(request):
@@ -93,12 +94,18 @@ def contact(request):
 
 
 
+
 def profile(request):
 	if request.user.is_authenticated():
-		return render(request, "profile.html", {})
+		gifts = Gift.objects.raw("SELECT * FROM app_gift WHERE app_gift.user = %s", [request.user.id])
+		
+		context = {
+			'gifts' : gifts,
+			}
+		return render(request, "profile.html", context)
+
 	else:
 		return redirect('/')
-
 def about(request):
 	return render(request, "about.html", {})
 

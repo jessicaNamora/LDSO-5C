@@ -12,6 +12,7 @@ from app.models import Task
 from app.models import TeamMember
 from app.models import SignUp
 from app.models import Messages
+from app.models import Gift
 
 
 def about(request):
@@ -350,3 +351,14 @@ def seenmessage(request):
 	message = Messages.objects.seenMessage(id=id)
 
 	return HttpResponseRedirect(reverse('requestmessages'))
+	
+def addgift(request):
+	gift = request.POST['gift']
+	Gift.objects.addgift(request.user.id,gift)
+	return HttpResponseRedirect(reverse('profile'))
+
+
+def removegift(request, gift_id):
+	gift = Gift.objects.get(id=gift_id)
+	gift.delete()
+	return HttpResponseRedirect(reverse('profile'))
