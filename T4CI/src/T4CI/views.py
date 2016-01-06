@@ -13,6 +13,7 @@ from app.models import TeamMember
 from app.models import SignUp
 from app.models import Messages
 from app.models import Gift
+from django.contrib.auth.models import User
 
 
 def about(request):
@@ -311,27 +312,43 @@ def dreams(request):
 
 def overview(request):
     if request.user.is_authenticated():
-		tasksCurrent = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"current"])
 
-		tasksTodo = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"todo"])
+		if (request.user.is_superuser == True):
+		 #totalDreams = Dream.objects.raw("SELECT COUNT(*) FROM app_dream")
+		 totalDreams = Dream.objects.count()
+		 totalUsers = User.objects.count()
+		 mostRecentDreams = Dream.objects.raw("SELECT * FROM app_dream ORDER BY dateCreated DESC LIMIT 5")
+		 mostRecentUsers = Dream.objects.raw("SELECT * FROM auth_user ORDER BY date_joined DESC LIMIT 5")
 
-		tasksDone = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid, app_task.dateFinished DESC", [request.user.id,"done"])
+		 context = {
+            'totalDreams' : totalDreams,
+            'totalUsers' : totalUsers,
+            'mostRecentDreams' : mostRecentDreams,
+            'mostRecentUsers' : mostRecentUsers
+         }
 
-		if(len(list(tasksCurrent)) < 1):
+		else:
+		 tasksCurrent = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"current"])
+
+		 tasksTodo = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"todo"])
+
+		 tasksDone = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid, app_task.dateFinished DESC", [request.user.id,"done"])
+
+		 if(len(list(tasksCurrent)) < 1):
 			tasksCurrent = None
 
-		if(len(list(tasksTodo)) < 1):
+		 if(len(list(tasksTodo)) < 1):
 			tasksTodo = None
 
-		if(len(list(tasksDone)) < 1):
+		 if(len(list(tasksDone)) < 1):
 			tasksDone = None
 		
-		context = {
+		 context = {
             'user' : request.user,
             'tasksCurrent' : tasksCurrent,
             'tasksTodo' : tasksTodo,
             'tasksDone' : tasksDone
-        }
+         }
 		return render(request, "overview.html", context)
     else:
     	return redirect('/')
