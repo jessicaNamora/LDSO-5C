@@ -6,11 +6,32 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<br><br>
 	<div class='row'>
-	<div class='col-sm-6 col-sm-offset-1'>
-	<h3>Name: {{object.user.get_username }}</h3>
-	<h3>Email: {{object.user.email }}</h3>
-	<h3>Locality: {{ object.locality }}</h3>
-	<h3>Phone Number: {{ object.phone_number }}</h3>
-	<h3>Address: {{ object.address }}</h3>
-	<a href='../{{ user.pk}}/update/'>Edit</a>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">{{object.user.get_username }}'s Profile</h3>
+		  	</div>
+		  <div class="panel-body">
+		  	<table class="table">
+                    <tbody>
+                      <tr>
+                      	<td>Email</td>
+                      	<td>{{object.user.email }}</td>
+                      </tr>
+                      <tr>
+                      	<td>Locality</td>
+                      	<td>{{ object.locality }}</td>
+                      </tr>
+                      <tr>
+                      	<td>Phone Number</td>
+                      	<td>{{ object.phone_number }}</td>
+                      </tr>
+                      <tr>
+                      	<td>Address</td>
+                      	<td>{{ object.address }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+				<center><a href='../{{ user.pk}}/update/'>Edit</a></center>
+		  </div>
+		</div>
 {% endblock %}
