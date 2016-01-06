@@ -108,6 +108,23 @@
   float:right;
   margin-right: 25px;
 }
+
+#addDreamBtn{
+  float:right;
+  margin-right: 25px;
+}
+.modal-header {
+  background-color: #428bca;
+  color: white;
+}
+
+.formElement {
+  font-size: 130%;
+}
+
+textarea {
+    resize: none;
+}
 /*
  * Sidebar
  */
@@ -185,6 +202,11 @@ div .content-block{
 
   background-color: #428bca;
 }
+#messageTable .invitation{
+
+  background-color: #428bca;
+}
+
 #messageTable .acceptedMessage{
 
   background-color: #66cc33;
@@ -210,14 +232,11 @@ div .content-block{
 }
 
 #messageTable .messageText{
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  width: 65%;
+  display: inline-block;
 }
 
 .messageText:hover{
-  white-space: pre-wrap;
-  overflow: visible;
   color: #428bca;
 
 }
@@ -236,4 +255,7 @@ div .content-block{
   background-color: #428bca;
   margin-left:0px;
   padding: 20px 10px 20px 10px;
+}
+.messageIcon {
+  float: right;
 }

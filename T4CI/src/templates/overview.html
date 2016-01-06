@@ -17,9 +17,50 @@
 	<br><br>
 
 	
-	<h1>Overview <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#createDream">
+	<h1>Overview <button class="btn btn-primary btn-lg" id="addDreamBtn" data-toggle="modal" data-target="#createDream">
 	  Create Dream
 	</button></h1>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your current tasks</li>
+			{% if not tasksCurrent %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksCurrent %}
+				{% for task in tasksCurrent %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> {{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your future tasks</li>
+			{% if not tasksTodo %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksTodo %}
+				{% for task in tasksTodo %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> {{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your finished tasks</li>
+			{% if not tasksDone %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksDone %}
+				{% for task in tasksDone %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> 
+						<span class="label label-default">{{task.dateFinished|date:"M d, Y"}}</span>
+						{{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
 	</div>
 
 	<div id="createDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -31,22 +72,20 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Create Dream</h4>
-
+				</div>
 				<form action="{% url 'createdream' user.id %}" method="post">
 				{% csrf_token %}
 				<div class="modal-body">
 					<div class="input-group">
 						<br>
-						Propose a new Dream Idea:
-						<br> 
+						<div class="formElement">Propose a new Dream Idea:</div>
 						<textarea name="dreamName" rows="1" cols="70" placeholder="Write your dream name here ..."></textarea>
 					</div>
 					<br>
-					Please select the category of your Dream:
-					<br>
+					<div class="formElement">Please select the category of your Dream:</div>
 					
 					<div>
-						<div style="width=60%; float:left">
+						<div style="width=60%; float:left; margin-right: 20px; ">
 						<input type="radio" name="themes" value="ArtsAndCulture"> Arts and Culture <br>
 						<input type="radio" name="themes" value="ChildrenAndYouth"> Children and Youth <br>
 						<input type="radio" name="themes" value="Community"> Community <br>
@@ -65,16 +104,13 @@
 					
 					</div>
 					<div class="input-group">
-						<br>
-						Describe your new Dream Idea:
-						<br> 
-						<textarea name="dreamDescription" rows="8" cols="70" placeholder="Write your dream idea here ..."></textarea>
+						<div class="formElement">Describe your new Dream Idea:</div>
+						<textarea name="dreamDescription" rows="3" cols="70" placeholder="Write your dream idea here ..."></textarea>
 					</div>
 					<div class="input-group">
 						<br>
-						What is the future you are creating?  
-						<br> 
-						<textarea name="dreamFuture" rows="8" cols="70" placeholder="What problem do you see in the world that you plan to fix? What change do you want to create in the world? Why is it important that people support you in addressing this issue?"></textarea>
+						<div class="formElement">What is the future you are creating?</div>  
+						<textarea name="dreamFuture" rows="3" cols="70" placeholder="What problem do you see in the world that you plan to fix? What change do you want to create in the world? Why is it important that people support you in addressing this issue?"></textarea>
 					</div>
 					<br>
 					
@@ -87,7 +123,6 @@
 					</div>
 					<div id="success_messages">
 					</div>
-					<br>
 
 				</div>
 				<div class="modal-footer">
