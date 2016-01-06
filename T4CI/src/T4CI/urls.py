@@ -11,7 +11,6 @@ urlpatterns = [
     # Examples:
     url(r'^$', 'app.views.home', name='home'),
     url(r'^overview/$', 'app.views.overview', name='overview'),
-    url(r'^contact/$', 'app.views.contact', name='contact'),
     url(r'^about/$', 'app.views.about', name='about'),
     url(r'^profile/$', 'app.views.profile', name='profile'),
     url(r'^mydreams/$','T4CI.views.dreams', name='mydreams'),
