@@ -10,11 +10,12 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"><br><br>
 		
 		{% if user.userprofile.avatar %}
-		<img src="{{ MEDIA_URL }}{{user.userprofile.avatar}}"   class='img-responsive img-circle' style="height:100px;"><h1>{{ user.get_username }} Profile</h1></img>
+		<img src="{{ MEDIA_URL }}{{user.userprofile.avatar}}" class='img-responsive img-circle' style="height:100px;float: left;"></img>
+		<h1>&nbsp;&nbsp;{{ user.get_username }} Profile</h1>
 		{% else %}
-		<img src='{% static "img/default_profile.png" %}'  /><h1>{{ user.get_username }} Profile</h1>
+		<img src='{% static "img/default_profile.png" %}' class='img-responsive img-circle' style="height:100px;float: left;"/><h1>&nbsp;&nbsp;{{ user.get_username }} Profile</h1>
 		{% endif %} 
-		<hr class="featurette-divider">
+		<hr class="featurette-divider"><br>
 
 		
 		<div style="font-size:18px"><b>Email: </b>{{user.email }}</div>
@@ -29,10 +30,10 @@
 			{% for gift in gifts %}
 				
 				<img src="idea.png"></img> {{ gift.gift }}
-				<a data-toggle="modal" data-target="#removeGift"><img src="{% static 'img/delete.png' %}"/></a> 
+				<a data-toggle="modal" data-target="#removeGift{{gift.id}}"><img src="{% static 'img/delete.png' %}"/></a> 
 				<br>
 
-				<div id="removeGift" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				<div id="removeGift{{gift.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 				 aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
