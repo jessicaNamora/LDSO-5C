@@ -8,9 +8,8 @@ from django.core.urlresolvers import reverse_lazy
 
 
 urlpatterns = [
-    # Examples:
     url(r'^$', 'app.views.home', name='home'),
-    url(r'^overview/$', 'app.views.overview', name='overview'),
+    url(r'^overview/$', 'T4CI.views.overview', name='overview'),
     url(r'^about/$', 'app.views.about', name='about'),
     url(r'^profile/$', 'app.views.profile', name='profile'),
     url(r'^mydreams/$','T4CI.views.dreams', name='mydreams'),

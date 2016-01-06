@@ -20,6 +20,47 @@
 	<h1>Overview <button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#createDream">
 	  Create Dream
 	</button></h1>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your current tasks</li>
+			{% if not tasksCurrent %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksCurrent %}
+				{% for task in tasksCurrent %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> {{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your future tasks</li>
+			{% if not tasksTodo %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksTodo %}
+				{% for task in tasksTodo %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> {{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Your finished tasks</li>
+			{% if not tasksDone %}
+				<li class="list-group-item">You don't have any tasks to be displayed.</lI>
+			{% elif tasksDone %}
+				{% for task in tasksDone %}
+					<li class="list-group-item">
+						<a href="/dream/{{task.dreamid}}"><span class="label label-success">{{task.name}}</span></a> 
+						<span class="label label-default">{{task.dateFinished|date:"M d, Y"}}</span>
+						{{task.taskname}}<br>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
 	</div>
 
 	<div id="createDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
