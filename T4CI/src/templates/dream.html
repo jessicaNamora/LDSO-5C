@@ -88,7 +88,7 @@
     		</div>
     	{% endfor %}
 	{% endif %}
-	<h1>Manage {{dream.name}} {% if auth.active == 1 %}<button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
+	<h1>Manage {{dream.name}} {% if auth.active == 1 and not request.user.is_superuser%}<button class="btn btn-primary btn-lg" id="addTaskBtn" data-toggle="modal" data-target="#addTask">
 	  Add Task
 	</button></h1>
 	{% endif %}
@@ -105,16 +105,18 @@
 	      {% if task.taskstatus == 'current' %}
 	      <a href"#"><div class="col-xs-4" draggable="true" ondragstart="drag(event)">
 	      	<div class="taskName">{{task.taskname}}</div> 
-	      	{% for member in team %}
+	      	{% for member in team|slice:":1"%}
 	      	{% if task.responsibleid == member.personid %}
 	      	<img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      	{% endfor %}
 	     	{% if auth.active == 1 and task.responsibleid == request.user.id or task.responsibleid == 0  or auth.position == 'TL' %}
+	     	{% if not request.user.is_superuser %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#finishTask" class="finishTaskbtn" onclick="finishTaskFunc({{task.id}})">Done</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      {% endif %}
 	      {% endif %}	
 	      </div></a>
 	      {% endif %}
@@ -127,16 +129,18 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'todo' %}
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
-	      {% for member in team %}
+	      {% for member in team|slice:":1"%}
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
 	    	{% if auth.active == 1 and task.responsibleid == request.user.id or task.responsibleid == 0  or auth.position == 'TL' %}
+	    	{% if not request.user.is_superuser %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#startTask" class="startTaskbtn" onclick="startTaskFunc({{task.id}})">Start</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      	{% endif %}
 	      	{% endif %}
 	      </div></a>
 	      {% endif %}
@@ -149,15 +153,17 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'done' %}
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>	      
-	      {% for member in team %}
+	      {% for member in team|slice:":1"%}
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
 	     	{% if auth.active == 1 and task.responsibleid == request.user.id or task.responsibleid == 0 or auth.position == 'TL' %}
+	     	{% if not request.user.is_superuser %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
+	      	{% endif %}
 	      	{% endif %}
 	      </div></a>
 	      {% endif %}

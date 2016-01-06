@@ -20,21 +20,39 @@ def about(request):
 
 def dream(request, dream_id):
 	if request.user.is_authenticated():
-		auth = Task.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+		if (request.user.is_superuser == True):
+		 auth = Task.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s", [dream_id])
 
-		if(len(list(auth)) < 1):
-			return redirect('/mydreams')
+		 if(len(list(auth)) < 1):
+		 	return redirect('/mydreams')
 
-		projects = Dream.objects.filter(id=dream_id)
-		tasks = Task.objects.raw("SELECT * FROM app_task, app_teammember WHERE app_task.dreamid = app_teammember.dreamid AND app_task.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
-		members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+	 	 projects = Dream.objects.filter(id=dream_id)
+		 tasks = Task.objects.raw("SELECT * FROM app_task WHERE app_task.dreamid = %s", [dream_id])
+		 members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND dreamid = %s", [dream_id])
 
-		if(len(list(tasks)) < 1):
+		 if(len(list(tasks)) < 1):
 			tasks = None
 
-		if(projects):
+		 if(projects):
 			project = projects[0]
+		 else:
+			project = None
 		else:
+		 auth = Task.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+		 if(len(list(auth)) < 1):
+		 	return redirect('/mydreams')
+
+		 projects = Dream.objects.filter(id=dream_id)
+		 tasks = Task.objects.raw("SELECT * FROM app_task, app_teammember WHERE app_task.dreamid = app_teammember.dreamid AND app_task.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+		 members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+
+		 if(len(list(tasks)) < 1):
+			tasks = None
+
+		 if(projects):
+			project = projects[0]
+		 else:
 			project = None
 
 		context = {
@@ -203,13 +221,23 @@ def changeRole(request, id, dream_id):
 
 def team(request, dream_id):
 	if request.user.is_authenticated():
-		auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+		if (request.user.is_superuser == True):
+		 auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s", [dream_id])
 
-		if(len(list(auth)) < 1):
+		 if(len(list(auth)) < 1):
+			 return redirect('/mydreams')
+
+		 projects = Dream.objects.filter(id=dream_id)
+		 members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+
+		else:
+		 auth = TeamMember.objects.raw("SELECT * FROM app_teammember WHERE app_teammember.dreamid = %s AND app_teammember.personid = %s", [dream_id, request.user.id])
+
+		 if(len(list(auth)) < 1):
 			return redirect('/mydreams')
 
-		projects = Dream.objects.filter(id=dream_id)
-		members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
+		 projects = Dream.objects.filter(id=dream_id)
+		 members = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user WHERE app_teammember.personid = auth_user.id AND dreamid = %s", [dream_id])
 
 		context = {
 			'dream' : projects,
@@ -264,8 +292,12 @@ def deletedream(request, dream_id):
 
 def dreams(request):
 	if request.user.is_authenticated():
-		dreams = TeamMember.objects.filter(id=request.user.id)
-		projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
+		if (request.user.is_superuser == True):
+		 dreams = TeamMember.objects
+		 projects = TeamMember.objects.raw("SELECT * FROM  app_dream")		 
+		else:
+		 dreams = TeamMember.objects.filter(id=request.user.id)
+		 projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
 
 		if(len(list(projects)) < 1):
 			projects = None

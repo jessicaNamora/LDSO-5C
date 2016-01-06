@@ -48,13 +48,48 @@ window.onload = loadingFunctions;
 <div class='row'>
 
 <div class='col-sm-6 col-sm-offset-2' id="dreamTable">
-<h1>{{ request.user.get_username }}'s Dreams <button class="btn btn-primary btn-lg" id="addDreamBtn" data-toggle="modal" data-target="#createDream">
+<h1>{{ request.user.get_username }}'s Dreams 
+
+	{% if not request.user.is_superuser %}
+	<button class="btn btn-primary btn-lg" id="addDreamBtn" data-toggle="modal" data-target="#createDream">
 	  Create Dream
-	</button></h1>
+	</button>{% endif %}</h1>
+	
 {% if not dreams %}
 	You currently have no dreams.
 {% elif dreams %}
+
 <hr class="featurette-divider">
+
+{% if request.user.is_superuser %}
+	
+<table class="table">
+
+
+	<thead style="font-size:18px">
+		<tr>
+			<th>Dream</th>
+			<th>Description</th>
+			<th>Team</th>
+			
+		</tr>
+	</thead>
+	<tbody style="font-size:16px">
+		{% for dream in dreams %}
+			<tr>
+				<td><a href='../dream/{{ dream.id }}'>{{ dream.name }}</a></td>
+				<td>{{ dream.description }}</td>
+				<td><a href='../team/{{ dream.dreamid}}'>View Team</a></td>
+				
+			</tr>
+
+
+</div>
+		{% endfor %}
+	</tbody>
+</table>
+	
+	{% else %}
 <table class="table">
 	<thead style="font-size:18px">
 		<tr>
@@ -108,6 +143,7 @@ window.onload = loadingFunctions;
 		{% endfor %}
 	</tbody>
 </table>
+{% endif %}
 </div>
 
 {% endif %}
