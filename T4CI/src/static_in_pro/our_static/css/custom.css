@@ -122,6 +122,9 @@
   font-size: 130%;
 }
 
+.selectableimg:hover {
+  cursor:pointer;
+}
 textarea {
     resize: none;
 }

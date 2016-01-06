@@ -72,7 +72,7 @@ window.onload = loadingFunctions;
 				<td>{{ dream.description }}</td>
 				<td class={{ dream.position }}></td>
 				<td><a href='../team/{{ dream.dreamid}}'>View Team</a></td>
-				<td><a data-toggle="modal" data-target="#removeDream" onclick="removeDream({{dream.dreamid}})"><img src="{% static 'img/remove.png' %}"/></a> </td>
+				<td><a class="selectableimg" data-toggle="modal" data-target="#removeDream" onclick="removeDream({{dream.dreamid}})"><img src="{% static 'img/remove.png' %}"/></a> </td>
 			</tr>
 
 	<div id="removeDream" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
