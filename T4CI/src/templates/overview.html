@@ -17,7 +17,9 @@
 	<br><br>
 
 	
-	<h1>Overview <button class="btn btn-primary btn-lg" id="addDreamBtn" data-toggle="modal" data-target="#createDream">
+	<h1>Overview 
+			{% if not request.user.is_superuser %}
+			<button class="btn btn-primary btn-lg" id="addDreamBtn" data-toggle="modal" data-target="#createDream">
 	  Create Dream
 	</button></h1>
 	<br>
@@ -134,5 +136,42 @@
 		</div>
 		
 	</div>
+	{%else%}
+	</h1>
+	<span class="label label-info">Total Dreams Created:</span> <span class="badge">{{totalDreams}}</span>    
+	<br><br>
+	<span class="label label-warning">Total Users:</span> <span class="badge">{{totalUsers}}</span>
+	<br><br>
+
+	
+<br>
+		<ul class="list-group">
+			<li class="list-group-item active">Last 5 Dreams Created</li>
+			
+				{% for dream in mostRecentDreams %}
+					<li class="list-group-item">
+						<a href="/dream/{{dream.id}}">{{dream.name}}</a>
+
+						<span class="label label-default">{{dream.dateCreated|date:"M d, Y"}}</span><br>
+					</li>
+				{% endfor %}
+		</ul>
+
+		<br>
+		<br>
+				<ul class="list-group">
+			<li class="list-group-item active">Most Recent Users</li>
+			
+				{% for user in mostRecentUsers %}
+					<li class="list-group-item">
+						<a href="/{{user.id}}/">{{user.username}}</a> 
+						<span class="label label-default">{{user.date_joined|date:"M d, Y"}}</span><br>
+					</li>
+				{% endfor %}
+		</ul>
+
+
+	{% endif %}
+
 	</div>
 {% endblock %}

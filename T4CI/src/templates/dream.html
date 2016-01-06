@@ -105,7 +105,7 @@
 	      {% if task.taskstatus == 'current' %}
 	      <a href"#"><div class="col-xs-4" draggable="true" ondragstart="drag(event)">
 	      	<div class="taskName">{{task.taskname}}</div> 
-	      	{% for member in team|slice:":1"%}
+	      	{% for member in team %}
 	      	{% if task.responsibleid == member.personid %}
 	      	<img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      	{% endfor %}
@@ -129,18 +129,16 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'todo' %}
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>
-	      {% for member in team|slice:":1"%}
+	      {% for member in team %}
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
-	    	{% if auth.active == 1 and task.responsibleid == request.user.id or task.responsibleid == 0  or auth.position == 'TL' %}
-	    	{% if not request.user.is_superuser %}
+	    	{% if not request.user.is_superuser and auth.active == 1 and task.responsibleid == request.user.id or task.responsibleid == 0 or auth.position == 'TL' %}
 	      	<ul class="taskOption">
 	      		<li><a data-toggle="modal" data-target="#editTask" class="editTaskbtn" onclick="editTaskFunc({{task.id}},{{dream.id}})">Edit</a></li>
 	      		<li><a data-toggle="modal" data-target="#startTask" class="startTaskbtn" onclick="startTaskFunc({{task.id}})">Start</a></li>
 	      		<li><a data-toggle="modal" data-target="#deleteTask" class="deleteTaskbtn" onclick="deleteTaskFunc({{task.id}})">Delete</a></li>
 	      	</ul>
-	      	{% endif %}
 	      	{% endif %}
 	      </div></a>
 	      {% endif %}
@@ -153,7 +151,7 @@
 	      {% for task in tasks %}
 	      {% if task.taskstatus == 'done' %}
 	      <a href"#"><div class="col-xs-4"><div class="taskName">{{task.taskname}}</div>	      
-	      {% for member in team|slice:":1"%}
+	      {% for member in team %}
 	      {% if task.responsibleid == member.personid %}
 	      <img src="{{ MEDIA_URL }}{{member.avatar}}" class='img-responsive img-rounded' style="height:50px;"/>{% endif %} 
 	      {% endfor %}
