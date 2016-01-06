@@ -17,7 +17,8 @@ function addRoleImage(){
     
     var leaders = document.getElementsByClassName('TL');
     var members = document.getElementsByClassName('TM');
-    console.log(leaders.length);
+    var comm = document.getElementsByClassName('TC');
+
     for(var i=0;i<leaders.length;i++){
     	var x = document.createElement("IMG");
 	    x.setAttribute("src", '{% static "img/leader.png" %}');
@@ -29,6 +30,12 @@ function addRoleImage(){
     	y.setAttribute("src", '{% static "img/member.png" %}');
     	y.setAttribute("alt", "Team Member");
     	members[i].appendChild(y);
+    }
+    for(var i=0;i<comm.length;i++){
+    	var y = document.createElement("IMG");
+    	y.setAttribute("src", '{% static "img/communication.png" %}');
+    	y.setAttribute("alt", "Communication Expert");
+    	comm[i].appendChild(y);
     }
 }
 function removeMemberFunc(id) {
