@@ -171,8 +171,6 @@ def finishtask(request, dream_id):
 
 	task_id = request.POST['finishtaskid']
 
-	print >>sys.stderr, 'Goodbye, cruel world!'
-	print >>sys.stderr, task_id
 	Task.objects.finishtask(task_id=task_id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
@@ -239,7 +237,6 @@ def deleteteammember(request, dream_id):
 		return redirect('/mydreams')
 		
 	member_id = request.POST['removeTeamMemberId']
-	#Team.objects.deleteteammember(member_id=member_id)
 	member = TeamMember.objects.get(id=member_id)
 	member.delete()
 	return HttpResponseRedirect(reverse('team', args=(dream_id,)))
@@ -256,15 +253,11 @@ def createdream(request, user_id):
 def deletedream(request, dream_id):
 	dream_id = request.POST['removeDreamId']
 	raw_id = TeamMember.objects.filter(personid=request.user.id, dreamid=dream_id).values('id')
-	#raw_id = TeamMember.objects.raw("SELECT id FROM newsletter_teammember WHERE newsletter_teammember.personid = %s AND newsletter_teammember.dreamid = %s", [request.user.id, dream_id])[0]
 	raw = TeamMember.objects.get(id=raw_id)
 	raw.delete()
 	return HttpResponseRedirect(reverse('mydreams'))
 
 def dreams(request):
-	#dream1 = Dream.objects.create_dream("Dream3", "Category1", "Theme1", "Description1")
-	#dreams1 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 1, "TL")
-	#dreams2 = TeamMember.objects.add_to_dream_team("aaa", "email", 21, 2, "TM")
 	if request.user.is_authenticated():
 		dreams = TeamMember.objects.filter(id=request.user.id)
 		projects = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND personid = %s", [request.user.id])
@@ -281,12 +274,30 @@ def dreams(request):
 
 def overview(request):
     if request.user.is_authenticated():
-        context = {
-            'user' : request.user
+		tasksCurrent = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"current"])
+
+		tasksTodo = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid", [request.user.id,"todo"])
+
+		tasksDone = Task.objects.raw("SELECT * FROM app_task, app_dream WHERE app_task.dreamid = app_dream.id AND app_task.responsibleid=%s AND app_task.taskstatus=%s ORDER BY app_task.dreamid, app_task.dateFinished DESC", [request.user.id,"done"])
+
+		if(len(list(tasksCurrent)) < 1):
+			tasksCurrent = None
+
+		if(len(list(tasksTodo)) < 1):
+			tasksTodo = None
+
+		if(len(list(tasksDone)) < 1):
+			tasksDone = None
+		
+		context = {
+            'user' : request.user,
+            'tasksCurrent' : tasksCurrent,
+            'tasksTodo' : tasksTodo,
+            'tasksDone' : tasksDone
         }
-        return render(request, "overview.html", context)
+		return render(request, "overview.html", context)
     else:
-        return redirect('/')
+    	return redirect('/')
 		
 def requestmessages(request):
 	invites = TeamMember.objects.raw("SELECT * FROM app_teammember JOIN app_dream ON app_teammember.dreamid = app_dream.id AND app_teammember.active= %s AND app_teammember.personid = %s", ["0",request.user.id])

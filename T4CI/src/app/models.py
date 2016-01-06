@@ -6,8 +6,6 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from registration.signals import user_registered
 
-# Create your models here.
-
 # Users
 class SignUp(models.Model):
 	email = models.EmailField()
@@ -67,11 +65,8 @@ class TeamMember(models.Model):
     	(TEAMMEMBER, "Team Member"),
     	(TEAMCOMMUNICATOR, "Team Communicator"),
     )
-	#name = models.CharField(max_length=120, blank=True, null=True)
 	personid = models.PositiveIntegerField(default=0, blank=True, null=True)
-	#person = models.ForeignKey(SignUp, blank=True, null=True)
 	dreamid = models.PositiveIntegerField(default=0, blank=True, null=True)
-	#dream = models.ForeignKey(Dream, blank=True, null=True)
 	position = models.CharField(max_length=2, choices=TEAM, default=TEAMMEMBER)
 
 	active = models.BooleanField(default=INACTIVE)
@@ -148,8 +143,6 @@ class TaskManager(models.Manager):
 		task.taskstatus = taskstatus
 		task.responsibleid = responsibleid
 		task.save()
-		#task = Task.objects.get(id=task_id)
-		#task.self.update(taskname=taskname,taskstatus=taskstatus)
 		return task
 
 	def deletetask(self, task_id):
@@ -158,9 +151,11 @@ class TaskManager(models.Manager):
 		return
 
 	def finishtask(self, task_id):
+		now = datetime.datetime.now()
 		task = Task.objects.get(id=task_id)
 		if task.taskstatus == 'current':
 			task.taskstatus = 'done'
+			task.dateFinished = now
 			task.save()
 		return task
 
@@ -180,6 +175,8 @@ class Task(models.Model):
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)
 	dreamid = models.PositiveIntegerField(default=0, null=True, blank=True)
 	responsibleid = models.PositiveIntegerField(default=0, null=True, blank=True)
+	dateCreated = models.DateTimeField(default=datetime.date.today, blank=True)
+	dateFinished = models.DateTimeField(default=datetime.date.today, blank=True)
 
 	objects = TaskManager()
 
