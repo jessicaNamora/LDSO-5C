@@ -170,6 +170,12 @@ class TaskManager(models.Manager):
 		task = Task.objects.get(id=task_id)
 		return task
 
+	def defineresponsible(self, task_id, personid):
+		raw = Task.objects.get(id=task_id)
+		raw.responsibleid=personid
+		raw.save()
+		return raw
+
 class Task(models.Model):
 	taskname = models.CharField(max_length=120, blank=True, null=True)
 	taskstatus = models.CharField(max_length=120, blank=True, null=True)

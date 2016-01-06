@@ -98,10 +98,10 @@ def addtask(request, dream_id):
 		success = False
 		messages.error(request, 'Task status has an invalid value.')
 
-	if responsibleid == None or responsibleid == '' or responsibleid == 0 or not is_int(responsibleid):
+	if not is_int(responsibleid):
 		success = False
 		messages.error(request, 'The member assigned does not exist.')
-	else:
+	elif not responsibleid == "0":
 		responsible = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s AND app_teammember.personid = %s", [dream_id, responsibleid])
 		if(len(list(responsible)) < 1):
 			success = False
@@ -137,10 +137,10 @@ def edittask(request, dream_id):
 		success = False
 		messages.error(request, 'The task does not exist.')
 
-	if responsibleid == None or responsibleid == '' or responsibleid == 0 or not is_int(responsibleid):
+	if not is_int(responsibleid):
 		success = False
 		messages.error(request, 'The member assigned does not exist.')
-	else:
+	elif not responsibleid == "0":
 		responsible = TeamMember.objects.raw("SELECT * FROM app_teammember, auth_user, app_userprofile WHERE app_teammember.personid = app_userprofile.user_id AND app_teammember.personid = auth_user.id AND dreamid = %s AND app_teammember.personid = %s", [dream_id, responsibleid])
 		if(len(list(responsible)) < 1):
 			success = False
@@ -170,8 +170,10 @@ def finishtask(request, dream_id):
 		return redirect('/mydreams')
 
 	task_id = request.POST['finishtaskid']
-
+	responsible = Task.objects.filter(id=task_id).values('responsibleid')
 	Task.objects.finishtask(task_id=task_id)
+	if(responsible[0]['responsibleid'] == 0):
+		Task.objects.defineresponsible(task_id=task_id, personid=request.user.id)
 
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
@@ -182,8 +184,10 @@ def starttask(request, dream_id):
 		return redirect('/mydreams')
 
 	task_id = request.POST['starttaskid']
+	responsible = Task.objects.filter(id=task_id).values('responsibleid')
 	Task.objects.starttask(task_id=task_id)
-
+	if(responsible[0]['responsibleid'] == 0):
+		Task.objects.defineresponsible(task_id=task_id, personid=request.user.id)
 	return HttpResponseRedirect(reverse('dream', args=(dream_id,)))
 
 	
